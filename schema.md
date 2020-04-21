@@ -1,3 +1,8 @@
+# Table of Contents
+
+[Database Schema](https://github.com/darrickyong/earmark/wiki/Database-Schema#database-schema)
+[Joins Tables](https://github.com/darrickyong/earmark/wiki/Database-Schema#joins-tables)
+
 # Database Schema
 
 ## `users`
