@@ -24,13 +24,17 @@
 + index on `session_token, unique: true`
 
 ## `groups`
-| column name       | data type | details                   |
-|:------------------|:---------:|:--------------------------|
-| `id`              | integer   | not null, primary key     |
-| `name`            | string    | not null                  |
-| `description`     | string    |                           |
-| `created_at`      | datetime  | not null                  |
-| `updated_at`      | datetime  | not null                  |
+| column name       | data type | details                        |
+|:------------------|:---------:|:-------------------------------|
+| `id`              | integer   | not null, primary key          |
+| `name`            | string    | not null                       |
+| `description`     | string    |                                |
+| `owner_id`        | integer   | not null, indexed, foreign key |
+| `created_at`      | datetime  | not null                       |
+| `updated_at`      | datetime  | not null                       |
+
++ `owner_id` references `users`
++ index on `owner_id`
 
 ## `expenses`
 | column name          | data type | details                        |
@@ -75,7 +79,7 @@
 | `updated_at`      | datetime  | not null                                   |
 
 + `author_id` references `users`
-+ `commentable` references `expenses` or `transactions`
++ `commentable_type` references `expenses` or `transactions`
 + index on `author_id`
 + index on `commentable_id`
 
