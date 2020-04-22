@@ -4,6 +4,8 @@
 
 [Joins Tables](https://github.com/darrickyong/earmark/wiki/Database-Schema#joins-tables)
 
+[Associations](https://github.com/darrickyong/earmark/wiki/Schema%2C-Joins-%26-Associations/_edit#associations)
+
 # Database Schema
 
 ## `users`
@@ -21,19 +23,6 @@
 + index on `email, unique: true`
 + index on `session_token, unique: true`
 
-## `friendships`
-| column name       | data type | details                        |
-|:------------------|:---------:|:-------------------------------|
-| `id`              | integer   | not null, primary key          |
-| `user_id`         | integer   | not null, indexed, foreign key |
-| `friend_id`       | integer   | not null, indexed, foreign key |             
-| `created_at`      | datetime  | not null                       |
-| `updated_at`      | datetime  | not null                       |
-
-+ `user_id` references `users`  
-+ `friend_id` references `users`
-+ index on `[:user_id, :friend_id], unique: true`
-
 ## `groups`
 | column name       | data type | details                   |
 |:------------------|:---------:|:--------------------------|
@@ -48,6 +37,7 @@
 |:---------------------|:---------:|:-------------------------------|
 | `id`                 | integer   | not null, primary key          |
 | `name`               | string    | not null                       |
+| `amount`             | integer   | not null                       |
 | `owner_id`           | integer   | not null, indexed, foreign key |
 | `date`               | date      | not null                       |
 | `created_at`         | datetime  | not null                       |
@@ -60,7 +50,7 @@
 | column name          | data type | details                        |
 |:---------------------|:---------:|:-------------------------------|
 | `id`                 | integer   | not null, primary key          |
-| `name`               | string    | not null                       |
+| `amount`             | integer   | not null                       |
 | `payer_id`           | integer   | not null, indexed, foreign key |
 | `expense_id`         | integer   | not null, indexed, foreign key |
 | `date`               | date      | not null                       |
@@ -73,29 +63,43 @@
 + index on `expense_id`
 
 ## `comments`
+| column name       | data type | details                                    |
+|:------------------|:---------:|:-------------------------------------------|
+| `id`              | integer   | not null, primary key                      |
+| `title`           | string    |                                            |
+| `body`            | text      | not null                                   |
+| `author_id`       | integer   | not null, indexed, foreign key             |      
+| `commentable_type`| string    | not null, polymorphic table                |
+| `commentable_id`  | integer   | not null, indexed, polymorphic foreign key |
+| `created_at`      | datetime  | not null                                   |
+| `updated_at`      | datetime  | not null                                   |
+
++ `author_id` references `users`
++ `commentable` references `expenses` or `transactions`
++ index on `author_id`
++ index on `commentable_id`
+
+# Joins Tables
+
+## `friendships`
 | column name       | data type | details                        |
 |:------------------|:---------:|:-------------------------------|
 | `id`              | integer   | not null, primary key          |
-| `title`           | string    |                                |
-| `body`            | text      | not null                       |
-| `author_id`       | integer   | not null, indexed, foreign key |             
-| `expense_id`      | integer   | not null, indexed, foreign key |
+| `user_id`         | integer   | not null, indexed, foreign key |
+| `friend_id`       | integer   | not null, indexed, foreign key |             
 | `created_at`      | datetime  | not null                       |
 | `updated_at`      | datetime  | not null                       |
 
-+ `author_id` references `users`
-+ `expense_id` references `expenses`
-+ index on `author_id`
-+ index on `expense_id`
-
-# Joins Tables
++ `user_id` references `users`  
++ `friend_id` references `users`
++ index on `[:user_id, :friend_id], unique: true`
 
 ## `members`
 | column name       | data type | details                   |
 |:------------------|:---------:|:--------------------------|
 | `id`              | integer   | not null, primary key     |
 | `user_id`         | integer   | not null, indexed         |
-| `group_id`       | integer    | not null, indexed         |
+| `group_id`        | integer   | not null, indexed         |
 | `created_at`      | datetime  | not null                  |
 | `updated_at`      | datetime  | not null                  |
 
@@ -103,3 +107,6 @@
 + `group_id` references `groups`
 + index on `user_id`
 + index on `group_id`
+
+# Associations
+--- Work In Progress ---
