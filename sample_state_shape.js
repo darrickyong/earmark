@@ -21,12 +21,14 @@ sampleState = {
       1: {
         id: 1,
         name: "Friday Night Dinner",
-        description: "dinners on Fridays"
+        description: "dinners on Fridays",
+        owner_id: 1
       },
       2: {
         id: 2,
         name: "Tuesday Take-out",
-        description: ""
+        description: "",
+        owner_id: 2
       }
     },
     expenses: {
