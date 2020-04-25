@@ -13,8 +13,8 @@ sampleState = {
       },
       3: {
         id: 3,
-        username: "jennvomo",
-        email: "jennvomo@gmail.com"
+        username: "jenvomo",
+        email: "jenvomo@gmail.com"
       }
     },
     groups: {
@@ -22,13 +22,13 @@ sampleState = {
         id: 1,
         name: "Friday Night Dinner",
         description: "dinners on Fridays",
-        owner_id: 1
+        ownerId: 1
       },
       2: {
         id: 2,
         name: "Tuesday Take-out",
         description: "",
-        owner_id: 2
+        ownerId: 2
       }
     },
     expenses: {
@@ -36,14 +36,14 @@ sampleState = {
         id: 1,
         name: "lunch",
         amount: 3200,
-        owner_id: 2,
+        ownerId: 2,
         date: 04/20/2020
       },
       2: {
         id: 2,
         name: "groceries",
         amount: 1400,
-        owner_id: 3,
+        ownerId: 3,
         date: 02/10/2020
       }
     },
@@ -51,30 +51,32 @@ sampleState = {
       1: {
         id: 1,
         amount: 1600,
-        payer_id: 2,
-        expense_id: 1,
-        date: 04/20/2020
-      },
-      2: {
-        id: 2,
-        amount: 1600,
-        payer_id: 1,
+        payerId: 1,
         expense_id: 1,
         date: 04/22/2020
       },
-      3: {
-        id: 3,
+      2: {
+        id: 2,
         amount: 700,
-        payer_id: 3,
-        expense_id: 2,
-        date: 02/10/2020
-      },
-      4: {
-        id: 4,
-        amount: 700,
-        payer_id: 2,
+        payerId: 2,
         expense_id: 2,
         date: 02/11/2020
+      }
+    },
+    payments: {
+      1: {
+        id: 1,
+        amount: 200,
+        payeeId: 2,
+        payerId: 1,
+        date: 04/25/2020
+      },
+      2: {
+        id: 2,
+        amount: 500,
+        payeeId: 2,
+        payerId: 1,
+        date: 04/26/2020
       }
     },
     comments: {
@@ -82,61 +84,61 @@ sampleState = {
         id: 1,
         title: "",
         body: "Thanks for dinner!",
-        author_id: 2,
-        commentable_type: "Expense",
-        commentable_id: 1
+        authorId: 2,
+        commentableType: "Expense",
+        commentableId: 1
       },
       2: {
         id: 2,
         title: "Groceries",
         body: "Thanks for getting groceries during COVID-19",
-        author_id: 2,
-        commentable_type: "Transaction",
-        commentable_id: 4
+        authorId: 2,
+        commentableType: "Payment",
+        commentableId: 4
       }
     },
     friendships: {
       1: {
         id: 1,
-        user_id: 1,
-        friend_id: 2
+        userId: 1,
+        friendId: 2
       },
       2: {
         id: 2,
-        user_id: 1,
-        friend_id: 3
+        userId: 1,
+        friendId: 3
       },
       3:{
         id: 3,
-        user_id: 2,
-        friend_id: 3
+        userId: 2,
+        friendId: 3
       }
     },
     members: {
       1: {
         id: 1,
-        user_id: 1,
-        group_id: 1
+        userId: 1,
+        groupId: 1
       },
       2: {
         id: 2,
-        user_id: 2,
-        group_id: 1
+        userId: 2,
+        groupId: 1
       },
       3: {
         id: 3,
-        user_id: 3,
-        group_id: 1
+        userId: 3,
+        groupId: 1
       },
       4: {
         id: 4,
-        user_id: 2,
-        group_id: 2
+        userId: 2,
+        groupId: 2
       },
       5: {
         id: 5,
-        user_id: 3,
-        group_id: 2
+        userId: 3,
+        groupId: 2
       }
     }  
   },
