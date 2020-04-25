@@ -1,11 +1,3 @@
-# Table of Contents
-
-[Database Schema](https://github.com/darrickyong/earmark/wiki/Database-Schema#database-schema)
-
-[Joins Tables](https://github.com/darrickyong/earmark/wiki/Database-Schema#joins-tables)
-
-[Associations](https://github.com/darrickyong/earmark/wiki/Schema%2C-Joins-%26-Associations/_edit#associations)
-
 # Database Schema
 
 ## `users`
@@ -22,6 +14,19 @@
 + index on `username, unique: true`
 + index on `email, unique: true`
 + index on `session_token, unique: true`
+
+## `groups`
+| column name       | data type | details                        |
+|:------------------|:---------:|:-------------------------------|
+| `id`              | integer   | not null, primary key          |
+| `name`            | string    | not null                       |
+| `description`     | string    |                                |
+| `owner_id`        | integer   | not null, indexed, foreign key |
+| `created_at`      | datetime  | not null                       |
+| `updated_at`      | datetime  | not null                       |
+
++ `owner_id` references `users`
++ index on `owner_id`
 
 ## `expenses`
 | column name          | data type | details                        |
@@ -53,22 +58,6 @@
 + index on `payer_id`
 + index on `expense_id`
 
-## `payments`
-| column name          | data type | details                        |
-|:---------------------|:---------:|:-------------------------------|
-| `id`                 | integer   | not null, primary key          |
-| `amount`             | integer   | not null                       |
-| `payer_id`           | integer   | not null, indexed, foreign key |
-| `payee_id`           | integer   | not null, indexed, foreign key |
-| `date`               | date      | not null                       |
-| `created_at`         | datetime  | not null                       |
-| `updated_at`         | datetime  | not null                       |
-
-+ `payer_id` references `users`
-+ `payee_id` references `users`
-+ index on `payer_id`
-+ index on `payee_id`
-
 ## `comments`
 | column name       | data type | details                                    |
 |:------------------|:---------:|:-------------------------------------------|
@@ -85,19 +74,6 @@
 + `commentable_type` references `expenses` or `transactions`
 + index on `author_id`
 + index on `commentable_id`
-
-## `groups`
-| column name       | data type | details                        |
-|:------------------|:---------:|:-------------------------------|
-| `id`              | integer   | not null, primary key          |
-| `name`            | string    | not null                       |
-| `description`     | string    |                                |
-| `owner_id`        | integer   | not null, indexed, foreign key |
-| `created_at`      | datetime  | not null                       |
-| `updated_at`      | datetime  | not null                       |
-
-+ `owner_id` references `users`
-+ index on `owner_id`
 
 # Joins Tables
 
@@ -127,6 +103,3 @@
 + `group_id` references `groups`
 + index on `user_id`
 + index on `group_id`
-
-# Associations
---- Work In Progress ---
