@@ -1,5 +1,3 @@
-# Backend Routes
-
 ## **HTML**
 + `GET/` `StaticPagesController#root`
 
@@ -46,5 +44,3 @@
 
 **`friendships`**
 + `GET /api/friendships` - retrieves friendships filtered by currentUser
-
-

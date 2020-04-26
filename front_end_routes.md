@@ -1,5 +1,4 @@
-# Front End Routes
-Our components are organized as follows:
+Components are organized as follows:
 
 + `Root`
   + `/signup`
@@ -28,5 +27,4 @@ The following routes, defined in App, will render components under `NavBar`.
     + `ExpenseIndexItem`
 + `/friends/:id`
   + `FriendShow`
-    + `FriendShowItem` 
-
+    + `FriendShowItem`

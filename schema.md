@@ -58,6 +58,22 @@
 + index on `payer_id`
 + index on `expense_id`
 
+## `payments`
+| column name          | data type | details                        |
+|:---------------------|:---------:|:-------------------------------|
+| `id`                 | integer   | not null, primary key          |
+| `amount`             | integer   | not null                       |
+| `payee_id`           | integer   | not null, indexed, foreign key |
+| `payer_id`           | integer   | not null, indexed, foreign key |
+| `date`               | date      | not null                       |
+| `created_at`         | datetime  | not null                       |
+| `updated_at`         | datetime  | not null                       |
+
++ `payee_id` references `users`
++ `payer_id` references `users`
++ index on `payee_id`
++ index on `payer_id`
+
 ## `comments`
 | column name       | data type | details                                    |
 |:------------------|:---------:|:-------------------------------------------|
