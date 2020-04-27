@@ -49,7 +49,6 @@
 | `amount`             | integer   | not null                       |
 | `payer_id`           | integer   | not null, indexed, foreign key |
 | `expense_id`         | integer   | not null, indexed, foreign key |
-| `date`               | date      | not null                       |
 | `created_at`         | datetime  | not null                       |
 | `updated_at`         | datetime  | not null                       |
 
