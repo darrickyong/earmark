@@ -3,13 +3,22 @@ import React from "react";
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", email: "", password: "" }
+    this.state = { 
+      name: "", 
+      email: "", 
+      password: "",
+      showSecondary: false,
+    }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
+  
   handleChange(field) {
     return (e) => {
-      this.setState({ [field]: e.target.value })
+      this.setState({ [field]: e.target.value, showSecondary: true })
     }
   }
 
@@ -35,6 +44,8 @@ class SignupForm extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <h2>INTRODUCE YOURSELF</h2>
+        {this.renderErrors()}
 
         <label>Hi there! My name is
           <br/>
@@ -44,27 +55,31 @@ class SignupForm extends React.Component {
             onChange={this.handleChange("name")}
           />
         </label>
+        
+        {this.state.showSecondary ? (
+          <div className="secondary-fields">
+            <label>Here’s my email address:
+              <br/>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.handleChange("email")}
+              />
+            </label>
+            <br/>
+            <label>And here’s my password:
+              <br/>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.handleChange("password")}
+              />
+            </label>
+          </div>
+        ) : "" } 
+
         <br/>
-        <label>Here’s my email address:
-          <br/>
-          <input
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange("email")}
-          />
-        </label>
-        <br/>
-        <label>And here’s my password:
-          <br/>
-          <input
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange("password")}
-          />
-        </label>
-        <br/>
-        {this.renderErrors()}
-        <br/>
+
         <button className="sign-up-button">{this.props.formType}</button>
       </form>
     )
