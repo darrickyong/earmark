@@ -43,45 +43,53 @@ class SignupForm extends React.Component {
   
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>INTRODUCE YOURSELF</h2>
-        {this.renderErrors()}
+      <div className="signup-page">
+        <div>
 
-        <label>Hi there! My name is
-          <br/>
-          <input
-            type="text"
-            value={this.state.name}
-            onChange={this.handleChange("name")}
-          />
-        </label>
-        
-        {this.state.showSecondary ? (
-          <div className="secondary-fields">
-            <label>Here’s my email address:
-              <br/>
-              <input
-                type="text"
-                value={this.state.email}
-                onChange={this.handleChange("email")}
-              />
-            </label>
-            <br/>
-            <label>And here’s my password:
-              <br/>
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.handleChange("password")}
-              />
-            </label>
-          </div>
-        ) : "" } 
+        </div>
 
-        <br/>
+        <form 
+          className="signup-form"
+          onSubmit={this.handleSubmit}
+        >
 
-        <button className="sign-up-button">{this.props.formType}</button>
-      </form>
+          <h2>INTRODUCE YOURSELF</h2>
+          {this.renderErrors()}
+
+          <label className="signup-form-input">Hi there! My name is
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleChange("name")}
+            />
+          </label>
+          
+          {this.state.showSecondary ? (
+            <div className="secondary-fields">
+
+              <label className="signup-form-input">Here’s my email address:
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.handleChange("email")}
+                />
+              </label>
+
+              <label className="signup-form-input">And here’s my password:
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleChange("password")}
+                />
+              </label>
+              
+            </div>
+          ) : "" } 
+          <button className="sign-up-button">{this.props.formType}</button>
+        </form>
+
+      </div>
+    
     )
   }
 }

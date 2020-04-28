@@ -6,18 +6,16 @@ class Api::SessionsController < ApplicationController
     )
     
     if @user
-      # debugger
       log_in(@user)
       render "/api/users/show"
     else
-      # debugger
+
       render json: ["Invalid username/password combination."], status: 401
     end
   end
 
   def destroy
     @user = current_user
-    # debugger
     if @user
       log_out
       render json: {}

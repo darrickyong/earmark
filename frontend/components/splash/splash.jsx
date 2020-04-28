@@ -7,7 +7,7 @@ class Splash extends React.Component {
   
   render() {
     const { push } = this.props.history;
-    // debugger;
+
     return (
       <div>
         <header className="splash-header">

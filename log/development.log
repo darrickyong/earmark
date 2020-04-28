@@ -6167,3 +6167,176 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 51ms (Views: 48.4ms | ActiveRecord: 0.2ms)
 
 
+Started GET "/" for ::1 at 2020-04-28 16:00:24 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 389ms (Views: 385.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-04-28 16:06:26 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 364ms (Views: 360.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-28 16:06:58 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 342ms (Views: 339.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-28 16:07:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 359ms (Views: 356.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2020-04-28 16:07:38 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 42ms (Views: 38.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/users" for ::1 at 2020-04-28 16:24:21 -0700
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"Darren Yong", "email"=>"darrenyong@earmark.com", "password"=>"[FILTERED]", "showSecondary"=>"true"}}
+Unpermitted parameter: :showSecondary
+Unpermitted parameter: :showSecondary
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:14
+  [1m[36mUser Exists (2.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "darrenyong@earmark.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CluFZ1ZburoOAQAyGBr-YQ"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:14
+  [1m[36mUser Create (1.0ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Darren Yong"], ["email", "darrenyong@earmark.com"], ["password_digest", "$2a$12$FnInUUpkYZEapofYGS58guor0/frW79WAowsWpyul4dpYZAJVkp0O"], ["session_token", "CluFZ1ZburoOAQAyGBr-YQ"], ["created_at", "2020-04-28 23:38:01.770306"], ["updated_at", "2020-04-28 23:38:01.770306"]]
+  ↳ app/controllers/api/users_controller.rb:14
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:14
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "darrenyong@earmark.com"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "TLLjMHItXNw5dQtkdPYECA"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Update (1.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "TLLjMHItXNw5dQtkdPYECA"], ["updated_at", "2020-04-28 23:38:01.788769"], ["id", 7]]
+  ↳ app/models/user.rb:36
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:36
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered api/users/show.json.jbuilder (5.3ms)
+Completed 200 OK in 820573ms (Views: 21.8ms | ActiveRecord: 23.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:06 -0700
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 175ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d3899de8>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:14 -0700
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 185ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d3182730>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:15 -0700
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 209ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:15 -0700
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d28118e0>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:15 -0700
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 193ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d1aba250>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 200ms (ActiveRecord: 0.0ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:16 -0700
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d3960c90>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 188ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d3203628>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:17 -0700
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 188ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `current_use' for #<Api::SessionsController:0x00007fe7d31e0678>
+Did you mean?  current_user:
+  app/controllers/api/sessions_controller.rb:17:in `destroy'
+
+Started GET "/" for ::1 at 2020-04-28 16:38:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TLLjMHItXNw5dQtkdPYECA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 451ms (Views: 437.7ms | ActiveRecord: 10.4ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-04-28 16:38:56 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "TLLjMHItXNw5dQtkdPYECA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:36
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "darrenyong@earmark.com"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "HiNy1-liztUW0-rBcPBVeA"], ["id", 7], ["LIMIT", 1]]
+  ↳ app/models/user.rb:36
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "HiNy1-liztUW0-rBcPBVeA"], ["updated_at", "2020-04-28 23:38:56.660250"], ["id", 7]]
+  ↳ app/models/user.rb:36
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:36
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 2.8ms)
+
+

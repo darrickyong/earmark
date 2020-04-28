@@ -11,7 +11,6 @@ const Auth = ({ loggedIn, path, component: Component }) => {
     <Route
       path={path}
       render={props => {
-        // debugger
         return (
           loggedIn ? <Redirect to="/dashboard" /> : <Component {...props} />
         )
