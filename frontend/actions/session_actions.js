@@ -23,7 +23,7 @@ export const signup = user => dispatch => SessionApiUtil.signup(user)
     errors => dispatch(receiveErrors(errors.responseJSON)));
 
 export const login = user => dispatch => {
-  debugger
+  // debugger
   return SessionApiUtil.login(user)
   .then( user => dispatch(receiveCurrentUser(user)), 
     errors => dispatch(receiveErrors(errors.responseJSON)))};
