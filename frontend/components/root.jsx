@@ -4,6 +4,7 @@ import LoginFormContainer from "../components/session_form/login_form_container"
 import SignupFormContainer from "../components/session_form/signup_form_container";
 import Splash from "./splash/splash";
 import { Provider } from "react-redux";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import {
   Route,
   Redirect,
@@ -18,13 +19,13 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
       <Switch>
-        <Route exact path="/" component={Splash} /> 
-        <Route exact path="/login" component={LoginFormContainer}></Route>
-        <Route exact path="/signup" component={SignupFormContainer}></Route>
-        <Route path="/" component={App} />
+        <AuthRoute exact path="/" component={Splash} /> 
+        <AuthRoute exact path="/login" component={LoginFormContainer}/>
+        <AuthRoute exact path="/signup" component={SignupFormContainer} />
+        <ProtectedRoute path="/" component={App} />
       </Switch>
     </HashRouter>
   </Provider>
 )
 
-export default Root
+export default Root;
