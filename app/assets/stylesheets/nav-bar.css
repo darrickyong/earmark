@@ -1,0 +1,27 @@
+.nav-bar {
+  height: 33px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #5bc5a6;
+  border-bottom: 1px solid #48be9d;
+  font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  text-shadow: 0 -1px 0 #39a385;
+  color: white;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 10;
+}
+
+.logout-button {
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px;
+}

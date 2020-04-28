@@ -3,9 +3,16 @@ import React from "react";
 class NavBar extends React.Component {
   render() {
     return (
-      <header>
-        <div>Earmark Nav Bar</div>
-        <button onClick={this.props.logout}>Logout</button>
+      <header className="nav-bar">
+        <div className="logo">Earmark Nav Bar</div>
+        <div>
+          {this.props.user.name.split(" ")[0]}
+          <button 
+            className="logout-button"
+            onClick={this.props.logout}
+          >Logout
+          </button>
+        </div>
       </header>
     )
   }

@@ -4,7 +4,8 @@ import NavBar from "./nav_bar";
 
 
 const mapStateToProps = (state, ownProps) => ({
-  currentUser: state.session.id
+  currentUser: state.session.id,
+  user: state.entities.users[state.session.id]
 })
 
 const mapDispatchToProps = dispatch => ({
