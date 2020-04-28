@@ -52,14 +52,14 @@ sampleState = {
         id: 1,
         amount: 1600,
         payerId: 1,
-        expense_id: 1,
+        expenseId: 1,
         date: 04/22/2020
       },
       2: {
         id: 2,
         amount: 700,
         payerId: 2,
-        expense_id: 2,
+        expenseId: 2,
         date: 02/11/2020
       }
     },
