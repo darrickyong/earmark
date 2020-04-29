@@ -1,4 +1,5 @@
 import React from "react";
+import NavBarContainer from "../nav_bar/nav_bar_container";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -40,45 +41,49 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-page">
-        <div className="login-img">
-          Image Here.
+      <div>
+        <NavBarContainer />
+        <div className="login-page">
+          <div className="login-img">
+            Image Here.
+          </div>
+
+          <form 
+            className="login-form"
+            onSubmit={this.handleSubmit}
+          >
+
+            <h2>Welcome To Splitwise</h2>
+            {this.renderErrors() ? this.renderErrors() : ""}
+
+            <div className="login-form-label">
+              Email address
+              <input 
+                type="text"
+                className="login-form-input"
+                value={this.state.email}
+                onChange={this.handleChange("email")}
+              />
+            </div>
+
+            <div className="login-form-label">
+              Password
+              <input 
+                type="password"
+                className="login-form-input"
+                value={this.state.password}
+                onChange={this.handleChange("password")}
+              />
+            </div>
+
+            <input 
+              type="submit"
+              className="login-button"
+              value={this.props.formType}
+            />
+          </form>
+
         </div>
-
-        <form 
-          className="login-form"
-          onSubmit={this.handleSubmit}
-        >
-
-          <h2>Welcome To Splitwise</h2>
-          {this.renderErrors() ? this.renderErrors() : ""}
-
-          <div className="login-form-label">
-            Email address
-            <input 
-              type="text"
-              className="login-form-input"
-              value={this.state.email}
-              onChange={this.handleChange("email")}
-            />
-          </div>
-
-          <div className="login-form-label">
-            Password
-            <input 
-              type="password"
-              className="login-form-input"
-              value={this.state.password}
-              onChange={this.handleChange("password")}
-            />
-          </div>
-
-          <input 
-            type="submit"
-            className="login-button"
-            value={this.props.formType}
-          />
-        </form>
 
       </div>
 

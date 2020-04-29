@@ -1,6 +1,7 @@
 .nav-bar {
-  height: 33px;
+  height: 40px;
   width: 100%;
+  min-width: 500px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,13 +16,64 @@
   z-index: 10;
 }
 
-.logout-button {
+.nav-logout-button {
   margin-right: 20px;
   margin-left: 10px;
 }
 
-.logo {
+.nav-logo {
   font-size: 18px;
   font-weight: bold;
   margin: 20px;
+}
+
+.nav-signup-button {
+  background: #ff652f;
+  color: #fff;
+  padding: 7px 10px;
+  margin-left: 10px;
+  margin-right: 20px;
+  font-size: 12px;
+  text-shadow: 0 -1px 0 #c83400;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-signup-button:hover {
+  background: rgb(255, 82, 22);
+}
+
+.nav-signup-button:active {
+  background: rgb(255, 82, 22);
+  box-shadow: none;
+  top: 1px;
+}
+
+
+.nav-login-button {
+  background: #5bc5a7;
+  color: #fff;
+  padding: 7px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 12px;
+  text-shadow: 0 -1px 0 #318790;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 1px solid #cccccc;
+  border-color: rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.nav-login-button:hover {
+  background: rgb(72, 190, 157);
+}
+
+.nav-login-button:active {
+  background: rgb(72, 190, 157);
+  box-shadow: none;
+  top: 1px;
 }
