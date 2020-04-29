@@ -23,7 +23,7 @@ class NavBar extends React.Component {
             <a 
               href="/#/"
               className="nav-logo-name"
-            >Earmark Nav Bar</a>
+            >Earmark</a>
 
           </div>
           
