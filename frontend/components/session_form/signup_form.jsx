@@ -58,7 +58,6 @@ class SignupForm extends React.Component {
           <h2>Introduce Yourself</h2>
           {this.renderErrors() ? this.renderErrors() : ""}
 
-
           <div className="signup-form-label">
             Hi there! My name is
             <input
@@ -97,7 +96,7 @@ class SignupForm extends React.Component {
 
           <input 
             type="submit"
-            className="sign-up-button"
+            className="signup-button"
             value={this.props.formType}
           />
         </form>

@@ -47,7 +47,7 @@ strong {
   font-size: 20px;
 }
 
-.sign-up-button {
+.signup-button {
   margin-top: 20px;
   padding: 11px 15px;
   font-size: 24px;
@@ -60,11 +60,11 @@ strong {
   cursor: pointer;
 }
 
-.sign-up-button:hover {
+.signup-button:hover {
   background: rgb(255, 82, 22);
 }
 
-.sign-up-button:active {
+.signup-button:active {
   background: rgb(255, 82, 22);
   box-shadow: none;
   top: 1px;
