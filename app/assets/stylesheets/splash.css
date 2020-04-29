@@ -13,11 +13,21 @@
 }
 
 .splash-logo {
+  display: flex;
+  align-items: center;
+}
+
+.splash-logo-image {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+}
+
+.splash-logo-name {
   color: rgb(55, 59, 63);
   font-size: 1.25rem;
   font-weight: 600;
   font-family: 'Montserrat';
-
 }
 
 .splash-login {

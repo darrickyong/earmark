@@ -47,7 +47,12 @@ class SignupForm extends React.Component {
     return (
       <div className="signup-page">
         <div className="signup-img">
-          Image Here.
+          <img
+            src="assets/piggybank.svg"
+            width="125"
+            height="125"
+            onClick={() => this.props.history.push("/")}
+          />
         </div>
 
         <form 

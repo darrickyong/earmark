@@ -1,16 +1,31 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class NavBar extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+  
   render() {
     return (
       <header className="nav-bar">
 
-        <div className="nav-container">
+        <div 
+          className="nav-container"
+        >
           {/* <div className="nav-logo">Earmark Nav Bar</div> */}
-          <a 
-            href="/#/"
-            className="nav-logo"
-          >Earmark Nav Bar</a>
+          <div className="nav-logo">
+            <img
+              src="assets/piggybank.svg"
+              className="nav-logo-image"
+              onClick={() => this.props.history.push("/")}
+            />
+            <a 
+              href="/#/"
+              className="nav-logo-name"
+            >Earmark Nav Bar</a>
+
+          </div>
           
           {this.props.currentUser ? (
             <div>
@@ -51,4 +66,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);

@@ -50,7 +50,12 @@ class LoginForm extends React.Component {
         <NavBarContainer />
         <div className="login-page">
           <div className="login-img">
-            Image Here.
+            <img 
+              src="assets/piggybank.svg"
+              width="125" 
+              height="125"
+              onClick={() => this.props.history.push("/")}
+            />
           </div>
 
           <form 

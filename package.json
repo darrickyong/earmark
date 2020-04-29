@@ -42,5 +42,6 @@
   "bugs": {
     "url": "https://github.com/darrickyong/earmark/issues"
   },
-  "homepage": "https://github.com/darrickyong/earmark#readme"
+  "homepage": "https://github.com/darrickyong/earmark#readme",
+  "devDependencies": {}
 }
