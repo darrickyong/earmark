@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
   componentWillUnmount() {
     this.props.removeErrors();
   }
-  
+
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value })
@@ -55,7 +55,7 @@ class LoginForm extends React.Component {
         <div className="login-page">
           <div className="login-img">
             <img 
-              src="assets/piggybank.svg"
+              src={window.earmark}
               width="125" 
               height="125"
               onClick={() => this.props.history.push("/")}

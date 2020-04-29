@@ -14,7 +14,7 @@ class Splash extends React.Component {
 
           <div className="splash-logo">
             <img
-              src="assets/piggybank.svg"
+              src={window.earmark}
               className="splash-logo-image"
             />
             <a 
@@ -74,7 +74,7 @@ class Splash extends React.Component {
           <div className="splash-main-right">
             
             <img
-              src="assets/piggybank.svg"
+              src={window.earmark}
               width="500"
               height="500"
             />

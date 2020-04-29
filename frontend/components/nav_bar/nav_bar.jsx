@@ -16,7 +16,7 @@ class NavBar extends React.Component {
           {/* <div className="nav-logo">Earmark Nav Bar</div> */}
           <div className="nav-logo">
             <img
-              src="assets/piggybank.svg"
+              src={window.earmark}
               className="nav-logo-image"
               onClick={() => this.props.history.push("/")}
             />
