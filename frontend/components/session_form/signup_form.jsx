@@ -32,7 +32,9 @@ class SignupForm extends React.Component {
       <ul>
         {this.props.errors.map((error, idx) => {
           return (
-            <li key={idx}>
+            <li 
+              className="errors"
+              key={idx}>
               {error}
             </li>
           )
@@ -54,7 +56,7 @@ class SignupForm extends React.Component {
         >
 
           <h2>Introduce Yourself</h2>
-          {this.renderErrors()}
+          {this.renderErrors() ? this.renderErrors() : ""}
 
 
           <div className="signup-form-label">

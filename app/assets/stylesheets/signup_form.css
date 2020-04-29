@@ -13,7 +13,10 @@
   display: block;
   max-width: 360px;
   padding-left: 15px;
+}
 
+.errors {
+  color: red;
 }
 
 .signup-form > h2 {
