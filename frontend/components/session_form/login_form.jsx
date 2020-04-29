@@ -9,6 +9,10 @@ class LoginForm extends React.Component {
     this.phantomLogin = this.phantomLogin.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
+  
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value })
