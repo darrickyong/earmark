@@ -13,4 +13,5 @@ User.create(name: "Jane Doe", password: "123456", email: "janedoe@earmark.com")
 User.create(name: "Harry Potter", password: "123456", email: "harrypotter@earmark.com")
 User.create(name: "JSON Wong", password: "123456", email: "jsonwong@earmark.com")
 User.create(name: "Poofey Yong", password: "123456", email: "poofeyyong@earmark.com")
+User.create(name: "DemoUser", password: "123456", email: "demo@earmark.com")
 
