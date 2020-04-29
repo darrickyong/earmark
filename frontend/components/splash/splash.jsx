@@ -46,7 +46,7 @@ class Splash extends React.Component {
                 Less stress when sharing expenses 
               </p>
               <span className="splash-left-span">
-                with housemates.
+                with friends and family.
               </span>
             </h1>
 
