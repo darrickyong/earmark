@@ -27,7 +27,9 @@ class LoginForm extends React.Component {
       <ul>
         {this.props.errors.map( (error, idx) => {
           return (
-            <li key={idx}>
+            <li 
+              className="errors"
+              key={idx}>
               {error}
             </li>
           )
@@ -37,27 +39,49 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    return(
-      <form onSubmit={this.handleSubmit}>
-        <label>Email:
+    return (
+      <div className="login-page">
+        <div className="login-img">
+          Image Here.
+        </div>
+
+        <form 
+          className="login-form"
+          onSubmit={this.handleSubmit}
+        >
+
+          <h2>Welcome To Splitwise</h2>
+          {this.renderErrors() ? this.renderErrors() : ""}
+
+          <div className="login-form-label">
+            Email address
+            <input 
+              type="text"
+              className="login-form-input"
+              value={this.state.email}
+              onChange={this.handleChange("email")}
+            />
+          </div>
+
+          <div className="login-form-label">
+            Password
+            <input 
+              type="password"
+              className="login-form-input"
+              value={this.state.password}
+              onChange={this.handleChange("password")}
+            />
+          </div>
+
           <input 
-            type="text"
-            value={this.state.email}
-            onChange={this.handleChange("email")}
+            type="submit"
+            className="login-button"
+            value={this.props.formType}
           />
-        </label>
-        <br/>
-        <label>Password:
-          <input 
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange("password")}
-          />
-        </label>
-        <br/>
-        <button>{this.props.formType}</button>
-        {this.renderErrors() ? this.renderErrors() : ""}
-      </form>
+        </form>
+
+      </div>
+
     )
   }
 }
