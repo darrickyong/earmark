@@ -15,3 +15,6 @@ User.create(name: "JSON Wong", password: "123456", email: "jsonwong@earmark.com"
 User.create(name: "Poofey Yong", password: "123456", email: "poofeyyong@earmark.com")
 User.create(name: "DemoUser", password: "123456", email: "demo@earmark.com")
 
+Expense.create(name: "Saturday dinner", amount: 2000, owner_id: 7, date: "2020-04-25")
+Expense.create(name: "Wednesday dinner", amount: 3000, owner_id: 1, date: "2020-04-29")
+Expense.create(name: "Saturday dinner", amount: 4000, owner_id: 7, date: "2020-04-18")
