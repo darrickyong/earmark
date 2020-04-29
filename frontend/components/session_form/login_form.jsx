@@ -4,8 +4,9 @@ import NavBarContainer from "../nav_bar/nav_bar_container";
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {email: "", password: ""}
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.state = {email: "", password: ""};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.phantomLogin = this.phantomLogin.bind(this);
   }
 
   handleChange(field) {
@@ -39,6 +40,10 @@ class LoginForm extends React.Component {
     )
   }
 
+  phantomLogin() {
+    this.props.login({ email: "demo@earmark.com", password: "123456"});
+  }
+
   render() {
     return (
       <div>
@@ -61,6 +66,7 @@ class LoginForm extends React.Component {
               <input 
                 type="text"
                 className="login-form-input"
+                id="email"
                 value={this.state.email}
                 onChange={this.handleChange("email")}
               />
@@ -71,6 +77,7 @@ class LoginForm extends React.Component {
               <input 
                 type="password"
                 className="login-form-input"
+                id="password"
                 value={this.state.password}
                 onChange={this.handleChange("password")}
               />
@@ -85,7 +92,7 @@ class LoginForm extends React.Component {
 
               <a
                 className="demo-button"
-                
+                onClick={this.phantomLogin}
               >
                 Demo
               </a>
