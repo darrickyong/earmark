@@ -16,8 +16,15 @@
   padding-left: 15px;
 }
 
-.errors {
-  color: red;
+.signup-errors {
+  color: white;
+  background: #c45;
+  border-radius: 2px;
+}
+
+.signup-error {
+  padding: 4px;
+  margin: 4px;
 }
 
 .signup-form > h2 {
