@@ -13,7 +13,7 @@
 }
 
 .splash-logo {
-  color: rgba(55, 59, 63);
+  color: rgb(55, 59, 63);
   font-size: 1.25rem;
   font-weight: 600;
   font-family: 'Montserrat';
@@ -73,7 +73,7 @@
 
 .splash-left-header {
   padding-top: 4rem;
-  color: rgba(55, 59, 63);
+  color: rgb(55, 59, 63);
   font-size: 2.5rem;
   text-align: left;
   font-weight: 700;
