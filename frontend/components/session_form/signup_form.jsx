@@ -44,8 +44,8 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="signup-page">
-        <div>
-
+        <div className="signup-img">
+          Image Here.
         </div>
 
         <form 
@@ -53,39 +53,51 @@ class SignupForm extends React.Component {
           onSubmit={this.handleSubmit}
         >
 
-          <h2>INTRODUCE YOURSELF</h2>
+          <h2>Introduce Yourself</h2>
           {this.renderErrors()}
 
-          <label className="signup-form-input">Hi there! My name is
+
+          <div className="signup-form-label">
+            Hi there! My name is
             <input
               type="text"
+              className="signup-form-input"
               value={this.state.name}
               onChange={this.handleChange("name")}
             />
-          </label>
+          </div>
           
           {this.state.showSecondary ? (
             <div className="secondary-fields">
 
-              <label className="signup-form-input">Here’s my email address:
+              <div className="signup-form-label">
+                Here’s my <strong>email address</strong>:
                 <input
                   type="text"
+                  className="signup-form-input"
                   value={this.state.email}
                   onChange={this.handleChange("email")}
                 />
-              </label>
-
-              <label className="signup-form-input">And here’s my password:
+              </div>
+              
+              <div className="signup-form-label">
+                And here's my <strong>password</strong>:
                 <input
                   type="password"
+                  className="signup-form-input"
                   value={this.state.password}
                   onChange={this.handleChange("password")}
                 />
-              </label>
+              </div>
               
             </div>
           ) : "" } 
-          <button className="sign-up-button">{this.props.formType}</button>
+
+          <input 
+            type="submit"
+            className="sign-up-button"
+            value={this.props.formType}
+          />
         </form>
 
       </div>
