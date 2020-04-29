@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :bigint           not null, primary key
+#  name            :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#
+
 class User < ApplicationRecord
   validates :email, :session_token, presence: true, uniqueness: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -5,6 +18,22 @@ class User < ApplicationRecord
   validates :password, length: {minimum: 6}, allow_nil: true
 
   before_validation :ensure_session_token
+
+  has_many :expenses,
+    foreign_key: :owner_id,
+    class_name: 'Expense'
+
+  has_many :transactions,
+    foreign_key: :payer_id,
+    class_name: 'Transaction'
+
+  has_many :payments,
+    foreign_key: :payer_id,
+    class_name: 'Payment'
+
+  has_many :received_payments,
+    foreign_key: :payee_id,
+    class_name: 'Payment'
 
   attr_reader :password
   
