@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CreateExpenseFormContainer from "../../components/expenses/create_expense_form_container";
+import UpdateExpenseFormContainer from "../../components/expenses/update_expense_form_container";
 
 
 function Modal({ modal, closeModal }) {
@@ -10,8 +11,11 @@ function Modal({ modal, closeModal }) {
   }
   let component;
   switch (modal) {
-    case 'create':
+    case "create":
       component = <CreateExpenseFormContainer />;
+      break;
+    case "update":
+      component = <UpdateExpenseFormContainer />;
       break;
     default:
       return null;
@@ -27,7 +31,8 @@ function Modal({ modal, closeModal }) {
 
 const mapStateToProps = state => {
   return {
-    modal: state.ui.modal
+    modal: state.ui.modal,
+    
   };
 };
 

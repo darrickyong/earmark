@@ -30,10 +30,10 @@ class ExpenseIndex extends React.Component {
         
         <div className="expense-index">
           Expense Index
-          {expenses.map( (expense, idx) => {
+          {expenses.map( (expense) => {
             return (
               <ExpenseIndexItemContainer 
-                key={idx}
+                key={expense.id}
                 expense={expense}
               />
             )

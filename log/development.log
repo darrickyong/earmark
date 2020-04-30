@@ -41180,3 +41180,1165 @@ Processing by Api::ExpensesController#create as JSON
 Completed 200 OK in 23ms (Views: 13.6ms | ActiveRecord: 2.1ms)
 
 
+Started GET "/" for ::1 at 2020-04-30 15:21:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 476ms (Views: 468.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:21:12 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (3.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (3.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (10.0ms)
+Completed 200 OK in 42ms (Views: 20.3ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-04-30 15:21:20 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"buy", "amount"=>"123400", "date"=>"2020-04-08"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mExpense Create (1.8ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "buy"], ["amount", 123400], ["owner_id", 1], ["date", "2020-04-08"], ["created_at", "2020-04-30 22:21:20.759831"], ["updated_at", "2020-04-30 22:21:20.759831"]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  Rendering api/expenses/show.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/show.json.jbuilder (1.6ms)
+Completed 200 OK in 26ms (Views: 12.3ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:23:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 58ms (Views: 54.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:23:46 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (11.3ms)
+Completed 200 OK in 27ms (Views: 20.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:28:42 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 380ms (Views: 376.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:28:43 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (16.8ms)
+Completed 200 OK in 39ms (Views: 27.8ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:29:07 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.8ms)
+Completed 200 OK in 386ms (Views: 381.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:29:07 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (16.6ms)
+Completed 200 OK in 37ms (Views: 26.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:29:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.2ms)
+Completed 200 OK in 387ms (Views: 383.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:29:17 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (17.2ms)
+Completed 200 OK in 37ms (Views: 26.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:35:26 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 370ms (Views: 366.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:35:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 375ms (Views: 371.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:35:55 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.2ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (15.0ms)
+Completed 200 OK in 40ms (Views: 26.2ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:37:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.4ms)
+Completed 200 OK in 382ms (Views: 378.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:37:46 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (2.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (15.0ms)
+Completed 200 OK in 48ms (Views: 25.8ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:38:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 53ms (Views: 48.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:38:06 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (12.5ms)
+Completed 200 OK in 32ms (Views: 21.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:39:35 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.8ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 65ms (Views: 61.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:39:35 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (16.7ms)
+Completed 200 OK in 36ms (Views: 27.0ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:40:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 388ms (Views: 383.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:40:40 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (19.7ms)
+Completed 200 OK in 46ms (Views: 30.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:41:24 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.0ms)
+  Rendered static_pages/root.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 398ms (Views: 394.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:41:24 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.3ms)
+Completed 200 OK in 41ms (Views: 24.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:41:31 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 58ms (Views: 54.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:41:31 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (3.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/index.json.jbuilder (16.2ms)
+Completed 200 OK in 45ms (Views: 26.9ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:41:54 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 375ms (Views: 371.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:41:54 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.8ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.3ms)
+Completed 200 OK in 36ms (Views: 25.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:41:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 60ms (Views: 56.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:41:55 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.6ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (13.4ms)
+Completed 200 OK in 33ms (Views: 23.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:41:56 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 54ms (Views: 50.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:41:56 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (3.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.7ms)
+Completed 200 OK in 40ms (Views: 26.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:44:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 382ms (Views: 378.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:44:45 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.7ms)
+Completed 200 OK in 36ms (Views: 26.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:46:39 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 74ms (Views: 70.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:46:39 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.8ms)
+Completed 200 OK in 36ms (Views: 26.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:46:46 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 379ms (Views: 375.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:46:46 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (14.7ms)
+Completed 200 OK in 37ms (Views: 24.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 15:58:23 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 371ms (Views: 366.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 15:58:23 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.0ms)
+Completed 200 OK in 33ms (Views: 22.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:02:17 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 425ms (Views: 421.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:02:18 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (2.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (2.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (15.4ms)
+Completed 200 OK in 43ms (Views: 27.6ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:04:16 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 436ms (Views: 430.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:04:17 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.8ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (24.0ms)
+Completed 200 OK in 42ms (Views: 32.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:05:34 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 708ms (Views: 698.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:05:35 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.9ms)
+Completed 200 OK in 31ms (Views: 21.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:06:06 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 381ms (Views: 377.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:06:06 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.8ms)
+Completed 200 OK in 30ms (Views: 22.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:06:08 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 61ms (Views: 57.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:06:08 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (13.0ms)
+Completed 200 OK in 28ms (Views: 21.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:07:08 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 72ms (Views: 67.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:07:08 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (12.6ms)
+Completed 200 OK in 27ms (Views: 21.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:07:09 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 51ms (Views: 47.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:07:09 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.8ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (28.9ms)
+Completed 200 OK in 49ms (Views: 40.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:08:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.6ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 102ms (Views: 97.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:08:37 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.6ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.9ms)
+Completed 200 OK in 35ms (Views: 26.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:12:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 62ms (Views: 59.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:12:49 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (15.3ms)
+Completed 200 OK in 38ms (Views: 27.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:13:33 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 448ms (Views: 443.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:13:34 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.7ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/index.json.jbuilder (15.5ms)
+Completed 200 OK in 33ms (Views: 25.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:13:48 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 82ms (Views: 77.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:13:48 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.2ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.6ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (13.6ms)
+Completed 200 OK in 32ms (Views: 24.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:31:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.1ms)
+  Rendered static_pages/root.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 152ms (Views: 146.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:31:30 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (14.2ms)
+Completed 200 OK in 37ms (Views: 23.7ms | ActiveRecord: 2.5ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-04-30 16:35:38 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "uKhA1_FVi9v1B3l4J4atqg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "xkbGvWwHwssqI8yaOg77Cg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (1.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "xkbGvWwHwssqI8yaOg77Cg"], ["updated_at", "2020-04-30 23:35:38.498215"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+Completed 200 OK in 15ms (Views: 0.2ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:41:25 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 431ms (Views: 427.3ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/session" for ::1 at 2020-04-30 16:41:30 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["updated_at", "2020-04-30 23:41:30.619213"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (1.5ms)
+  Rendered api/users/show.json.jbuilder (2.9ms)
+Completed 200 OK in 239ms (Views: 10.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:41:30 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.2ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.8ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (10.7ms)
+Completed 200 OK in 36ms (Views: 18.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:41:33 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 97ms (Views: 92.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:41:33 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (13.4ms)
+Completed 200 OK in 29ms (Views: 22.3ms | ActiveRecord: 1.3ms)
+
+
+Started PATCH "/api/expenses/undefined" for ::1 at 2020-04-30 16:53:47 -0700
+Processing by Api::ExpensesController#update as JSON
+  Parameters: {"expense"=>{"name"=>"updatetest", "amount"=>"90800", "date"=>""}, "id"=>"undefined"}
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:26
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.2ms)
+
+
+
+NoMethodError - undefined method `owner_id' for nil:NilClass:
+  app/controllers/api/expenses_controller.rb:27:in `update'
+
+Started GET "/" for ::1 at 2020-04-30 16:54:57 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 407ms (Views: 402.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:54:58 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (11.4ms)
+Completed 200 OK in 29ms (Views: 21.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for ::1 at 2020-04-30 16:55:37 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (1.2ms)
+  Rendered static_pages/root.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 383ms (Views: 379.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-04-30 16:55:37 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "ntaP-PRERDqlKAuakGoKbw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (12.4ms)
+Completed 200 OK in 29ms (Views: 22.1ms | ActiveRecord: 1.2ms)
+
+

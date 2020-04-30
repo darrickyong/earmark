@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  createExpense: expense => dispatch(createExpense(expense)),
+  action: expense => dispatch(createExpense(expense)),
   removeErrors: () => dispatch(removeErrors()),
   closeModal: () => dispatch(closeModal())
 })

@@ -21,7 +21,7 @@ class ExpenseForm extends React.Component {
     e.preventDefault();
     let value = Number(this.state.amount).toFixed(2) * 100;
     let revisedExpense = Object.assign({}, this.state, { amount: value })
-    this.props.createExpense(revisedExpense);
+    this.props.action(revisedExpense);
     this.props.closeModal();
   }
 
@@ -42,7 +42,7 @@ class ExpenseForm extends React.Component {
   }
   
   render() {
-    const { name, amount, date } = this.props;
+    const { name, amount, date } = this.state;
     return (
       <div className="expense-form">
         <form onSubmit={this.handleSubmit}>
