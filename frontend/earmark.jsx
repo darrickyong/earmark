@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./components/root";
 import { signup, login, logout } from "./actions/session_actions";
+import { fetchExpenses, fetchExpense, createExpense, updateExpense, deleteExpense } from "./util/expense_api_util";
 import configureStore from "./store/store";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -23,11 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //TESTING
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
-  window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  
+  window.fetchExpenses = fetchExpenses;
+  window.fetchExpense = fetchExpense;
+  window.createExpense = createExpense;
+  window.updateExpense = updateExpense;
+  window.deleteExpense = deleteExpense;
   //END OF TESTING
   
   ReactDOM.render(<Root store={store}/>, root);
