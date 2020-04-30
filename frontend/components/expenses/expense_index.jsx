@@ -14,6 +14,10 @@ class ExpenseIndex extends React.Component {
     const { expenses } = this.props;
     return(
       <div className="center-column">
+        <div className="expense-header"> 
+          Expense Index Header
+        </div>
+        
         <div className="expense-index">
           Expense Index
           {expenses.map( (expense, idx) => {

@@ -12,3 +12,32 @@
   box-sizing: border-box;
   width: 550px;
 }
+
+.expense-index-item {
+  display: flex;
+  justify-content: space-between;
+  background: green;
+  cursor: pointer;
+  height: 50px;
+  font-size: 24px
+}
+
+.expense-summary {
+  display: flex;
+  background: blue;
+  width: 100%;
+  height: 100%;
+  
+  align-items: center;
+  
+}
+
+.expense-summary:hover {
+  background: lightgray
+}
+
+.expense-delete {
+  display: flex;
+  align-items: center;
+  color: red;
+}

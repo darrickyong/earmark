@@ -18,11 +18,6 @@ class ExpenseIndexItem extends React.Component {
     const { expense, deleteExpense } = this.props;
     return (
       <div>
-        <div
-          className="expense-index-header"
-        >
-          Expense Index Header
-        </div>
 
         <div 
           className="expense-index-item"
