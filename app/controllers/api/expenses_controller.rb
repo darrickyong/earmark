@@ -9,8 +9,8 @@ class Api::ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.new(create_expense_params)
-
+    @expense = Expense.new(expense_params)
+    @expense.owner_id = current_user.id
     if @expense.save
       render :show
     else
@@ -22,7 +22,7 @@ class Api::ExpensesController < ApplicationController
   def update
     @expense = Expense.find_by(id: params[:id])
     if @expense.owner_id == current_user.id 
-      if @expense.update(update_expense_params)
+      if @expense.update(expense_params)
         render :show
       else
         render json: @expense.errors.full_messages, status: 422
@@ -43,11 +43,7 @@ class Api::ExpensesController < ApplicationController
   end
 
   private
-  def create_expense_params
-    params.require(:expense).permit(:name, :amount, :owner_id, :date)
-  end
-
-  def update_expense_params
+  def expense_params
     params.require(:expense).permit(:name, :amount, :date)
   end
 
