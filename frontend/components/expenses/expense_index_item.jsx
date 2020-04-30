@@ -29,7 +29,7 @@ class ExpenseIndexItem extends React.Component {
             {expense.id}
             {expense.date}
             {expense.name}
-            {expense.amount}
+            {(expense.amount / 100).toFixed(2)}
           </div>
 
           <div

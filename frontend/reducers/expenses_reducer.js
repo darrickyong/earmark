@@ -11,7 +11,7 @@ const expensesReducer = (oldState = {}, action) => {
     case RECEIVE_EXPENSES:
       return action.expenses;
     case RECEIVE_EXPENSE:
-      return { ...oldState, ...action.expense }
+      return Object.assign({}, oldState, {[action.expense.id]: action.expense})
     case REMOVE_EXPENSE:
       let newState = Object.assign({}, oldState);
       delete newState[action.expenseId];

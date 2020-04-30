@@ -14,6 +14,8 @@
 class Expense < ApplicationRecord
   validates :name, :amount, :owner_id, :date, presence: true
 
+  # after_save method... :custom_method_name
+
   belongs_to :owner,
     foreign_key: :owner_id,
     class_name: 'User'
