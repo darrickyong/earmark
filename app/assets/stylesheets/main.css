@@ -39,5 +39,10 @@
 .expense-delete {
   display: flex;
   align-items: center;
+  background: gray;
   color: red;
+}
+
+.expense-delete:hover {
+  text-decoration: underline;
 }
