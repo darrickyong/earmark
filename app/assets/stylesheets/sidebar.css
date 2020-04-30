@@ -1,0 +1,21 @@
+.left-sidebar {
+  border: 1px solid black;
+}
+
+.left-sidebar-container {
+  box-sizing: border-box;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.right-sidebar {
+  border: 1px solid black;
+}
+
+.right-sidebar-container {
+  box-sizing: border-box;
+  min-width: 200px;
+
+}

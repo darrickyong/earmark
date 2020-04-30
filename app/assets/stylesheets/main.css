@@ -1,0 +1,14 @@
+.main-component {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  position: relative;
+}
+.center-column {
+  display: block;
+}
+
+.expense-index {
+  box-sizing: border-box;
+  width: 550px;
+}
