@@ -21,8 +21,8 @@ const removeExpense = expenseId => ({
 })
 
 const receiveExpenseErrors = errors => ({
-  type: RECEIVE_EXPENSE_ERRORS,
-  errors
+    type: RECEIVE_EXPENSE_ERRORS,
+    errors
 })
 
 export const fetchExpenses = () => dispatch => ExpenseApiUtil.fetchExpenses()
@@ -32,7 +32,8 @@ export const fetchExpense = expenseId => dispatch => ExpenseApiUtil.fetchExpense
   .then( expense => dispatch(receiveExpense(expense)));
 
 export const createExpense = expense => dispatch => ExpenseApiUtil.createExpense(expense)
-  .then( expense => dispatch(receiveExpense(expense)));
+  .then( expense => dispatch(receiveExpense(expense)),
+    errors => dispatch(receiveExpenseErrors(errors.responseJSON)));
 
 export const updateExpense = expense => dispatch => ExpenseApiUtil.updateExpense(expense)
   .then( expense => dispatch(receiveExpense(expense)));

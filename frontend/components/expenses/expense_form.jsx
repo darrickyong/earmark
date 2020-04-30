@@ -6,6 +6,10 @@ class ExpenseForm extends React.Component {
     this.state = this.props.expense;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+  
+  componentWillUnmount() {
+    this.props.removeErrors();
+  }
 
   handleChange(field) {
     return (e) => {
@@ -20,12 +24,30 @@ class ExpenseForm extends React.Component {
     this.props.createExpense(revisedExpense);
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {this.props.errors.map((error, idx) => {
+          return (
+            <li
+              className="errors"
+              key={idx}>
+              {error}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+  
   render() {
     const { name, amount, date } = this.props;
     return (
       <div className="expense-form">
         <form onSubmit={this.handleSubmit}>
           <h2>Add a bill</h2>
+          {this.renderErrors() ? this.renderErrors() : ""}
+
           <input 
             type="text" 
             placeholder="Enter expense name" 
@@ -44,7 +66,7 @@ class ExpenseForm extends React.Component {
             value={date}
             onChange={this.handleChange("date")}
           />
-          <button>Save</button>
+          <button>{this.props.formType}</button>
         </form>
       </div>
     )

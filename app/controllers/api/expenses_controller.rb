@@ -11,21 +11,28 @@ class Api::ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.owner_id = current_user.id
-    if @expense.save
-      render :show
+    if @expense.amount > 0
+      if @expense.save
+        render :show
+      else
+        render json: @expense.errors.full_message, status: 422
+      end
     else
-      render json: @expense.errors.full_message, status: 422
+      render json: ["Amount must be greater than 0"], status: 422
     end
-
   end
   
   def update
     @expense = Expense.find_by(id: params[:id])
     if @expense.owner_id == current_user.id 
-      if @expense.update(expense_params)
-        render :show
+      if @expense.amount > 0
+        if @expense.update(expense_params)
+          render :show
+        else
+          render json: @expense.errors.full_messages, status: 422
+        end
       else
-        render json: @expense.errors.full_messages, status: 422
+        render json: ["Amount must be greater than 0"], status: 422
       end
     else
       render json: ["You are not the creator of this expense"], status: 401
