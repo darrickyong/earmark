@@ -22,6 +22,7 @@ class ExpenseForm extends React.Component {
     let value = Number(this.state.amount).toFixed(2) * 100;
     let revisedExpense = Object.assign({}, this.state, { amount: value })
     this.props.createExpense(revisedExpense);
+    this.props.closeModal();
   }
 
   renderErrors() {

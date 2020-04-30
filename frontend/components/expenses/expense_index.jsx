@@ -17,7 +17,15 @@ class ExpenseIndex extends React.Component {
       <div className="center-column">
         <div className="expense-header"> 
           Expense Index Header
-          <CreateExpenseFormContainer />
+          <button
+            className="create-expense-button"
+            onClick={() => this.props.openModal("create")}
+          >
+            Add an expense
+          </button>
+
+
+          {/* <CreateExpenseFormContainer /> */}
         </div>
         
         <div className="expense-index">

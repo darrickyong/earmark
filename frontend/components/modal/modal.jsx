@@ -1,7 +1,7 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import { CreateExpenseFormContainer } from "../../components/expenses/create_expense_form_container";
+import CreateExpenseFormContainer from "../../components/expenses/create_expense_form_container";
 
 
 function Modal({ modal, closeModal }) {
