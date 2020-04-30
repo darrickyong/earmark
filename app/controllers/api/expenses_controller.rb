@@ -1,7 +1,7 @@
 class Api::ExpensesController < ApplicationController
 
   def index
-    @expenses = current_user.expenses
+    @expenses = current_user.expenses + current_user.owed_expenses
   end
 
   def show

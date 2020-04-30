@@ -35,6 +35,10 @@ class User < ApplicationRecord
     foreign_key: :payee_id,
     class_name: 'Payment'
 
+  has_many :owed_expenses,
+    through: :transactions,
+    source: :expense
+
   attr_reader :password
   
   def self.find_by_credentials(email, password)
