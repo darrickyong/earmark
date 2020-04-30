@@ -1,5 +1,5 @@
 import React from "react";
-import ExpenseIndexItem from "./expense_index_item";
+import ExpenseIndexItemContainer from "./expense_index_item_container";
 
 class ExpenseIndex extends React.Component {
   constructor(props) {
@@ -11,17 +11,16 @@ class ExpenseIndex extends React.Component {
   }
   
   render() {
-    const { expenses, updateExpense } = this.props;
+    const { expenses } = this.props;
     return(
       <div className="center-column">
         <div className="expense-index">
           Expense Index
           {expenses.map( (expense, idx) => {
             return (
-              <ExpenseIndexItem 
+              <ExpenseIndexItemContainer 
                 key={idx}
                 expense={expense}
-                updateExpense={updateExpense}
               />
             )
           })}

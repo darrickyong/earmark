@@ -1,1 +1,1 @@
-json.extract! expense, :name, :amount, :owner_id, :date
+json.extract! expense, :id, :name, :amount, :owner_id, :date

@@ -15,13 +15,34 @@ class ExpenseIndexItem extends React.Component {
   }
 
   render() {
-    const { expense, updateExpense } = this.props;
+    const { expense, deleteExpense } = this.props;
     return (
       <div>
-        <div onClick={this.handleShow}>
-          {expense.date}
-          {expense.name}
-          {expense.amount}
+        <div
+          className="expense-index-header"
+        >
+          Expense Index Header
+        </div>
+
+        <div 
+          className="expense-index-item"
+        >
+          <div
+            className="expense-summary" 
+            onClick={this.handleShow}
+          >
+            {expense.id}
+            {expense.date}
+            {expense.name}
+            {expense.amount}
+          </div>
+
+          <div
+            className="expense-delete"
+            onClick={() => deleteExpense(expense.id)}
+          >
+            X
+          </div>
 
         </div>
 
