@@ -13,8 +13,7 @@
   justify-content: space-between;
   width: 1000px;
   margin: 0 auto;
-  padding-left: 6rem;
-  padding-right: 6rem;
+
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
@@ -98,6 +97,7 @@
   text-align: left;
   font-weight: 700;
   letter-spacing: 0.75px;
+  width: 480px;
 }
 
 .splash-left-div {
@@ -147,6 +147,6 @@
 }
 
 .splash-main-right > img {
-  height: 500px;
-  width: 500px;
+  height: 480px;
+  width: 480px;
 }

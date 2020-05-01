@@ -60219,3 +60219,596 @@ Processing by Api::SessionsController#destroy as JSON
 Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 3.4ms)
 
 
+Started POST "/api/session" for ::1 at 2020-05-01 16:11:08 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["updated_at", "2020-05-01 23:11:08.496124"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.4ms)
+Completed 200 OK in 229ms (Views: 8.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:11:08 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (2.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (3.6ms)
+Completed 200 OK in 24ms (Views: 11.9ms | ActiveRecord: 4.5ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 16:11:10 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 16:11:12 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/expenses/29" for ::1 at 2020-05-01 16:11:14 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"29"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (0.8ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 29]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:12:32 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.5ms)
+  Rendered static_pages/root.html.erb within layouts/application (25.6ms)
+Completed 200 OK in 65ms (Views: 53.4ms | ActiveRecord: 9.8ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:12:32 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (5.2ms)
+Completed 200 OK in 58ms (Views: 14.6ms | ActiveRecord: 15.5ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 16:12:34 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mExpense Destroy (0.8ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 6]]
+  ↳ app/controllers/api/expenses_controller.rb:44
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.8ms)
+
+
+Started DELETE "/api/expenses/30" for ::1 at 2020-05-01 16:12:35 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"30"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mExpense Destroy (0.9ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 30]]
+  ↳ app/controllers/api/expenses_controller.rb:44
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (5.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (61.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "earmark_development"[0m
+  ↳ bin/rails:9
+  [1m[35m (43.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "earmark_test"[0m
+  ↳ bin/rails:9
+  [1m[35m (140.2ms)[0m  [1m[35mCREATE DATABASE "earmark_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (59.3ms)[0m  [1m[35mCREATE DATABASE "earmark_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "expenses" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "expenses" ("id" bigserial primary key, "name" character varying NOT NULL, "amount" integer NOT NULL, "owner_id" integer NOT NULL, "date" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_expenses_on_owner_id" ON "expenses"  ("owner_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" bigserial primary key, "user_id" integer NOT NULL, "friend_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "payments" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "payments" ("id" bigserial primary key, "amount" integer NOT NULL, "payee_id" integer NOT NULL, "payer_id" integer NOT NULL, "date" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_payments_on_payee_id" ON "payments"  ("payee_id")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_payments_on_payer_id" ON "payments"  ("payer_id")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  ↳ db/schema.rb:49
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "amount" integer NOT NULL, "payer_id" integer NOT NULL, "expense_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_expense_id" ON "transactions"  ("expense_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_payer_id" ON "transactions"  ("payer_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:59
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:59
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:59
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:59
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (4.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200429212729)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200428162435),
+(20200428162422),
+(20200427173328),
+(20200428162442);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-01 23:13:30.493622"], ["updated_at", "2020-05-01 23:13:30.493622"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "expenses" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "expenses" ("id" bigserial primary key, "name" character varying NOT NULL, "amount" integer NOT NULL, "owner_id" integer NOT NULL, "date" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_expenses_on_owner_id" ON "expenses"  ("owner_id")[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "friendships" CASCADE[0m
+  ↳ db/schema.rb:28
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "friendships" ("id" bigserial primary key, "user_id" integer NOT NULL, "friend_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:28
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_friend_id" ON "friendships"  ("friend_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendships_on_user_id_and_friend_id" ON "friendships"  ("user_id", "friend_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_friendships_on_user_id" ON "friendships"  ("user_id")[0m
+  ↳ db/schema.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "payments" CASCADE[0m
+  ↳ db/schema.rb:38
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "payments" ("id" bigserial primary key, "amount" integer NOT NULL, "payee_id" integer NOT NULL, "payer_id" integer NOT NULL, "date" date NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:38
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_payments_on_payee_id" ON "payments"  ("payee_id")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_payments_on_payer_id" ON "payments"  ("payer_id")[0m
+  ↳ db/schema.rb:38
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "transactions" CASCADE[0m
+  ↳ db/schema.rb:49
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "transactions" ("id" bigserial primary key, "amount" integer NOT NULL, "payer_id" integer NOT NULL, "expense_id" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:49
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_expense_id" ON "transactions"  ("expense_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_transactions_on_payer_id" ON "transactions"  ("payer_id")[0m
+  ↳ db/schema.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  ↳ db/schema.rb:59
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "session_token" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:59
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/schema.rb:59
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+  ↳ db/schema.rb:59
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200429212729)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200428162435),
+(20200428162422),
+(20200427173328),
+(20200428162442);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-05-01 23:13:30.599876"], ["updated_at", "2020-05-01 23:13:30.599876"]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-05-01 23:13:30.603069"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "bvS4Bf02ZqErTn-xcJkkEw"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "DemoUser"], ["email", "demo@earmark.com"], ["password_digest", "$2a$12$VuecdhGA7xssoaZ4zYsh1eSs6pyytpoknwV7Fh2qusIiAcT2voA9y"], ["session_token", "bvS4Bf02ZqErTn-xcJkkEw"], ["created_at", "2020-05-01 23:13:30.859001"], ["updated_at", "2020-05-01 23:13:30.859001"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "darrickyong@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "HmquWVCD7J3sBf92jxkKKA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Darrick Yong"], ["email", "darrickyong@earmark.com"], ["password_digest", "$2a$12$R7FUSn3RCx9wmbuneAS91u2mNfGmSaeRfMemiasEvxmvVNSNjZ3Rm"], ["session_token", "HmquWVCD7J3sBf92jxkKKA"], ["created_at", "2020-05-01 23:13:31.077701"], ["updated_at", "2020-05-01 23:13:31.077701"]]
+  ↳ db/seeds.rb:11
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "johndoe@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CQdbT3_1qgJ6-j4E44ki8w"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "John Doe"], ["email", "johndoe@earmark.com"], ["password_digest", "$2a$12$m6fcVlMAhBl4tHhmdmESYe/akdVshxVHnf2A/Nw.cMBx8JKbr7m0y"], ["session_token", "CQdbT3_1qgJ6-j4E44ki8w"], ["created_at", "2020-05-01 23:13:31.293771"], ["updated_at", "2020-05-01 23:13:31.293771"]]
+  ↳ db/seeds.rb:12
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "janedoe@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "F8sZdBlZLEFHeA9GbK8qSg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Jane Doe"], ["email", "janedoe@earmark.com"], ["password_digest", "$2a$12$9h5RD2LGF0tmGbIGZMylheZOmyjkGX0WNl3fxf4tkSh25lw0xShzS"], ["session_token", "F8sZdBlZLEFHeA9GbK8qSg"], ["created_at", "2020-05-01 23:13:31.510627"], ["updated_at", "2020-05-01 23:13:31.510627"]]
+  ↳ db/seeds.rb:13
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "harrypotter@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "coas03YHuwQRSHUJFIMXkA"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Harry Potter"], ["email", "harrypotter@earmark.com"], ["password_digest", "$2a$12$eBGPCBvMiy6S6Wg9C3uW9OFknkKEeCgIOJls87aLbRXe2e8AcmlWS"], ["session_token", "coas03YHuwQRSHUJFIMXkA"], ["created_at", "2020-05-01 23:13:31.727582"], ["updated_at", "2020-05-01 23:13:31.727582"]]
+  ↳ db/seeds.rb:14
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jsonwong@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "clGE_K2Z0PdcjFFyTwzB_g"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:15
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "JSON Wong"], ["email", "jsonwong@earmark.com"], ["password_digest", "$2a$12$j4Uq/9hsghrFiZRU4gxOUOyx9I3CTeFZU9xSwQ2z.9G/VbN2i8KZi"], ["session_token", "clGE_K2Z0PdcjFFyTwzB_g"], ["created_at", "2020-05-01 23:13:31.944739"], ["updated_at", "2020-05-01 23:13:31.944739"]]
+  ↳ db/seeds.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "poofeyyong@earmark.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "CG6wyb717gJexiZublCngg"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:16
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Poofey Yong"], ["email", "poofeyyong@earmark.com"], ["password_digest", "$2a$12$RMZ21pdEMNjPXMeB5b70DuGPP23H7LjTseV4gQd1Y2I/d3Kfpcwlu"], ["session_token", "CG6wyb717gJexiZublCngg"], ["created_at", "2020-05-01 23:13:32.163212"], ["updated_at", "2020-05-01 23:13:32.163212"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:18
+  [1m[36mExpense Create (0.8ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "One dinner"], ["amount", 1000], ["owner_id", 1], ["date", "2020-04-25"], ["created_at", "2020-05-01 23:13:32.188153"], ["updated_at", "2020-05-01 23:13:32.188153"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:19
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:19
+  [1m[36mExpense Create (0.5ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Two dinner"], ["amount", 2000], ["owner_id", 1], ["date", "2020-04-18"], ["created_at", "2020-05-01 23:13:32.191781"], ["updated_at", "2020-05-01 23:13:32.191781"]]
+  ↳ db/seeds.rb:19
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:19
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:20
+  [1m[36mExpense Create (0.3ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Three dinner"], ["amount", 3000], ["owner_id", 1], ["date", "2020-04-08"], ["created_at", "2020-05-01 23:13:32.194893"], ["updated_at", "2020-05-01 23:13:32.194893"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:21
+  [1m[36mExpense Create (0.3ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Four dinner"], ["amount", 4000], ["owner_id", 1], ["date", "2020-04-01"], ["created_at", "2020-05-01 23:13:32.197676"], ["updated_at", "2020-05-01 23:13:32.197676"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:22
+  [1m[36mExpense Create (0.6ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Five dinner"], ["amount", 5000], ["owner_id", 1], ["date", "2020-04-20"], ["created_at", "2020-05-01 23:13:32.200687"], ["updated_at", "2020-05-01 23:13:32.200687"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:23
+  [1m[36mExpense Create (0.2ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Not the demo's expense"], ["amount", 3000], ["owner_id", 2], ["date", "2020-04-29"], ["created_at", "2020-05-01 23:13:32.204051"], ["updated_at", "2020-05-01 23:13:32.204051"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:25
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:25
+  [1m[36mTransaction Create (0.9ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 500], ["payer_id", 2], ["expense_id", 1], ["created_at", "2020-05-01 23:13:32.221864"], ["updated_at", "2020-05-01 23:13:32.221864"]]
+  ↳ db/seeds.rb:25
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:26
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:26
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 1000], ["payer_id", 2], ["expense_id", 2], ["created_at", "2020-05-01 23:13:32.226307"], ["updated_at", "2020-05-01 23:13:32.226307"]]
+  ↳ db/seeds.rb:26
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:26
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 1500], ["payer_id", 2], ["expense_id", 3], ["created_at", "2020-05-01 23:13:32.230472"], ["updated_at", "2020-05-01 23:13:32.230472"]]
+  ↳ db/seeds.rb:27
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mExpense Load (0.2ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ db/seeds.rb:28
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 2000], ["payer_id", 2], ["expense_id", 4], ["created_at", "2020-05-01 23:13:32.234423"], ["updated_at", "2020-05-01 23:13:32.234423"]]
+  ↳ db/seeds.rb:28
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:28
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:29
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ db/seeds.rb:29
+  [1m[36mTransaction Create (0.3ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 2500], ["payer_id", 2], ["expense_id", 5], ["created_at", "2020-05-01 23:13:32.238106"], ["updated_at", "2020-05-01 23:13:32.238106"]]
+  ↳ db/seeds.rb:29
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:29
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:30
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[36mExpense Load (0.2ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ db/seeds.rb:30
+  [1m[36mTransaction Create (0.4ms)[0m  [1m[32mINSERT INTO "transactions" ("amount", "payer_id", "expense_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["amount", 1500], ["payer_id", 1], ["expense_id", 6], ["created_at", "2020-05-01 23:13:32.245600"], ["updated_at", "2020-05-01 23:13:32.245600"]]
+  ↳ db/seeds.rb:30
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:30
+Started GET "/" for ::1 at 2020-05-01 16:13:39 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/darrenyong/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (15.3ms)
+Started GET "/" for ::1 at 2020-05-01 16:13:40 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "b6IUAVfoHDwx7Z_46DvKQQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 1749ms (Views: 1741.3ms | ActiveRecord: 2.8ms)
+
+
+Completed 200 OK in 648ms (Views: 645.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 16:13:44 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["updated_at", "2020-05-01 23:13:44.716923"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.5ms)
+Completed 200 OK in 239ms (Views: 8.6ms | ActiveRecord: 7.9ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:13:44 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.0ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.0ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (6.2ms)
+Completed 200 OK in 66ms (Views: 14.8ms | ActiveRecord: 10.6ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 16:13:49 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 16:13:50 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 16:15:06 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "tQ800HnpHVjWYRg1k4TMzg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "Ay2XA-kGC1Z49E2izIOslQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Ay2XA-kGC1Z49E2izIOslQ"], ["updated_at", "2020-05-01 23:15:06.883201"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:18:45 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 454ms (Views: 450.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:20:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 64ms (Views: 60.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:20:44 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 46ms (Views: 42.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:21:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 50ms (Views: 46.5ms | ActiveRecord: 0.3ms)
+
+

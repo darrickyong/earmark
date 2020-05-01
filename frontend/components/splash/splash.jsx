@@ -51,7 +51,7 @@ class Splash extends React.Component {
           <div className="splash-main-container">
             <div className="splash-main-left">
               <h1 className="splash-left-header">
-                <p>
+                <p className="splash-left-p">
                   Less stress when sharing expenses 
                 </p>
                 <div className="splash-left-div">
