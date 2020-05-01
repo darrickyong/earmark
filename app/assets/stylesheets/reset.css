@@ -18,6 +18,9 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+*:focus {
+  outline: none
+}
 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -55,8 +58,7 @@ input {
   border: 0;
 }
 
-input[type=text], input[type=password],
-textarea {
+.login-form-input {
   -webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
@@ -67,8 +69,7 @@ textarea {
   border: 1px solid #DDDDDD;
 }
 
-input[type=text]:focus, input[type=password]:focus,
-textarea:focus {
+.login-form-input:focus {
   box-shadow: 0 0 5px rgba(72, 190, 157, 1);
   padding: 3px 0px 3px 3px;
   margin: 5px 1px 3px 0px;

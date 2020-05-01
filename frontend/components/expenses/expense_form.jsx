@@ -29,11 +29,12 @@ class ExpenseForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul
+        className="expense-errors"
+      >
         {this.props.errors.map((error, idx) => {
           return (
             <li
-              className="errors"
               key={idx}>
               {error}
             </li>
@@ -57,37 +58,44 @@ class ExpenseForm extends React.Component {
           >X</div>
         </h2>
 
-        {this.renderErrors() ? this.renderErrors() : ""}
 
         <div className="expense-form-body">
           
           <div className="expense-form-main">
-            
             <div>
-              <input 
-                type="text"
-                className="expense-form-name" 
-                placeholder="Enter expense name" 
-                value={name}
-                onChange={this.handleChange("name")}
+              <img 
+                src={window.earmarkCategory}
+                className="expense-category-img"
               />
             </div>
 
-            <div className="expense-form-cost-container">
-              <span className="expense-form-currency">$</span>
-              <input 
-                type="number" 
-                className="expense-form-amount" 
-                placeholder="0.00"
-                step=".01" 
-                value={realAmount}
-                onChange={this.handleChange("realAmount")}
-              />
+            <div className="expense-form-desc">
+              <div>
+                <input 
+                  type="text"
+                  className="expense-form-name" 
+                  placeholder="Enter expense name" 
+                  value={name}
+                  onChange={this.handleChange("name")}
+                />
+              </div>
+
+              <div className="expense-form-cost-container">
+                <span className="expense-form-currency">$</span>
+                <input 
+                  type="number" 
+                  className="expense-form-amount" 
+                  placeholder="0.00"
+                  step=".01" 
+                  value={realAmount}
+                  onChange={this.handleChange("realAmount")}
+                />
+              </div>
             </div>
           </div>
 
           <div
-            className="expense-form-date" 
+            className="expense-form-others" 
           >
             <input 
               type="date"
@@ -95,8 +103,15 @@ class ExpenseForm extends React.Component {
               value={date}
               onChange={this.handleChange("date")}
             />
+
+            <textarea
+              className="expense-form-comments" 
+              placeholder="Enter comments here"
+            />
           </div>
         </div>
+
+        {this.renderErrors() ? this.renderErrors() : ""}
 
         <div className="expense-form-footer">
           <button
