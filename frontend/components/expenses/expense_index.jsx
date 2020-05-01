@@ -16,20 +16,23 @@ class ExpenseIndex extends React.Component {
     return(
       <div className="center-column">
         <div className="expense-header"> 
-          Expense Index Header
-          <button
-            className="create-expense-button"
-            onClick={() => this.props.openModal({"create": -1})}
-          >
-            Add an expense
-          </button>
+          <h1 className="expense-header-name">
+            All expenses
+          </h1>
+          <div className="expense-header-buttons">
+            <button
+              className="expense-create-button"
+              onClick={() => this.props.openModal({"create": -1})}
+            >Add an expense</button>
 
+            <button
+              className="pay-button"
+            >Settle Up</button>
 
-          {/* <CreateExpenseFormContainer /> */}
+          </div>
         </div>
         
         <div className="expense-index">
-          Expense Index
           {expenses.map( (expense) => {
             return (
               <ExpenseIndexItemContainer 

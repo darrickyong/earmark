@@ -30,14 +30,12 @@ class ExpenseIndexItem extends React.Component {
             {expense.date}
             {expense.name}
             {(expense.amount / 100).toFixed(2)}
+            <div
+              className="expense-delete"
+              onClick={() => deleteExpense(expense.id)}
+            >X</div>
           </div>
 
-          <div
-            className="expense-delete"
-            onClick={() => deleteExpense(expense.id)}
-          >
-            X
-          </div>
 
         </div>
 

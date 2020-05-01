@@ -3,8 +3,9 @@ import React from "react";
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.expense;
-    this.state.amount = this.state.amount / 100;
+    this.state = Object.assign({}, this.props.expense, { realAmount: this.props.expense.amount / 100 });
+  
+    // this.state.amount = this.state.amount / 100;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -20,10 +21,10 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let value = Number(this.state.amount).toFixed(2) * 100;
+    let value = Number(this.state.realAmount).toFixed(2) * 100;
     let revisedExpense = Object.assign({}, this.state, { amount: value })
     this.props.action(revisedExpense)
-      .then( () => this.props.closeModal())
+      .then(this.props.closeModal)
   }
 
   renderErrors() {
@@ -43,39 +44,71 @@ class ExpenseForm extends React.Component {
   }
   
   render() {
-    const { name, amount, date } = this.state;
+  
+    const { name, realAmount, date } = this.state;
+    
     return (
       <div className="expense-form">
-        <form onSubmit={this.handleSubmit}>
-          <h2 className="expense-form-header">
-            {this.props.formType}
-          </h2>
+        <h2 className="expense-form-header">
+          {this.props.formType}
+          <div 
+            className="expense-form-close"
+            onClick={this.props.closeModal}
+          >X</div>
+        </h2>
 
-          {this.renderErrors() ? this.renderErrors() : ""}
+        {this.renderErrors() ? this.renderErrors() : ""}
 
-          <div className="expense-form-body">
+        <div className="expense-form-body">
+          
+          <div className="expense-form-main">
+            
+            <div>
+              <input 
+                type="text"
+                className="expense-form-name" 
+                placeholder="Enter expense name" 
+                value={name}
+                onChange={this.handleChange("name")}
+              />
+            </div>
+
+            <div className="expense-form-cost-container">
+              <span className="expense-form-currency">$</span>
+              <input 
+                type="number" 
+                className="expense-form-amount" 
+                placeholder="0.00"
+                step=".01" 
+                value={realAmount}
+                onChange={this.handleChange("realAmount")}
+              />
+            </div>
+          </div>
+
+          <div
+            className="expense-form-date" 
+          >
             <input 
-              type="text" 
-              placeholder="Enter expense name" 
-              value={name}
-              onChange={this.handleChange("name")}
-            />
-            <input 
-              type="number" 
-              placeholder="0.00"
-              step=".01" 
-              value={amount}
-              onChange={this.handleChange("amount")}
-            />
-            <input 
-              type="date" 
+              type="date"
+              className="expense-form-date" 
               value={date}
               onChange={this.handleChange("date")}
             />
           </div>
+        </div>
 
-          <button>{this.props.formType}</button>
-        </form>
+        <div className="expense-form-footer">
+          <button
+            className="expense-form-cancel"
+            onClick={this.props.closeModal}
+          >Cancel</button>
+          <button 
+            onClick={this.handleSubmit}
+            className="expense-form-save"
+          >Save</button>
+
+        </div>
       </div>
     )
   }

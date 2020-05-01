@@ -7,8 +7,8 @@ import { closeModal } from "../../actions/modal_actions";
 const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   currentUser: state.entities.users[state.session.id],
-  expense: { name: "", amount: 0, date: "" },
-  formType: "Create Expense"
+  expense: { name: "", amount: "", date: "" },
+  formType: "Add an expense"
 })
 
 const mapDispatchToProps = dispatch => ({

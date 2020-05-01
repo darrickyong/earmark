@@ -25,11 +25,12 @@ class UpdateExpenseForm extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   let expense = state.entities.expenses[Object.values(state.ui.modal)[0]];
+  
   return ({
     errors: state.errors.session,
     currentUser: state.entities.users[state.session.id],
     expense,
-    formType: "Update Expense"
+    formType: "Update expense"
   })
 }
 
