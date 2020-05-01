@@ -21,10 +21,15 @@
   align-items: top;
   justify-content: center;
   position: relative;
+  height: 100vh;
 }
 
 .center-column {
   display: block;
+  height: 100%;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
 }
 
 .expense-header {
