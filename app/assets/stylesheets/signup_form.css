@@ -64,7 +64,6 @@ strong {
   background: #ff652f;
   color: #fff;
   text-shadow: 0 -1px 0 #c83400;
-  box-shadow: 0 1px 0 rgba( 255, 255, 255, 0.2);
   border-radius: 5px;
   position: relative;
   cursor: pointer;
