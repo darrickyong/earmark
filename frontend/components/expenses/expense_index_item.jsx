@@ -44,11 +44,19 @@ class ExpenseIndexItem extends React.Component {
             </div>            
             
             <div className="expense-index-you">
+              
+              <div className="expense-index-else">
+                you lent
+                <br/>
+                <span className="expense-index-lent">
+                  $1.00000
+                </span>
+              </div>
 
               <div
                 className="expense-delete"
                 onClick={() => deleteExpense(expense.id)}
-              >X</div>
+              >x</div>
 
             </div>
           </div>
