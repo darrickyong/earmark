@@ -17,11 +17,13 @@
 
 .login-form {
   display: block;
-  max-width: 360px;
+  width: 360px;
   padding-left: 15px;
 }
 
 .errors {
+  margin-top: 10px;
+  height: 16px;
   color: red;
 }
 
@@ -29,7 +31,6 @@
   color: #999;
   font-weight: 500;
   font-size: 16px;
-  margin-bottom: 15px;
   text-transform: uppercase;
 }
 
@@ -100,4 +101,10 @@ strong {
   background: rgb(72, 190, 157);
   box-shadow: none;
   top: 1px;
+}
+
+.login-form-forgot {
+  margin-top: 10px;
+  color: #333333;
+  font-size: 12px;
 }

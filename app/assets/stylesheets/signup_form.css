@@ -84,3 +84,9 @@ strong {
   box-shadow: none;
   top: 1px;
 }
+
+.signup-form-agree {
+  margin-top: 10px;
+  color: #333333;
+  font-size: 12px;
+}

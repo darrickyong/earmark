@@ -103,6 +103,10 @@ class SignupForm extends React.Component {
             className="signup-button"
             value={this.props.formType}
           />
+
+          <div className="signup-form-agree">
+            By signing up, you are not agreeing to any Terms of Service.
+          </div>
         </form>
 
       </div>
