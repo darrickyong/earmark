@@ -27,7 +27,6 @@ const mapStateToProps = (state, ownProps) => {
   let expense = state.entities.expenses[Object.values(state.ui.modal)[0]];
   let newVal = expense.amount / 100;
   expense.amount = newVal;
-  debugger
   return ({
     errors: state.errors.session,
     currentUser: state.entities.users[state.session.id],
