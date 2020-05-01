@@ -170,6 +170,7 @@
 }
 
 .expense-delete {
+  box-sizing: border-box;
   display: none;
   text-align: center;
   margin-left: 40px;  
