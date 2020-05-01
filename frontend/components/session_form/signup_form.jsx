@@ -50,8 +50,6 @@ class SignupForm extends React.Component {
         <div className="signup-img">
           <img
             src={window.earmark}
-            width="125"
-            height="125"
             onClick={() => this.props.history.push("/")}
           />
         </div>

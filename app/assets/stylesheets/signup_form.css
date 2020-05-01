@@ -10,6 +10,11 @@
   align-items: top;
 }
 
+.signup-img > img {
+  width: 225px;
+  height: 225px;
+}
+
 .signup-form {
   display: block;
   max-width: 360px;
@@ -53,6 +58,7 @@ strong {
   width: 350px;
   margin-top: 7px;
   font-size: 20px;
+  height: 40px;
   border-radius: 3px;
   border: 1px solid #cccccc;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import NavBarContainer from "../nav_bar/nav_bar_container";
+import Footer from "../footer/footer";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -56,8 +57,6 @@ class LoginForm extends React.Component {
           <div className="login-img">
             <img 
               src={window.earmark}
-              width="125" 
-              height="125"
               onClick={() => this.props.history.push("/")}
             />
           </div>
@@ -110,7 +109,7 @@ class LoginForm extends React.Component {
           </form>
 
         </div>
-
+        <Footer />
       </div>
 
     )

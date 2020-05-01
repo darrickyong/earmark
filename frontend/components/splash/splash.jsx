@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../footer/footer";
 
 class Splash extends React.Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class Splash extends React.Component {
           </div>
 
         </main>
+        <Footer />
       </div>
 
     )

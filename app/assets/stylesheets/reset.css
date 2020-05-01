@@ -19,10 +19,6 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
-*:focus {
-  outline: none;
-}
-
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
@@ -57,4 +53,24 @@ img:hover {
 
 input {
   border: 0;
+}
+
+input[type=text], input[type=password],
+textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid #DDDDDD;
+}
+
+input[type=text]:focus, input[type=password]:focus,
+textarea:focus {
+  box-shadow: 0 0 5px rgba(72, 190, 157, 1);
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid rgb(72, 190, 157);
 }
