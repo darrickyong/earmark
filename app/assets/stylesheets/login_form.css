@@ -46,6 +46,8 @@ strong {
   width: 280px;
   margin-top: 7px;
   font-size: 20px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
 }
 
 .login-button {
