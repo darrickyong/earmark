@@ -25,7 +25,7 @@ class Api::ExpensesController < ApplicationController
   def update
     @expense = Expense.find_by(id: params[:id])
     if @expense.owner_id == current_user.id 
-      if @expense.amount > 0
+      if params[:expense][:amount].to_i > 0
         if @expense.update(expense_params)
           render :show
         else

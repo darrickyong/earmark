@@ -4,6 +4,7 @@ class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.expense;
+    this.state.amount = this.state.amount / 100;
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
@@ -21,8 +22,8 @@ class ExpenseForm extends React.Component {
     e.preventDefault();
     let value = Number(this.state.amount).toFixed(2) * 100;
     let revisedExpense = Object.assign({}, this.state, { amount: value })
-    this.props.action(revisedExpense);
-    this.props.closeModal();
+    this.props.action(revisedExpense)
+      .then( () => this.props.closeModal())
   }
 
   renderErrors() {
@@ -46,27 +47,33 @@ class ExpenseForm extends React.Component {
     return (
       <div className="expense-form">
         <form onSubmit={this.handleSubmit}>
-          <h2>Add a bill</h2>
+          <h2 className="expense-form-header">
+            {this.props.formType}
+          </h2>
+
           {this.renderErrors() ? this.renderErrors() : ""}
 
-          <input 
-            type="text" 
-            placeholder="Enter expense name" 
-            value={name}
-            onChange={this.handleChange("name")}
-          />
-          <input 
-            type="number" 
-            placeholder="0.00"
-            step=".01" 
-            value={amount}
-            onChange={this.handleChange("amount")}
-          />
-          <input 
-            type="date" 
-            value={date}
-            onChange={this.handleChange("date")}
-          />
+          <div className="expense-form-body">
+            <input 
+              type="text" 
+              placeholder="Enter expense name" 
+              value={name}
+              onChange={this.handleChange("name")}
+            />
+            <input 
+              type="number" 
+              placeholder="0.00"
+              step=".01" 
+              value={amount}
+              onChange={this.handleChange("amount")}
+            />
+            <input 
+              type="date" 
+              value={date}
+              onChange={this.handleChange("date")}
+            />
+          </div>
+
           <button>{this.props.formType}</button>
         </form>
       </div>

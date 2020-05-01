@@ -63,3 +63,22 @@
 .expense-delete:hover {
   text-decoration: underline;
 }
+
+.expense-form {
+  box-sizing: border-box;
+  width: 350px;
+  height: 350px;
+  border: 1px solid #999;
+  display: block;
+  background: #fff
+}
+
+.expense-form-header {
+  height: 18px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  background: #5cc5a6;
+  font-family: 'Montserrat';
+
+}
