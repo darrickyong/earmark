@@ -26,14 +26,31 @@ class ExpenseIndexItem extends React.Component {
             className="expense-summary" 
             onClick={this.handleShow}
           >
-            {expense.id}
-            {expense.date}
-            {expense.name}
-            {(expense.amount / 100).toFixed(2)}
-            <div
-              className="expense-delete"
-              onClick={() => deleteExpense(expense.id)}
-            >X</div>
+            <div className="expense-index-main">
+              <div>
+                {expense.date}
+              </div>
+              <div>
+                {expense.name}
+              </div>
+            </div>
+
+            <div className="expense-index-cost">
+              you paid
+              <br/>
+              <span className="expense-index-amount">
+                ${(expense.amount / 100).toFixed(2)}
+              </span>
+            </div>            
+            
+            <div className="expense-index-you">
+
+              <div
+                className="expense-delete"
+                onClick={() => deleteExpense(expense.id)}
+              >X</div>
+
+            </div>
           </div>
 
 

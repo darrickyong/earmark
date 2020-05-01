@@ -96,7 +96,6 @@
 .expense-index-item {
   display: flex;
   justify-content: space-between;
-  background: green;
   cursor: pointer;
   height: 50px;
   font-size: 16px;
@@ -120,8 +119,42 @@
   background: lightgray;
 }
 
+
+
+.expense-index-main {
+  display: flex;
+  height: 100%;
+  width: 300px;
+  align-items: center;
+}
+
+.expense-index-cost {
+  width: 115px;
+  text-align: right;
+  font-size: 12px;
+  color: #aaa;
+
+}
+
+.expense-index-amount {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  letter-spacing: 0.5px;
+} 
+
+.expense-index-you {
+  width: 135px;
+  display: flex;
+  align-items: flex-end;
+}
+
+
+
+
 .expense-summary:hover .expense-delete {
   display: flex;
+  align-items: flex-end;
 }
 
 .expense-delete {
