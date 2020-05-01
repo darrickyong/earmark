@@ -7,7 +7,7 @@ class ExpenseShow extends React.Component {
       <div>
         <button
           className="update-expense-button"
-          onClick={() => this.props.openModal("update")}
+          onClick={() => this.props.openModal({ "update": expense.id })}
         >
           Update expense
         </button>

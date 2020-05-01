@@ -10,7 +10,7 @@ function Modal({ modal, closeModal }) {
     return null;
   }
   let component;
-  switch (modal) {
+  switch (Object.keys(modal)[0]) {
     case "create":
       component = <CreateExpenseFormContainer />;
       break;

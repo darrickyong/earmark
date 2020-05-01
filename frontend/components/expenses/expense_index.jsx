@@ -19,7 +19,7 @@ class ExpenseIndex extends React.Component {
           Expense Index Header
           <button
             className="create-expense-button"
-            onClick={() => this.props.openModal("create")}
+            onClick={() => this.props.openModal({"create": -1})}
           >
             Add an expense
           </button>
