@@ -1,5 +1,7 @@
 import React from "react";
 import FriendIndexItem from "./friend_index_item";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 class FriendIndex extends React.Component {
   componentDidMount() {
@@ -9,13 +11,18 @@ class FriendIndex extends React.Component {
   render() {
     const { friends } = this.props;
     return (
-      <div>
+      <div className="friend-list">
         <div className="friend-index-header">
-          <div>
+          <div className="friends">
             Friends
           </div>
-          <div>
-            +
+          <div className="friend-add">
+            <div className="friend-plus">
+              <FontAwesomeIcon icon={faUserPlus} />
+            </div>
+            <div>
+              add
+            </div>
           </div>
         </div>
         <div>

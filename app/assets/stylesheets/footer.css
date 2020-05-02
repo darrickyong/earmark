@@ -14,11 +14,11 @@
 .footer-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .footer-about {
-  margin-left: 150px;
+  
 }
 
 .footer-made {
@@ -33,7 +33,7 @@
 }
 
 .footer-links {
-  margin-right: 150px;
+
   display: block;
 }
 

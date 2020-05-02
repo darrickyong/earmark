@@ -25,8 +25,16 @@
 }
 
 @media only screen and (max-width: 980px) {
-  .splash-main-right > img {
-    display: none;
+  .splash-main {
+    display: flex;
+    justify-content: flex-start;
   }
+  
+  .splash-main-container {
+    margin-top: 250px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
 
 }

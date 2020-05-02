@@ -1,0 +1,31 @@
+.friend-index-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  height: 18px;
+  color: #ccc;
+  background: #f6f6f6;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #eee;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.friends {
+  text-transform: uppercase;
+}
+.friend-add {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.friend-add:hover {
+  color: #5bc5a6;
+}
+
+.friend-plus {
+  margin-right: 5px;
+}
