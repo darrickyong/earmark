@@ -4,6 +4,14 @@ export const fetchExpenses = () => (
   })
 )
 
+export const fetchFriends = friendId => (
+  $.ajax({
+    url: "/api/expenses/friends",
+    data: { friendId }
+  })
+)
+
+
 export const fetchExpense = expenseId => (
   $.ajax({
     url: `/api/expenses/${expenseId}`

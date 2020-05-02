@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./components/root";
-import { signup, login, logout } from "./actions/session_actions";
-import { fetchExpenses, fetchExpense, createExpense, updateExpense, deleteExpense } from "./actions/expense_actions";
+import { fetchFriendships, createFriendship, deleteFriendship } from "./actions/friendship_actions";
 import configureStore from "./store/store";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -27,11 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   
-  window.fetchExpenses = fetchExpenses;
-  window.fetchExpense = fetchExpense;
-  window.createExpense = createExpense;
-  window.updateExpense = updateExpense;
-  window.deleteExpense = deleteExpense;
+  window.fetchFriendships = fetchFriendships;
+  window.createFriendship = createFriendship;
+  window.deleteFriendship = deleteFriendship;
   //END OF TESTING
   
   ReactDOM.render(<Root store={store}/>, root);

@@ -3,6 +3,9 @@ class Api::ExpensesController < ApplicationController
   def index
     @expenses = current_user.expenses + current_user.owed_expenses
   end
+  
+  def friends
+  end
 
   def show
     @expense = Expense.find_by(id: params[:id])
