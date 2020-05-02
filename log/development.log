@@ -60812,3 +60812,757 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 50ms (Views: 46.5ms | ActiveRecord: 0.3ms)
 
 
+Started POST "/api/session" for ::1 at 2020-05-01 16:30:37 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "01I9qZNANXM-_0RZwwkZ2Q"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "01I9qZNANXM-_0RZwwkZ2Q"], ["updated_at", "2020-05-01 23:30:37.794722"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.7ms)
+Completed 200 OK in 240ms (Views: 9.3ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:30:37 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "01I9qZNANXM-_0RZwwkZ2Q"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (6.8ms)
+Completed 200 OK in 23ms (Views: 13.2ms | ActiveRecord: 1.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 16:30:55 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "01I9qZNANXM-_0RZwwkZ2Q"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "Hj_QQYb3IsIx-0kxS2q_sQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Hj_QQYb3IsIx-0kxS2q_sQ"], ["updated_at", "2020-05-01 23:30:55.288270"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 16:35:42 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "PFI5dwWzX8KmkO98Or6fAg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "PFI5dwWzX8KmkO98Or6fAg"], ["updated_at", "2020-05-01 23:35:43.190779"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.9ms)
+Completed 200 OK in 242ms (Views: 9.6ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:35:43 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "PFI5dwWzX8KmkO98Or6fAg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.6ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (10.6ms)
+Completed 200 OK in 32ms (Views: 21.0ms | ActiveRecord: 2.8ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 16:36:04 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "PFI5dwWzX8KmkO98Or6fAg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "ws0XfBd23AeMCfSqgP4qhQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "ws0XfBd23AeMCfSqgP4qhQ"], ["updated_at", "2020-05-01 23:36:04.471577"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:42:30 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 380ms (Views: 377.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:43:22 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 73ms (Views: 70.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:43:39 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 73ms (Views: 69.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:44:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 109ms (Views: 106.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:44:12 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 69ms (Views: 65.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:44:31 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 59ms (Views: 56.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 16:46:55 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 64ms (Views: 61.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 16:49:52 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:45
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "6HDHMHMX-iOimRiRT-26og"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "6HDHMHMX-iOimRiRT-26og"], ["updated_at", "2020-05-01 23:49:52.266391"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.6ms)
+Completed 200 OK in 236ms (Views: 8.9ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:49:52 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "6HDHMHMX-iOimRiRT-26og"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.3ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (7.0ms)
+Completed 200 OK in 27ms (Views: 14.2ms | ActiveRecord: 2.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 16:50:55 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (5.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "6HDHMHMX-iOimRiRT-26og"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "LAis_jXPZh67W2qymdVFwA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:69
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "LAis_jXPZh67W2qymdVFwA"], ["updated_at", "2020-05-01 23:50:55.833351"], ["id", 1]]
+  ↳ app/models/user.rb:69
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:69
+Completed 200 OK in 11ms (Views: 0.2ms | ActiveRecord: 6.9ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 16:59:28 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:49
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["updated_at", "2020-05-01 23:59:29.027176"], ["id", 1]]
+  ↳ app/models/user.rb:73
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:73
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (2.0ms)
+Completed 200 OK in 259ms (Views: 9.0ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:59:29 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (7.0ms)
+Completed 200 OK in 50ms (Views: 14.7ms | ActiveRecord: 9.6ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 16:59:41 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"3", "date"=>"2020-05-04", "realAmount"=>"0.03"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 10.9ms)
+
+
+
+ArgumentError - wrong number of arguments (given 0, expected 2):
+  app/controllers/api/expenses_controller.rb:18:in `create'
+
+Started GET "/" for ::1 at 2020-05-01 16:59:49 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (19.8ms)
+Completed 200 OK in 106ms (Views: 97.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 16:59:49 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (11.5ms)
+Completed 200 OK in 77ms (Views: 23.2ms | ActiveRecord: 17.4ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 16:59:54 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"200", "date"=>"", "realAmount"=>"02"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+Completed 422 Unprocessable Entity in 11ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 17:00:06 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"13", "amount"=>"200", "date"=>"2020-05-05", "realAmount"=>"02"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mExpense Create (0.6ms)[0m  [1m[32mINSERT INTO "expenses" ("name", "amount", "owner_id", "date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "13"], ["amount", 200], ["owner_id", 1], ["date", "2020-05-05"], ["created_at", "2020-05-02 00:00:06.640805"], ["updated_at", "2020-05-02 00:00:06.640805"]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  Rendering api/expenses/show.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/show.json.jbuilder (1.3ms)
+Completed 200 OK in 14ms (Views: 8.1ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 17:00:57 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"0", "date"=>"", "realAmount"=>"0"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 17:01:01 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"34200", "date"=>"", "realAmount"=>"342"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+Completed 422 Unprocessable Entity in 6ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2020-05-01 17:02:29 -0700
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered static_pages/root.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 63ms (Views: 60.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 17:02:29 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (4.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.5ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (8.7ms)
+Completed 200 OK in 38ms (Views: 21.8ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 17:02:34 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"0", "date"=>"", "realAmount"=>"0"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 422 Unprocessable Entity in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/expenses" for ::1 at 2020-05-01 17:02:38 -0700
+Processing by Api::ExpensesController#create as JSON
+  Parameters: {"expense"=>{"name"=>"", "amount"=>"200", "date"=>"", "realAmount"=>"2"}}
+Unpermitted parameter: :realAmount
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/expenses_controller.rb:15
+Completed 422 Unprocessable Entity in 5ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 17:29:20 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "kq71X6x4SdhawPhefSvADA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "kBTLltAJ2ky5ioOKyv87Lg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "kBTLltAJ2ky5ioOKyv87Lg"], ["updated_at", "2020-05-02 00:29:20.274411"], ["id", 1]]
+  ↳ app/models/user.rb:73
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:73
+Completed 200 OK in 31ms (Views: 0.2ms | ActiveRecord: 12.2ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 17:29:24 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:49
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["updated_at", "2020-05-02 00:29:24.297822"], ["id", 1]]
+  ↳ app/models/user.rb:73
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:73
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (1.7ms)
+Completed 200 OK in 247ms (Views: 8.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 17:29:24 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (8.9ms)
+Completed 200 OK in 49ms (Views: 17.0ms | ActiveRecord: 7.9ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:02 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 5ms (Views: 0.1ms | ActiveRecord: 1.5ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:03 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:04 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:07 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:07 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.5ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:07 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:07 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:07 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 1.4ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:08 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.2ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:08 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:08 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.6ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started DELETE "/api/expenses/6" for ::1 at 2020-05-01 17:30:08 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"6"}
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started DELETE "/api/expenses/5" for ::1 at 2020-05-01 17:30:10 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"5"}
+  [1m[36mExpense Load (0.3ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (1.0ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/api/expenses/4" for ::1 at 2020-05-01 17:30:11 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"4"}
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (0.9ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 4]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started DELETE "/api/expenses/1" for ::1 at 2020-05-01 17:30:13 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"1"}
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (1.0ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 20:03:40 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "iDqa7b9I8S35KQjv4JsOfQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "aLHuSaa_V9FvjR1ELZNSrQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Update (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "aLHuSaa_V9FvjR1ELZNSrQ"], ["updated_at", "2020-05-02 03:03:40.335223"], ["id", 1]]
+  ↳ app/models/user.rb:73
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:73
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 20:03:51 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:49
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:73
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["updated_at", "2020-05-02 03:03:51.508318"], ["id", 1]]
+  ↳ app/models/user.rb:73
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:73
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.2ms)
+  Rendered api/users/show.json.jbuilder (1.3ms)
+Completed 200 OK in 216ms (Views: 7.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 20:03:51 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (2.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (0.8ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.0ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.0ms)
+  Rendered api/expenses/index.json.jbuilder (4.9ms)
+Completed 200 OK in 27ms (Views: 12.9ms | ActiveRecord: 4.7ms)
+
+

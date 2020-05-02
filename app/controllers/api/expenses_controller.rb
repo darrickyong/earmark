@@ -15,7 +15,7 @@ class Api::ExpensesController < ApplicationController
       if @expense.save
         render :show
       else
-        render json: @expense.errors.full_message, status: 422
+        render json: @expense.errors.full_messages, status: 422
       end
     else
       render json: ["Amount must be greater than 0"], status: 422
