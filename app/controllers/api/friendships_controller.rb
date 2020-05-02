@@ -5,13 +5,18 @@ class Api::FriendshipsController < ApplicationController
 
   def create
     @user = User.find_by(email: friendship_params[:email])
-    @friendship = Friendship.create(user_id: current_user.id, friend_id: @user.id)
-    if @friendship.save
-      @friendship = @user
-      render :show
+    if @user
+      @friendship = Friendship.create(user_id: current_user.id, friend_id: @user.id)      
+      if @friendship.save
+        @friendship = @user
+        render :show
+      else
+        render json: ["You are already friends"], status: 422
+      end
     else
-      render json: ["You are already friends"], status: 422
+      render json: ["This user does not exist. Please sign them up."], status: 422
     end
+    
 
   end
 

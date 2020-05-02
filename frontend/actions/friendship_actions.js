@@ -28,12 +28,9 @@ export const receiveFriendErrors = errors => ({
 export const fetchFriendships = () => dispatch => FriendshipApiUtil.fetchFriendships()
   .then( friendships => dispatch(receiveFriendships(friendships)));
 
-export const fetchFriendship = friendshipId => dispatch => FriendshipApiUtil.fetchFriendship(friendshipId)
-  .then( friendship => dispatch(receiveFriendship(friendship)));
-
 export const createFriendship = friendship => dispatch => FriendshipApiUtil.createFriendship(friendship)
   .then( friendship => dispatch(receiveFriendship(friendship)),
   errors => dispatch(receiveFriendErrors(errors.responseJSON)));
 
-export const deleteFriendship = friendshipId => dispatch => FriendshipApiUtil.deleteFriendship(friendshipId)
-  .then( () => dispatch(removeFriendship(friendshipId)));
+export const deleteFriendship = friendId => dispatch => FriendshipApiUtil.deleteFriendship(friendId)
+  .then( () => dispatch(removeFriendship(friendId)));
