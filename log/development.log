@@ -61779,3 +61779,211 @@ Processing by Api::ExpensesController#index as JSON
 Completed 200 OK in 24ms (Views: 16.1ms | ActiveRecord: 2.4ms)
 
 
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFriendship Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 3], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mFriendship Create (3.3ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 3], ["created_at", "2020-05-02 04:00:55.410121"], ["updated_at", "2020-05-02 04:00:55.410121"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFriendship Load (0.6ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships"[0m
+Started GET "/" for ::1 at 2020-05-01 21:08:23 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/darrenyong/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered static_pages/root.html.erb within layouts/application (34.9ms)
+Completed 200 OK in 1121ms (Views: 1107.9ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 21:08:24 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (1.6ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.4ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.7ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (6.2ms)
+Completed 200 OK in 80ms (Views: 17.4ms | ActiveRecord: 17.1ms)
+
+
+Started DELETE "/api/expenses/2" for ::1 at 2020-05-01 21:08:30 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mExpense Load (0.4ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (1.2ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/api/expenses/3" for ::1 at 2020-05-01 21:08:40 -0700
+Processing by Api::ExpensesController#destroy as JSON
+  Parameters: {"id"=>"3"}
+  [1m[36mExpense Load (0.9ms)[0m  [1m[34mSELECT  "expenses".* FROM "expenses" WHERE "expenses"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:43
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Destroy (0.8ms)[0m  [1m[31mDELETE FROM "expenses" WHERE "expenses"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/api/expenses_controller.rb:45
+Completed 200 OK in 6ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 21:26:02 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "B2IlKyaqO_I5MMQzAaGwyw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "tXw2n6GWoZ9Q5ZUPVFK2Hg"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "tXw2n6GWoZ9Q5ZUPVFK2Hg"], ["updated_at", "2020-05-02 04:26:02.503265"], ["id", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:81
+Completed 200 OK in 31ms (Views: 0.1ms | ActiveRecord: 13.4ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 22:22:33 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:57
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "9_UL9NyXAjLjWJZ_af3WQA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "9_UL9NyXAjLjWJZ_af3WQA"], ["updated_at", "2020-05-02 05:22:33.378284"], ["id", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:81
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.6ms)
+Completed 200 OK in 241ms (Views: 8.5ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 22:22:33 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9_UL9NyXAjLjWJZ_af3WQA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (0.7ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.1ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.3ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.2ms)
+  Rendered api/expenses/index.json.jbuilder (2.8ms)
+Completed 200 OK in 48ms (Views: 10.7ms | ActiveRecord: 14.9ms)
+
+
+Started DELETE "/api/session" for ::1 at 2020-05-01 23:02:17 -0700
+Processing by Api::SessionsController#destroy as JSON
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "9_UL9NyXAjLjWJZ_af3WQA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "RB7rllj-6taYX4AAzrVIcQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "RB7rllj-6taYX4AAzrVIcQ"], ["updated_at", "2020-05-02 06:02:17.374183"], ["id", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:81
+Completed 200 OK in 9ms (Views: 0.1ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/api/session" for ::1 at 2020-05-01 23:02:26 -0700
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"demo@earmark.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@earmark.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:57
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "demo@earmark.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "KZjkjiirWNTuAfJGKSMxXQ"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:81
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "KZjkjiirWNTuAfJGKSMxXQ"], ["updated_at", "2020-05-02 06:02:27.213186"], ["id", 1]]
+  ↳ app/models/user.rb:81
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:81
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.3ms)
+  Rendered api/users/show.json.jbuilder (1.9ms)
+Completed 200 OK in 236ms (Views: 9.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/expenses" for ::1 at 2020-05-01 23:02:27 -0700
+Processing by Api::ExpensesController#index as JSON
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "KZjkjiirWNTuAfJGKSMxXQ"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  [1m[36mExpense Load (2.5ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" WHERE "expenses"."owner_id" = $1[0m  [["owner_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  [1m[36mExpense Load (1.0ms)[0m  [1m[34mSELECT "expenses".* FROM "expenses" INNER JOIN "transactions" ON "expenses"."id" = "transactions"."expense_id" WHERE "transactions"."payer_id" = $1[0m  [["payer_id", 1]]
+  ↳ app/controllers/api/expenses_controller.rb:4
+  Rendering api/expenses/index.json.jbuilder
+  Rendered api/expenses/_expense.json.jbuilder (0.4ms)
+  Rendered api/expenses/_expense.json.jbuilder (0.1ms)
+  Rendered api/expenses/index.json.jbuilder (3.3ms)
+Completed 200 OK in 36ms (Views: 16.0ms | ActiveRecord: 5.5ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFriendship Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFriendship Create (0.5ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 2], ["created_at", "2020-05-02 06:06:26.642669"], ["updated_at", "2020-05-02 06:06:26.642669"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFriendship Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 1], ["friend_id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFriendship Create (0.4ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["friend_id", 4], ["created_at", "2020-05-02 06:06:34.758554"], ["updated_at", "2020-05-02 06:06:34.758554"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFriendship Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 6], ["friend_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriendship Create (0.3ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 6], ["friend_id", 1], ["created_at", "2020-05-02 06:06:41.113233"], ["updated_at", "2020-05-02 06:06:41.113233"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFriendship Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "friendships" WHERE "friendships"."user_id" = $1 AND "friendships"."friend_id" = $2 LIMIT $3[0m  [["user_id", 7], ["friend_id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mFriendship Create (0.3ms)[0m  [1m[32mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 7], ["friend_id", 1], ["created_at", "2020-05-02 06:06:45.238123"], ["updated_at", "2020-05-02 06:06:45.238123"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFriendship Load (0.5ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mFriendship Load (0.9ms)[0m  [1m[34mSELECT "friendships".* FROM "friendships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" INNER JOIN "users" "friends_other_friends" ON "friendships"."user_id" = "friends_other_friends"."id" INNER JOIN "friendships" "friendships_other_friends" ON "friends_other_friends"."id" = "friendships_other_friends"."friend_id" WHERE "friendships_other_friends"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = $1[0m  [["friend_id", 1]]

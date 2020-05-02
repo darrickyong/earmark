@@ -31,6 +31,22 @@ class User < ApplicationRecord
     foreign_key: :payer_id,
     class_name: 'Payment'
 
+  has_many :friendships,
+    foreign_key: :user_id,
+    class_name: 'Friendship'
+
+  has_many :other_friendships,
+    foreign_key: :friend_id,
+    class_name: 'Friendship'
+
+  has_many :friends,
+    through: :friendships,
+    source: :friend
+  
+  has_many :other_friends,
+    through: :other_friendships,
+    source: :user
+
   has_many :received_payments,
     foreign_key: :payee_id,
     class_name: 'Payment'
