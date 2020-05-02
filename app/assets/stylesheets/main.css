@@ -197,7 +197,7 @@
   border: 1px solid #999;
   border-radius: 5px;
   display: block;
-  background: #fff
+  background: #fff;
 }
 
 .expense-form-header {
@@ -218,7 +218,7 @@
 
 .expense-form-body {
   display: block;
-  height: 250px;
+  height: 240px;
 }
 
 .expense-form-main {
@@ -286,6 +286,11 @@
 
 .expense-form-comments {
   height: 50px;
+}
+
+.expense-errors {
+  padding-left: 20px;
+  color: red;
 }
 
 .expense-form-footer {
