@@ -40,4 +40,5 @@ export const updateExpense = expense => dispatch => ExpenseApiUtil.updateExpense
     errors => dispatch(receiveExpenseErrors(errors.responseJSON)));
 
 export const deleteExpense = expenseId => dispatch => ExpenseApiUtil.deleteExpense(expenseId)
-  .then( () => dispatch(removeExpense(expenseId)));
+  .then( () => dispatch(removeExpense(expenseId)),
+  errors => dispatch(receiveExpenseErrors(errors.responseJSON)));

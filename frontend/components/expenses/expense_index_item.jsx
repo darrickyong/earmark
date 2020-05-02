@@ -8,17 +8,29 @@ class ExpenseIndexItem extends React.Component {
       revealShowItem: false
     }
     this.handleShow = this.handleShow.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
-  
+
   handleShow(e) {
-    this.setState({ revealShowItem: !this.state.revealShowItem })
+    if (e.target.className === "expense-delete") {
+      return;
+    }
+    this.setState({ revealShowItem: !this.state.revealShowItem });
+  }
+
+  handleDelete(e) {
+    const { currentUser, expense } = this.props;
+    if (currentUser.id === expense.owner_id) {
+      this.props.deleteExpense(expense.id);
+    } else {
+      window.alert("You are not the creator of this expense");
+    }
   }
 
   render() {
     const { expense, deleteExpense } = this.props;
     return (
       <div>
-
         <div 
           className="expense-index-item"
         >
@@ -55,7 +67,7 @@ class ExpenseIndexItem extends React.Component {
 
               <div
                 className="expense-delete"
-                onClick={() => deleteExpense(expense.id)}
+                onClick={this.handleDelete}
               >x</div>
 
             </div>
