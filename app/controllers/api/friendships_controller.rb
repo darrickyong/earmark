@@ -11,10 +11,10 @@ class Api::FriendshipsController < ApplicationController
         @friendship = @user
         render :show
       else
-        render json: ["You are already friends"], status: 422
+        render json: ["You are already friends."], status: 422
       end
     else
-      render json: ["This user does not exist. Please sign them up."], status: 422
+      render json: ["We could not find that email."], status: 422
     end
     
 

@@ -1,5 +1,7 @@
 import { connect } from "react-redux";
 import { fetchFriendships } from "../../actions/friendship_actions";
+import { openModal } from "../../actions/modal_actions";
+
 import FriendIndex from "./friend_index";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -7,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchFriendships: () => dispatch(fetchFriendships())
+  fetchFriendships: () => dispatch(fetchFriendships()),
+  openModal: modal => dispatch(openModal(modal))
 })
 
 export default connect(

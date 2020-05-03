@@ -75,7 +75,7 @@
 .expense-index-amount {
   font-weight: 500;
   font-size: 15px;
-  color: #000;
+  color: #333333;
   letter-spacing: 0.5px;
 }
 
@@ -177,7 +177,6 @@
   width: 177px;
   border: none;
   border-bottom: 1px dashed #ccc;
-
 }
 
 .expense-form-cost-container {
@@ -195,7 +194,7 @@
 
 .expense-form-amount {
   padding: 0;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
   height: 40px;
   width: 120px;

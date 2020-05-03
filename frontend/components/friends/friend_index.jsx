@@ -16,7 +16,9 @@ class FriendIndex extends React.Component {
           <div className="friends">
             Friends
           </div>
-          <div className="friend-add">
+          <div 
+            onClick={() => this.props.openModal({ "friend": -1 })}
+            className="friend-add">
             <div className="friend-plus">
               <FontAwesomeIcon icon={faUserPlus} />
             </div>

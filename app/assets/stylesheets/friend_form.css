@@ -1,0 +1,104 @@
+.friend-form {
+  box-sizing: border-box;
+  width: 350px;
+  height: 200px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  display: block;
+  background: #fff;
+}
+
+.friend-form-header {
+  height: 18px;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  background: #5cc5a6;
+  font-family: 'Montserrat';
+  display: flex;
+  justify-content: space-between;
+}
+
+.friend-form-close:hover {
+  color: #599f8a;
+  cursor: pointer;
+}
+
+.friend-form-body {
+  margin-top: 20px;
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.friend-form-email {
+  font-size: 16px;
+  height: 24px;
+  width: 200px;
+  border: none;
+  border-bottom: 1px dashed #ccc;
+}
+
+.friend-errors {
+  padding-top: 10px;
+  color: red;
+}
+
+.friend-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 55px;
+  width: 350px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.friend-form-cancel {
+  background: #f6f6f6;
+  color: #333;
+  padding: 7px 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.friend-form-cancel:hover {
+  background: #d7d7d7;
+}
+
+.friend-form-cancel:active {
+  background: #d7d7d7;
+  box-shadow: none;
+  top: 1px;
+}
+
+.friend-form-add {
+  background: #5cc5a6;
+  color: #fff;
+  padding: 7px 15px;
+  margin-left: 2px;
+  margin-right: 2px;
+  font-size: 12px;
+  margin-right: 10px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.friend-form-add:hover {
+  background: rgb(72, 190, 157);
+}
+
+.friend-form-add:active {
+  background: rgb(72, 190, 157);
+  box-shadow: none;
+  top: 1px;
+}
