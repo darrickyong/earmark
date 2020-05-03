@@ -2,19 +2,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 15px;
   background: #eeeeee;
   border-bottom: 1px solid #ddd;
 }
 
 .expense-header-name {
   font-size: 24px;
+  font-weight: 500;
+  color: #333;
 }
 
 .expense-create-button {
   background: #ff652f;
   color: #fff;
-  padding: 7px 15px;
+  padding: 10px 15px;
   margin-left: 2px;
   margin-right: 2px;
   font-size: 12px;
@@ -39,8 +41,8 @@
 .pay-button {
   background: #5bc5a7;
   color: #fff;
-  padding: 7px 10px;
-  margin-left: 2px;
+  padding: 10px 10px;
+  margin-left: 10px;
   margin-right: 2px;
   font-size: 12px;
   text-shadow: 0 -1px 0 #318790;
@@ -70,7 +72,7 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  height: 50px;
+  height: 55px;
   font-size: 16px;
   border-bottom: 1px solid #b5b1b1;
 }
@@ -92,16 +94,42 @@
   background: lightgray;
 }
 
-
 .expense-index-main {
   display: flex;
   height: 100%;
   width: 300px;
   align-items: center;
+  margin-left: 10px;
+}
+
+.expense-index-date {
+  margin-right: 10px;
+}
+
+.expense-index-month {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.expense-index-day {
+  font-size: 20px;
+  color: #999;
+}
+
+.expense-index-category {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+.expense-index-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
 }
 
 .expense-index-cost {
-  width: 115px;
   text-align: right;
   font-size: 12px;
   color: #aaa;
@@ -110,14 +138,13 @@
 }
 
 .expense-index-amount {
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
   color: #000;
   letter-spacing: 0.5px;
 }
 
 .expense-index-you {
-  width: 135px;
   display: flex;
   align-items: flex-end;
   padding: 4px;
@@ -131,26 +158,31 @@
 }
 
 .expense-index-lent {
-  font-weight: bold;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
   letter-spacing: 0.5px;
   color: rgb(72, 190, 157);
 }
 
-.expense-summary:hover .expense-delete {
+.expense-summary:hover .expense-x {
   display: flex;
 }
 
 .expense-delete {
   box-sizing: border-box;
-  display: none;
+  display: flex;
   text-align: center;
-  margin-left: 40px;
   color: #c00;
   font-weight: bold;
   font-size: 20px;
-  width: 12px;
+  min-width: 12px;
+  margin-left: 40px;
+  margin-right: 10px;
   height: 26px;
+}
+
+.expense-x {
+  display:none;
 }
 
 .expense-delete:hover {
@@ -195,7 +227,7 @@
   justify-content: center;
 }
 
-.expense-category-img {
+.expense-form-category {
   height: 64px;
   width: 64px;
 }

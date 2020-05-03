@@ -12,7 +12,7 @@ class ExpenseIndexItem extends React.Component {
   }
 
   handleShow(e) {
-    if (e.target.className === "expense-delete") {
+    if (e.target.className === "expense-x") {
       return;
     }
     this.setState({ revealShowItem: !this.state.revealShowItem });
@@ -28,7 +28,25 @@ class ExpenseIndexItem extends React.Component {
   }
 
   render() {
-    const { expense, deleteExpense } = this.props;
+    const months = {
+      "01": "Jan",
+      "02": "Feb",
+      "03": "Mar",
+      "04": "Apr",
+      "05": "May",
+      "06": "Jun",
+      "07": "Jul",
+      "08": "Aug",
+      "09": "Sep",
+      "10": "Oct",
+      "11": "Nov",
+      "12": "Dec"
+    }
+    const { expense } = this.props;
+    const month = months[expense.date.slice(5, 7)];
+    const day = expense.date.slice(8, 10);
+    const year = expense.date.slice(0, 4);
+
     return (
       <div>
         <div 
@@ -39,12 +57,27 @@ class ExpenseIndexItem extends React.Component {
             onClick={this.handleShow}
           >
             <div className="expense-index-main">
-              <div>
-                {expense.date}
+
+              <div className="expense-index-date">
+                <div className="expense-index-month">
+                  {month}
+                </div>
+                <div className="expense-index-day">
+                  {day}
+                </div>
               </div>
+              
               <div>
+                <img
+                  src={window.earmarkCategory}
+                  className="expense-index-category"
+                />
+              </div>
+
+              <div className="expense-index-name">
                 {expense.name}
               </div>
+
             </div>
 
             <div className="expense-index-cost">
@@ -68,7 +101,9 @@ class ExpenseIndexItem extends React.Component {
               <div
                 className="expense-delete"
                 onClick={this.handleDelete}
-              >x</div>
+              >
+                <div className="expense-x">x</div>
+              </div>
 
             </div>
           </div>

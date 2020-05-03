@@ -65,7 +65,7 @@ class ExpenseForm extends React.Component {
             <div>
               <img 
                 src={window.earmarkCategory}
-                className="expense-category-img"
+                className="expense-form-category"
               />
             </div>
 
