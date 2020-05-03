@@ -36,7 +36,9 @@ class ExpenseIndex extends React.Component {
           
           {expenses.map( (expense, idx, orig) => {
             let divider;
-            if (idx === 0 || orig[idx-1].date.slice(5,7) !== expense.date.slice(5,7)) {
+            if (idx === 0 || 
+              orig[idx-1].date.slice(5,7) !== expense.date.slice(5,7) || 
+              orig[idx - 1].date.slice(0, 4) !== expense.date.slice(0, 4)) {
               divider = (
                 <div>
                   {months[expense.date.slice(5,7)]} {expense.date.slice(0,4)}
