@@ -18,8 +18,10 @@
 }
 
 .left-dashboard {
+  color: #999;
   margin-top: 10px;
   padding: 5px 0px 5px 10px;
+  cursor: pointer;
 }
 
 .left-dashboard:hover {
@@ -33,7 +35,9 @@
 }
 
 .left-payment {
+  color: #999;
   padding: 5px 0px 5px 10px;
+  cursor: pointer;
 }
 
 .left-payment:hover {
@@ -48,8 +52,10 @@
 }
 
 .left-expense {
+  color: #999;
   padding: 5px 0px 5px 10px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .left-expense:hover {
@@ -61,10 +67,6 @@
   height: 16px;
   margin-left: 1px;
   margin-right: 5px;
-}
-
-.left-link {
-  color: #999
 }
 
 .right-sidebar {

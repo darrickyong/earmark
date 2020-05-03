@@ -10,25 +10,21 @@ class LeftSidebar extends React.Component {
       <div className="left-sidebar">
         <div className="left-sidebar-container">
           <div className="left-sidebar-main">
-            <div className="left-dashboard">
-              <Link to="/dashboard" className="left-link">
+
+              <Link to="/dashboard" className="left-dashboard">
                 <FontAwesomeIcon icon={faPiggyBank} className="left-pig"/>
                 Dashboard
               </Link>
-            </div>
-            
-            <div className="left-payment">
-              <Link to="/payments" className="left-link">
+
+              <Link to="/payments" className="left-payment">
                 <FontAwesomeIcon icon={faDollarSign} className="left-dollar" />
                 Payments</Link>
-            </div>
 
-            <div className="left-expense">
-              <Link to="/expenses" className="left-link">
+              <Link to="/expenses" className="left-expense">
                 <FontAwesomeIcon icon={faListUl} className="left-ul" />
                 All expenses
               </Link>
-            </div>
+
           </div>
 
           <FriendIndexContainer />
