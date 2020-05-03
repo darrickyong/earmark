@@ -12,16 +12,52 @@ class ExpenseIndex extends React.Component {
 
   render() {
     const { expenses } = this.props;
+    expenses.sort((a, b) => (a.date > b.date) ? 1 : -1).reverse();
+
+    const months = {
+      "01": "January",
+      "02": "Feburary",
+      "03": "March",
+      "04": "April",
+      "05": "May",
+      "06": "June",
+      "07": "July",
+      "08": "August",
+      "09": "September",
+      "10": "October",
+      "11": "November",
+      "12": "December"
+    }
+
     return(
       <div>
 
         <div className="expense-index">
-          {expenses.map( (expense) => {
+          
+          {expenses.map( (expense, idx, orig) => {
+            let divider;
+            if (idx === 0 || orig[idx-1].date.slice(5,7) !== expense.date.slice(5,7)) {
+              divider = (
+                <div>
+                  {months[expense.date.slice(5,7)]} {expense.date.slice(0,4)}
+                </div>
+              )
+            }
+
             return (
-              <ExpenseIndexItemContainer 
-                key={expense.id}
-                expense={expense}
-              />
+              <div key={expense.id}>
+
+                {divider ? (
+                  <div className="expense-month-divider">
+                    {divider}
+                  </div>
+                ) : ""}
+  
+                <ExpenseIndexItemContainer 
+                  expense={expense}
+                />
+
+              </div>
             )
           })}
         </div>
