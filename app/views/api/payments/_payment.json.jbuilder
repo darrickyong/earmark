@@ -1,0 +1,1 @@
+json.extract! payment, :id, :amount, :payee_id, :payer_id, :date
