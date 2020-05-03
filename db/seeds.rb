@@ -24,7 +24,7 @@ Expense.create(name: "Not the demo's expense", amount: 3000, owner_id: 2, date: 
 
 Transaction.create(amount: 500, payer_id: 2, expense_id: 1)
 Transaction.create(amount: 1000, payer_id: 2, expense_id: 2)
-Transaction.create(amount: 1500, payer_id: 2, expense_id: 3)
+Transaction.create(amount: 1500, payer_id: 3, expense_id: 3)
 Transaction.create(amount: 2000, payer_id: 2, expense_id: 4)
 Transaction.create(amount: 2500, payer_id: 2, expense_id: 5)
 Transaction.create(amount: 1500, payer_id: 1, expense_id: 6)

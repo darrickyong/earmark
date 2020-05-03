@@ -1,5 +1,5 @@
 import React from "react";
-import FriendIndexItem from "./friend_index_item";
+import FriendIndexItemContainer from "./friend_index_item_container";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -28,7 +28,7 @@ class FriendIndex extends React.Component {
         <div>
           {friends.map( friend => {
             return (
-              <FriendIndexItem 
+              <FriendIndexItemContainer 
                 key={friend.id}
                 friend={friend} 
               />

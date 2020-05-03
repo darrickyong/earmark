@@ -20,6 +20,8 @@
   justify-content: space-between;
   font-size: 12px;
   cursor: pointer;
+  margin-right: 5px;
+  
 }
 
 .friend-add:hover {
@@ -28,4 +30,36 @@
 
 .friend-plus {
   margin-right: 5px;
+}
+
+.friend-list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.friend-list-item:hover {
+  background-color: #eee;
+}
+
+.friend-list-name {
+  display: flex;
+  font-size: 14px;
+  color: #999;
+}
+
+.friend-list-user {
+  margin-right: 8px;
+}
+
+.friend-list-delete {
+  font-size: 14px;
+  color: #ccc;
+  margin-right: 12px;
+}
+
+.friend-list-delete:hover {
+  color: red;
+
 }
