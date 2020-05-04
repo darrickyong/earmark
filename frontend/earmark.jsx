@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Root from "./components/root";
-import { fetchPayments, createPayment, deletePayment } from "./actions/payment_actions";
+import { fetchTransactions, createTransaction, deleteTransaction } from "./actions/transaction_actions";
 import configureStore from "./store/store";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   
-  window.fetchPayments = fetchPayments;
-  window.createPayment = createPayment;
-  window.deletePayment = deletePayment;
+  window.fetchTransactions = fetchTransactions;
+  window.createTransaction = createTransaction;
+  window.deleteTransaction = deleteTransaction;
   //END OF TESTING
   
   ReactDOM.render(<Root store={store}/>, root);

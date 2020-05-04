@@ -16,7 +16,7 @@ User.create(name: "JSON Wong", password: "123456", email: "jsonwong@earmark.com"
 User.create(name: "Poofey Yong", password: "123456", email: "poofeyyong@earmark.com")
 
 Expense.create(name: "One dinner", amount: 5442, owner_id: 1, date: "2020-04-25")
-Expense.create(name: "Two dinner", amount: 2023, owner_id: 1, date: "2020-04-18")
+Expense.create(name: "Two dinner", amount: 2022, owner_id: 1, date: "2020-04-18")
 Expense.create(name: "Three dinner", amount: 3099, owner_id: 1, date: "2020-04-08")
 Expense.create(name: "Four dinner", amount: 4018, owner_id: 1, date: "2020-04-01")
 Expense.create(name: "Five dinner", amount: 5090, owner_id: 1, date: "2020-04-20")
@@ -25,12 +25,13 @@ Expense.create(name: "Not the demo's expense", amount: 1234, owner_id: 2, date: 
 Expense.create(name: "Not the demo's expense", amount: 98760, owner_id: 2, date: "2019-04-29")
 Expense.create(name: "Not the demo's expense", amount: 9420, owner_id: 1, date: "2018-04-29")
 
-Transaction.create(amount: 500, payer_id: 2, expense_id: 1)
-Transaction.create(amount: 1000, payer_id: 2, expense_id: 2)
-Transaction.create(amount: 1500, payer_id: 3, expense_id: 3)
-Transaction.create(amount: 2000, payer_id: 1, expense_id: 6)
-Transaction.create(amount: 2500, payer_id: 1, expense_id: 7)
-Transaction.create(amount: 1500, payer_id: 1, expense_id: 8)
+Transaction.create(amount: 2721, payer_id: 2, expense_id: 1)
+Transaction.create(amount: 1011, payer_id: 2, expense_id: 2)
+Transaction.create(amount: 1550, payer_id: 3, expense_id: 3)
+Transaction.create(amount: 1849, payer_id: 1, expense_id: 6)
+Transaction.create(amount: 617, payer_id: 1, expense_id: 7)
+Transaction.create(amount: 32920, payer_id: 1, expense_id: 8)
+Transaction.create(amount: 32920, payer_id: 3, expense_id: 8)
 
 Friendship.create(user_id: 1, friend_id: 2)
 Friendship.create(user_id: 1, friend_id: 3)

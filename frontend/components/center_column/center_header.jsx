@@ -12,6 +12,9 @@ class CenterHeader extends React.Component {
       case "/expenses":
         headerName = "All expenses";
         break;
+      case "/dashboard":
+        headerName = "Dashboard";
+        break;
       default:
         break;
     }

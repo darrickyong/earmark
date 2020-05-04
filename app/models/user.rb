@@ -59,6 +59,10 @@ class User < ApplicationRecord
     through: :expenses,
     source: :transactions
 
+  has_many :related_transactions,
+    through: :owed_expenses,
+    source: :transactions
+
   attr_reader :password
   
   def self.find_by_credentials(email, password)

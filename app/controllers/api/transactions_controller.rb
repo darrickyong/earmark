@@ -1,9 +1,6 @@
 class Api::TransactionsController < ApplicationController
   def index
-    @transactions = current_user.transactions + current_user.owed_transactions
-  end
-
-  def show
+    @transactions = current_user.owned_transactions + current_user.related_transactions
   end
 
   def create
@@ -17,14 +14,13 @@ class Api::TransactionsController < ApplicationController
 
   def update
     @transaction = Transaction.find_by(id: params[:id])
-    if @transaction.expense.owner_id == current_user.id 
 
-    end
   end
   
   def destroy
     @transaction = Transaction.find_by(id: params[:id])
-
+    @transaction.delete
+    render json: { id: @transaction.id }
   end
 
   private

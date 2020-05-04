@@ -1,0 +1,1 @@
+json.partial! "/api/trnasactions/transaction", transaction: @transaction
