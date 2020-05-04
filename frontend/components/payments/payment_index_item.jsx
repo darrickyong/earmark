@@ -8,7 +8,7 @@ class PaymentIndexItem extends React.Component {
 
   handleDelete(e) {
     const { currentUser, payment } = this.props;
-    if (currentUser.id === payment.payee_id) {
+    if (currentUser.id === payment.payer_id) {
       this.props.deletePayment(payment.id);
     } else {
       window.alert("You are not the creator of this payment.");
@@ -37,6 +37,8 @@ class PaymentIndexItem extends React.Component {
     let payer;
     let payee;
 
+    // payment= {amount: 100, payee_id: 1, payer_id: 2}
+
     if (payment.payee_id === currentUser.id) {
       payee = currentUser;
     } else {
@@ -48,6 +50,8 @@ class PaymentIndexItem extends React.Component {
     } else {
       payer = friends[payment.payer_id];
     }
+    
+    if (!payee || !payer) return null;
 
     return (
       <div>
