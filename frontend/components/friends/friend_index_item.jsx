@@ -6,7 +6,7 @@ import { faUser, faUserMinus } from '@fortawesome/free-solid-svg-icons';
 class FriendIndexItem extends React.Component {
   
   render() {
-    const { friend } = this.props;
+    const { friend, deleteFriendship } = this.props;
     return (
       <div className="friend-list-item">
         <div className="friend-list-name">
@@ -16,7 +16,7 @@ class FriendIndexItem extends React.Component {
           {friend.name}
         </div>
         <div 
-          onClick={() => this.props.deleteFriendship(this.props.friend.id)}
+          onClick={() => deleteFriendship(friend.id)}
           className="friend-list-delete"
         >
           <FontAwesomeIcon icon={faUserMinus} />

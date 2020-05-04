@@ -1,1 +1,1 @@
-json.extract! friendship, :id, :name, :email
+json.extract! friendship, :id, :user_id, :friend_id

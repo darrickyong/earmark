@@ -1,6 +1,6 @@
 class Api::FriendshipsController < ApplicationController
   def index
-    @friendships = current_user.friends + current_user.other_friends
+    @friendships = current_user.friendships + current_user.other_friendships
   end
 
   def create

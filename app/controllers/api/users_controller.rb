@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = (current_user.friends + current_user.other_friends).push(current_user)
   end
   
   def show
