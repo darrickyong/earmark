@@ -7,7 +7,6 @@ class PaymentIndex extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchFriendships();
     this.props.fetchPayments();
   }
   
