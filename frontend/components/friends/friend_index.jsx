@@ -11,7 +11,6 @@ class FriendIndex extends React.Component {
   
   render() {
     const { friends, deleteFriendship } = this.props;
-    // debugger
     return (
       <div className="friend-list">
         <div className="friend-index-header">

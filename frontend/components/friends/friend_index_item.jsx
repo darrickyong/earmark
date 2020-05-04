@@ -16,7 +16,7 @@ class FriendIndexItem extends React.Component {
           {friend.name}
         </div>
         <div 
-          onClick={() => deleteFriendship(friend.id)}
+          onClick={() => deleteFriendship(friend.friendship_id)}
           className="friend-list-delete"
         >
           <FontAwesomeIcon icon={faUserMinus} />

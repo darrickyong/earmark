@@ -21,12 +21,7 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    @user = User.find_by(id: params[:id])
-    @friendship = Friendship.find_by(user_id: current_user.id, friend_id: @user.id)
-    if @friendship == nil
-      @friendship = Friendship.find_by(user_id: @user.id, friend_id: current_user.id)
-    end
-    
+    @friendship = Friendship.find_by(id: params[:id])
     @friendship.delete
     render json: { id: @friendship.id }
   end
