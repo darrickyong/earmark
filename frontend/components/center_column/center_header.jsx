@@ -1,12 +1,26 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class CenterHeader extends React.Component {
   render() {
+    let headerName;
+    
+    switch (this.props.location.pathname) {
+      case "/payments":
+        headerName = "Payments";
+        break;
+      case "/expenses":
+        headerName = "All expenses";
+        break;
+      default:
+        break;
+    }
+
     return (
       <div className="center-column-header">
         <div className="center-header">
           <h1 className="center-header-name">
-            All expenses
+            {headerName}
           </h1>
           <div className="expense-header-buttons">
             <button
@@ -25,4 +39,4 @@ class CenterHeader extends React.Component {
   }
 }
 
-export default CenterHeader;
+export default withRouter(CenterHeader);

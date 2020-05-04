@@ -19,6 +19,7 @@ class CenterColumn extends React.Component {
             <Route exact path="/dashboard" component={DashboardContainer} />
             <Route exact path="/expenses" component={ExpenseIndexContainer} />
             <Route exact path="/payments" component={PaymentIndexContainer} />
+            <Route render={() => <Redirect to={{ pathname: "/" }} />} />
           </Switch>
         </div>
 
