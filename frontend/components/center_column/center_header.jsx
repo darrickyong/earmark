@@ -30,6 +30,7 @@ class CenterHeader extends React.Component {
 
             <button
               className="pay-button"
+              onClick={() => this.props.openModal({ "createpayment": -1 })}
             >Settle Up</button>
 
           </div>

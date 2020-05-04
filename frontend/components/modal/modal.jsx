@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import CreateExpenseFormContainer from "../expenses/create_expense_form_container";
 import UpdateExpenseFormContainer from "../expenses/update_expense_form_container";
 import FriendFormContainer from "../friends/friend_form_container";
-
+import CreatePaymentFormContainer from "../payments/create_payment_form_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -20,6 +20,9 @@ function Modal({ modal, closeModal }) {
       break;
     case "friend":
       component = <FriendFormContainer />;
+      break;
+    case "createpayment":
+      component = <CreatePaymentFormContainer />;
       break;
     default:
       return null;
