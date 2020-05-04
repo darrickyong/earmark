@@ -76,5 +76,25 @@
 .right-sidebar-container {
   box-sizing: border-box;
   min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
 
+.right-sidebar-total {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  color:#999;
+}
+
+.right-sidebar-summary {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #5bc5a7;
+}
+
+.right-sidebar-summary > span {
+  font-size: 24px;
+  font-weight: 500;
 }
