@@ -23,7 +23,7 @@ class ExpenseIndexItem extends React.Component {
     if (currentUser.id === expense.owner_id) {
       this.props.deleteExpense(expense.id);
     } else {
-      window.alert("You are not the creator of this expense");
+      window.alert("You are not the creator of this expense.");
     }
   }
 
@@ -49,9 +49,7 @@ class ExpenseIndexItem extends React.Component {
 
     return (
       <div>
-        <div 
-          className="expense-index-item"
-        >
+        <div className="expense-index-item">
           <div
             className="expense-summary" 
             onClick={this.handleShow}

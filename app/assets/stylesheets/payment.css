@@ -1,0 +1,116 @@
+.payment-index-item {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  height: 40px;
+  font-size: 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.payment-index-item:hover {
+  background: lightgray;
+}
+
+.payment-summary {
+  display: flex;
+  background: #ffffff;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+}
+
+.payment-summary:hover {
+  background: lightgray;
+}
+
+.payment-index-main {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 100%;
+  margin-left: 10px;
+}
+
+.payment-index-date {
+  margin-right: 10px;
+}
+
+.payment-index-month {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+.payment-index-day {
+  font-size: 20px;
+  color: #999;
+}
+
+.payment-index-category {
+  width: 19px;
+  height: 19px;
+  margin-right: 10px;
+}
+
+.payment-index-transfer {
+  font-size: 12px;
+  color: #333333;
+}
+
+.payment-index-cost {
+  text-align: right;
+  width: 80px;
+  margin-left: 70px;
+  font-size: 12px;
+  color: #aaa;
+  padding: 4px;
+}
+
+.payment-index-you {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  text-align: left;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.payment-index-positive {
+  width: 70px;
+  font-weight: 500;
+  font-size: 16px;
+  color: #5bc5a7;
+}
+
+.payment-index-negative {
+  width: 70px;
+  font-weight: 500;
+  font-size: 16px;
+  color:#ff652f;
+}
+
+.payment-summary:hover .payment-x {
+  display: flex;
+}
+
+.payment-delete {
+  box-sizing: border-box;
+  display: flex;
+  text-align: center;
+  color: #c00;
+  font-weight: bold;
+  font-size: 20px;
+  min-width: 12px;
+  margin-left: 40px;
+  margin-right: 10px;
+  height: 26px;
+}
+
+.payment-x {
+  display: none;
+}
+
+.payment-delete:hover {
+  border-bottom: 2px solid #c00;
+}
