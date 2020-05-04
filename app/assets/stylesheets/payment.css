@@ -7,6 +7,16 @@
   border-bottom: 1px solid #eee;
 }
 
+.payment-month-divider {
+  border-top: 1px solid #f6f6f6;
+  border-bottom: 1px solid #ddd;
+  background: #eee;
+  color: #666;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
 .payment-index-item:hover {
   background: lightgray;
 }
