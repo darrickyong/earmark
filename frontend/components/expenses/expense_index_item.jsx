@@ -42,7 +42,7 @@ class ExpenseIndexItem extends React.Component {
       "11": "Nov",
       "12": "Dec"
     }
-    const { expense } = this.props;
+    const { expense, currentUser } = this.props;
     const month = months[expense.date.slice(5, 7)];
     const day = expense.date.slice(8, 10);
     const year = expense.date.slice(0, 4);
@@ -79,7 +79,9 @@ class ExpenseIndexItem extends React.Component {
             </div>
 
             <div className="expense-index-cost">
-              you paid
+              {expense.owner_id === currentUser.id ? (
+                `you paid`
+              ): `${expense.owner.split(" ")[0]} paid`}
               <br/>
               <span className="expense-index-amount">
                 ${(expense.amount / 100).toFixed(2)}
@@ -89,10 +91,12 @@ class ExpenseIndexItem extends React.Component {
             <div className="expense-index-you">
               
               <div className="expense-index-else">
-                you lent
+                {expense.owner_id === currentUser.id ? (
+                  `you lent`
+                ) : (`${expense.owner.split(" ")[0]} lent you`)}
                 <br/>
                 <span className="expense-index-lent">
-                  $1.00000
+                  $1.00 place
                 </span>
               </div>
 
