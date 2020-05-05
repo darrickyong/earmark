@@ -9,15 +9,12 @@ class PaymentForm extends React.Component {
   }
   
   componentDidMount() {
-    this.setState({ payee_id: this.props.friends[0].id })
+    this.setState({ payee_id: this.props.friends[0].friendUserId })
   }
-
-  componentWillUnmount(){ 
-
-  } 
 
   handleChange(field) {
     return (e) => {
+      debugger
       this.setState({ [field]: e.target.value })
     }
   }
@@ -52,7 +49,7 @@ class PaymentForm extends React.Component {
         <select value={this.state.payee_id} onChange={this.handleChange("payee_id")}>
           {friends.map( friend => {
             return (
-              <option key={friend.id} value={friend.id}>{friend.name}</option>
+              <option key={friend.friendUserId} value={friend.friendUserId}>{friend.name}</option>
             )
           })}
         </select>
