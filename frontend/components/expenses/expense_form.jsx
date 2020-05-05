@@ -105,7 +105,7 @@ class ExpenseForm extends React.Component {
             />
 
             <textarea
-              className="expense-form-comments" 
+              className="expense-form-comment" 
               placeholder="Enter comments here"
             />
           </div>

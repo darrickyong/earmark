@@ -21,9 +21,7 @@ class ExpenseShow extends React.Component {
             <button
               className="expense-update-button"
               onClick={() => this.props.openModal({ "update": expense.id })}
-            >
-              Update expense
-            </button>
+            >Update expense</button>
           </div>
         </div>
 
@@ -49,7 +47,12 @@ class ExpenseShow extends React.Component {
             })}
           </div>
           <div className="expense-show-right">
-            <textarea placeholder="Add a comment"/>
+            <textarea 
+              className="expense-show-comment" 
+              placeholder="Add a comment"/>
+            <button
+              className="expense-show-post"
+            >Post</button>  
           </div>
         </div>
 
