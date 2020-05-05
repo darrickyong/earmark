@@ -9,19 +9,26 @@ class ExpenseShow extends React.Component {
     const { expense, transactions } = this.props;
     return (
       <div className="expense-show">
-        <table>
+        <table className="expense-show-table">
           <tbody>
             <tr>
-              <td>
-                {expense.name}
-                {(expense.amount / 100).toFixed(2)}
-
-                <button
-                  className="expense-update-button"
-                  onClick={() => this.props.openModal({ "update": expense.id })}
-                >
-                  Update expense
-                </button>
+              <td className="expense-show-header">
+                <img className="expense-show-img" src={window.earmarkCategory}/>
+                
+                <div>
+                  <h2>
+                    {expense.name}
+                  </h2>
+                  <div>
+                    ${(expense.amount / 100).toFixed(2)}
+                  </div>
+                  <button
+                    className="expense-update-button"
+                    onClick={() => this.props.openModal({ "update": expense.id })}
+                  >
+                    Update expense
+                  </button>
+                </div>
               </td>
             </tr>
 

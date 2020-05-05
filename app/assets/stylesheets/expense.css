@@ -318,6 +318,26 @@
   padding: 15px;
 }
 
+.expense-show-table {
+  max-width: 100%;
+}
+
+.expense-show-header {
+  display: flex;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #ddd
+}
+
+.expense-show-header > h2 {
+
+}
+
+.expense-show-img {
+  width: 85px;
+  height: 85px;
+  margin-right: 10px;
+}
+
 .expense-update-button {
   background: #ff652f;
   color: #fff;
