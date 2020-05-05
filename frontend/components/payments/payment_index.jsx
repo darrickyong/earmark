@@ -7,8 +7,7 @@ class PaymentIndex extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchUsers()
-    .then(() => this.props.fetchPayments());
+    this.props.fetchPayments();
   }
   
   render() {

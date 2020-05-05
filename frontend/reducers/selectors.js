@@ -25,7 +25,6 @@ export const selectAllPayments = (state) => {
     return payments;
   } else {
     let payment;
-    // debugger
     Object.values(state.entities.payments).forEach( payment => {
       const revisedPayment = Object.assign({}, payment, 
         { "payeeName": state.entities.users[payment.payee_id].name },

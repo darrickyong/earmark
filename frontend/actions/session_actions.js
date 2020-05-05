@@ -31,9 +31,6 @@ export const removeErrors = () => ({
   type: REMOVE_SESSION_ERRORS
 })
 
-export const fetchUsers = () => dispatch => SessionApiUtil.fetchUsers()
-  .then( users => dispatch(receiveUsers(users)));
-
 export const signup = user => dispatch => SessionApiUtil.signup(user)
   .then( user => dispatch(receiveCurrentUser(user)), 
     errors => dispatch(receiveSessionErrors(errors.responseJSON)));

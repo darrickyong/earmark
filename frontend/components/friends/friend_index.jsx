@@ -1,16 +1,15 @@
 import React from "react";
-import FriendIndexItem from "./friend_index_item";
+import FriendshipIndexItem from "./friend_index_item";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 class FriendIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchUsers()
-      .then( () => this.props.fetchFriendships());
+    this.props.fetchFriendships();
   }
   
   render() {
-    const { friends, deleteFriendship } = this.props;
+    const { friendships, currentUser, deleteFriendship } = this.props;
     return (
       <div className="friend-list">
         <div className="friend-index-header">
@@ -29,13 +28,15 @@ class FriendIndex extends React.Component {
           </div>
         </div>
         <div>
-          {friends.map( friend => {
+          {friendships.map( friendship => {
+            
+
             return (
-              <FriendIndexItem
-                key={friend.id}
-                friend={friend} 
+              <FriendshipIndexItem
+                key={friendship.id}
+                friendship={friendship} 
+                currentUser={currentUser}
                 deleteFriendship={deleteFriendship}
-                fetchUsers={fetchUsers}
               />
             )
           })}
