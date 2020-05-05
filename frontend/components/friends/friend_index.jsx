@@ -35,6 +35,7 @@ class FriendIndex extends React.Component {
                 key={friend.id}
                 friend={friend} 
                 deleteFriendship={deleteFriendship}
+                fetchUsers={fetchUsers}
               />
             )
           })}

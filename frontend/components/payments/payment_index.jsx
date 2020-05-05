@@ -1,5 +1,5 @@
 import React from "react";
-import PaymentIndexItemContainer from "./payment_index_item_container";
+import PaymentIndexItem from "./payment_index_item";
 
 class PaymentIndex extends React.Component {
   constructor(props) {
@@ -7,11 +7,12 @@ class PaymentIndex extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchPayments();
+    this.props.fetchUsers()
+    .then(() => this.props.fetchPayments());
   }
   
   render() {
-    const { payments } = this.props;
+    const { payments, currentUser, deletePayment } = this.props;
     payments.sort((a, b) => (a.date > b.date) ? 1 : -1).reverse();
 
     const months = {
@@ -50,9 +51,11 @@ class PaymentIndex extends React.Component {
                   {divider}
                 </div>
               ) : ""}
-              <PaymentIndexItemContainer 
+              <PaymentIndexItem
                 key={payment.id}
-                payment={payment} />
+                payment={payment}
+                currentUser={currentUser}
+                deletePayment={deletePayment} />
             </div>
           )
         })}

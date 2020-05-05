@@ -30,28 +30,12 @@ class PaymentIndexItem extends React.Component {
       "11": "Nov",
       "12": "Dec"
     }
-    const { payment, friends, currentUser } = this.props;
+    const { payment, currentUser } = this.props;
     const month = months[payment.date.slice(5, 7)];
     const day = payment.date.slice(8, 10);
     const year = payment.date.slice(0, 4);
-    let payer;
-    let payee;
+    if (!payment) return null;
 
-    // payment= {amount: 100, payee_id: 1, payer_id: 2}
-
-    if (payment.payee_id === currentUser.id) {
-      payee = currentUser;
-    } else {
-      payee = friends[payment.payee_id];
-    }
-
-    if (payment.payer_id === currentUser.id) {
-      payer = currentUser;
-    } else {
-      payer = friends[payment.payer_id];
-    }
-    
-    if (!payee || !payer) return null;
 
     return (
       <div>
@@ -76,7 +60,7 @@ class PaymentIndexItem extends React.Component {
               </div>
 
               <div className="payment-index-transfer">
-                {`${payer.name} paid ${payee.name}`}
+                {`${payment.payer} paid ${payment.payee}`}
               </div>
 
             </div>

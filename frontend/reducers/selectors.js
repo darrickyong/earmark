@@ -18,3 +18,21 @@ export const selectAllFriends = (state) => {
 
   }
 }
+
+export const selectAllPayments = (state) => {
+  const payments = [];
+  if (Object.values(state.entities.payments).length === 0) {
+    return payments;
+  } else {
+    let payment;
+    // debugger
+    Object.values(state.entities.payments).forEach( payment => {
+      const revisedPayment = Object.assign({}, payment, 
+        { "payeeName": state.entities.users[payment.payee_id].name },
+        { "payerName": state.entities.users[payment.payer_id].name });
+
+      payments.push(revisedPayment);
+    })
+    return payments;
+  }
+}

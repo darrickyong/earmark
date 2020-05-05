@@ -19,6 +19,13 @@ class Api::PaymentsController < ApplicationController
   end
 
   def destroy
+    @payment = Payment.find_by(id: params[:id])
+    if @payment.payer_id == current_user.id 
+      @payment.delete
+      render json: { id: @payment.id }
+    else
+      render json: ["You did not create this payment."]
+    end
   end
   
   private
