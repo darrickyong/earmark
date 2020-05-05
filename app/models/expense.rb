@@ -14,7 +14,7 @@
 class Expense < ApplicationRecord
   validates :name, :amount, :owner_id, :date, presence: true
 
-  # after_save method... :custom_method_name
+  # after_save :create_transactions
 
   belongs_to :owner,
     foreign_key: :owner_id,
@@ -28,5 +28,10 @@ class Expense < ApplicationRecord
     through: :transactions,
     source: :payer
 
+
+  # def create_transactions
+  #   self would be the instance of the expense that was saved
+  #   use instance variable of params with friend ids
+  # end
   
 end
