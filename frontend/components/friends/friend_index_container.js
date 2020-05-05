@@ -1,5 +1,4 @@
 import { connect } from "react-redux";
-import { selectAllFriends } from "../../reducers/selectors";
 import { fetchFriendships, deleteFriendship } from "../../actions/friendship_actions";
 import { openModal } from "../../actions/modal_actions";
 import FriendIndex from "./friend_index";
