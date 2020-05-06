@@ -15,17 +15,23 @@ class Expense < ApplicationRecord
   validates :name, :amount, :owner_id, :date, presence: true
 
   attr_reader :split
+  
+  after_create :create_transactions
 
-  after_save :create_transactions
+  after_update :delete_transactions
+  after_update :create_transactions
+  
+  
   belongs_to :owner,
     foreign_key: :owner_id,
     class_name: 'User'
 
   has_many :transactions,
     foreign_key: :expense_id,
-    class_name: 'Transaction'
+    class_name: 'Transaction',
+    dependent: :destroy
 
-  has_many :sharers,
+  has_many :payers,
     through: :transactions,
     source: :payer
 
@@ -40,6 +46,12 @@ class Expense < ApplicationRecord
       friend = friend_id.to_i
       transaction = Transaction.new(amount: amount, payer_id: friend, expense_id: self.id)
       transaction.save!
+    end
+  end
+
+  def delete_transactions()   
+    self.transactions.each do |transaction|
+      transaction.delete
     end
   end
   

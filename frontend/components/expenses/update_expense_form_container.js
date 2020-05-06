@@ -6,9 +6,12 @@ import { fetchExpense, updateExpense } from "../../actions/expense_actions";
 import { closeModal } from "../../actions/modal_actions";
 
 class UpdateExpenseForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   render() {
-    const { action, formType, expense, errors, closeModal } = this.props;
+    const { action, friends, formType, expense, errors, closeModal } = this.props;
     if (!expense) return null;
     return ( 
       <ExpenseForm 
@@ -25,8 +28,7 @@ class UpdateExpenseForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let expense = state.entities.expenses[Object.values(state.ui.modal)[0]];
-  
+  const expense = state.entities.expenses[Object.values(state.ui.modal)[0]];
   return ({
     errors: state.errors.session,
     friends: Object.values(state.entities.friendships),

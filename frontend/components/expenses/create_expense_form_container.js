@@ -8,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
   errors: state.errors.session,
   friends: Object.values(state.entities.friendships),
   currentUser: state.entities.users[state.session.id],
-  expense: { name: "", amount: "", date: "" },
+  expense: { name: "", amount: "", date: "", split: [] },
   formType: "Add an expense"
 })
 

@@ -5,8 +5,7 @@ class ExpenseForm extends React.Component {
     super(props);
     this.state = Object.assign({}, 
       this.props.expense, 
-      { realAmount: this.props.expense.amount / 100 },
-      { split: [] },
+      { realAmount: this.props.expense.amount / 100 }
     );
   
     // this.state.amount = this.state.amount / 100;
@@ -61,7 +60,7 @@ class ExpenseForm extends React.Component {
   }
   
   render() {
-    const { name, realAmount, date } = this.state;
+    const { name, realAmount, date, split } = this.state;
     const { friends } = this.props;
 
     return (
@@ -103,7 +102,7 @@ class ExpenseForm extends React.Component {
                   className="expense-form-amount" 
                   placeholder="0.00"
                   step=".01" 
-                  value={realAmount}
+                  value={realAmount.toFixed(2)}
                   onChange={this.handleChange("realAmount")}
                 />
               </div>
@@ -115,13 +114,18 @@ class ExpenseForm extends React.Component {
               <div>
                 Select which friends to split your expense with:
               </div>
-              <select 
+              <select
+                multiple 
+                defaultValue={Object.keys(split)} 
                 className="expense-form-select"
-                multiple onChange={this.handleSelect}
+                onChange={this.handleSelect}
               >
                 {friends.map( friendship => {
                   return (
-                    <option key={friendship.id} value={friendship.friendUserId}>{friendship.name}</option>
+                    <option
+                      key={friendship.id} 
+                      value={friendship.friendUserId}
+                    >{friendship.name}</option>
                   )
                 })}
               </select>
