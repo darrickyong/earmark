@@ -18,6 +18,7 @@ class UpdateExpenseForm extends React.Component {
         expense={expense}
         removeErrors={removeErrors}
         closeModal={closeModal}
+        friends={friends}
       />
     );
   }
@@ -28,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
   
   return ({
     errors: state.errors.session,
+    friends: Object.values(state.entities.friendships),
     currentUser: state.entities.users[state.session.id],
     expense,
     formType: "Update expense"

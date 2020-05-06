@@ -3,10 +3,15 @@ import React from "react";
 class ExpenseForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = Object.assign({}, this.props.expense, { realAmount: this.props.expense.amount / 100 });
+    this.state = Object.assign({}, 
+      this.props.expense, 
+      { realAmount: this.props.expense.amount / 100 },
+      { split: [] },
+    );
   
     // this.state.amount = this.state.amount / 100;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
   
   componentWillUnmount() {
@@ -27,6 +32,17 @@ class ExpenseForm extends React.Component {
       .then(this.props.closeModal)
   }
 
+  handleSelect(e) {
+    const options = e.target.options;
+    const split = [];
+    for(let i = 0; i < options.length; i++) {
+      if (options[i].selected) {
+        split.push(options[i].value);
+      }
+    }
+    this.setState({ split });
+  }
+
   renderErrors() {
     return (
       <ul
@@ -45,9 +61,9 @@ class ExpenseForm extends React.Component {
   }
   
   render() {
-  
     const { name, realAmount, date } = this.state;
-    
+    const { friends } = this.props;
+
     return (
       <div className="expense-form">
         <h2 className="expense-form-header">
@@ -94,21 +110,39 @@ class ExpenseForm extends React.Component {
             </div>
           </div>
 
-          <div
-            className="expense-form-others" 
-          >
-            <input 
-              type="date"
-              className="expense-form-date" 
-              value={date}
-              onChange={this.handleChange("date")}
-            />
+          <div className="expense-form-others">
+            <div className="expense-form-left">
+              <div>
+                Select which friends to split your expense with:
+              </div>
+              <select 
+                className="expense-form-select"
+                multiple onChange={this.handleSelect}
+              >
+                {friends.map( friendship => {
+                  return (
+                    <option key={friendship.id} value={friendship.friendUserId}>{friendship.name}</option>
+                  )
+                })}
+              </select>
+            </div>
+            
+            <div className="expense-form-right">
+              <input 
+                type="date"
+                className="expense-form-date" 
+                value={date}
+                onChange={this.handleChange("date")}
+              />
 
-            <textarea
-              className="expense-form-comment" 
-              placeholder="Enter comments here"
-            />
+              <textarea
+                className="expense-form-comment" 
+                placeholder="Enter comments here"
+              />
+            </div>
+
           </div>
+            
         </div>
 
         {this.renderErrors() ? this.renderErrors() : ""}

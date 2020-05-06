@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseShowContainer from "./expense_show_container";
-
+import { CSSTransition } from "react-transition-group";
 
 class ExpenseIndexItem extends React.Component {
   constructor(props) {
@@ -134,10 +134,18 @@ class ExpenseIndexItem extends React.Component {
 
         </div>
 
-        {this.state.revealShowItem ? (
-          <ExpenseShowContainer expense={expense}/>
-        ) : ""
-        }
+{/* 
+        <CSSTransition
+          in={this.state.revealShowItem}
+          timeout={350}
+          classNames="testing"
+          unmountOnExit
+        > */}
+          {this.state.revealShowItem ? (
+            <ExpenseShowContainer expense={expense}/>
+          ) : ""
+          }
+        {/* </CSSTransition> */}
 
       </div>
     )
