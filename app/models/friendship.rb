@@ -20,4 +20,17 @@ class Friendship < ApplicationRecord
   belongs_to :friend,
     foreign_key: :friend_id,
     class_name: 'User'
+
+  has_many :friend_transactions,
+    through: :friend,
+    source: :transactions
+
+  has_many :user_transactions,
+    through: :user,
+    source: :transactions
+
+  # def amount
+  #   Friendship.joins()
+  # end
+  
 end

@@ -7,3 +7,5 @@ else
   json.set! :name, friendship.user.name
   json.set! :friendUserId, friendship.user.id
 end
+
+# json.set! :amount, friendship.amount

@@ -14,8 +14,9 @@
 class Expense < ApplicationRecord
   validates :name, :amount, :owner_id, :date, presence: true
 
-  # after_save :create_transactions
+  attr_reader :split
 
+  after_save :create_transactions
   belongs_to :owner,
     foreign_key: :owner_id,
     class_name: 'User'
@@ -28,10 +29,17 @@ class Expense < ApplicationRecord
     through: :transactions,
     source: :payer
 
-
-  # def create_transactions
-  #   self would be the instance of the expense that was saved
-  #   use instance variable of params with friend ids
-  # end
+  def split=(split)
+    @split = split
+  end
+  
+  def create_transactions()
+    amount = self.amount / (split.length + 1)
+    split.each do |friend_id|
+      friend = friend_id.to_i
+      transaction = Transaction.new(amount: amount, payer_id: friend, expense_id: self.id)
+      transaction.save!
+    end
+  end
   
 end

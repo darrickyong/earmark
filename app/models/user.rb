@@ -55,7 +55,7 @@ class User < ApplicationRecord
     through: :transactions,
     source: :expense
 
-  has_many :owned_transactions,
+  has_many :owed_transactions,
     through: :expenses,
     source: :transactions
 
@@ -94,6 +94,5 @@ class User < ApplicationRecord
     self.session_token
   end
 
-    
 end
 

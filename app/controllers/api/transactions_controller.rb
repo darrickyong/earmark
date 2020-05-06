@@ -1,6 +1,6 @@
 class Api::TransactionsController < ApplicationController
   def index
-    @transactions = current_user.owned_transactions + current_user.related_transactions
+    @transactions = current_user.owed_transactions + current_user.related_transactions
   end
 
   def create

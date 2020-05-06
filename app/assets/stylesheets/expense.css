@@ -152,6 +152,14 @@
   border-bottom: 2px solid #c00;
 }
 
+/* .expense-show-transition {
+  height: 0px;
+}
+
+.expense-show-transition::after {
+  height: 550px;
+} */
+
 .expense-form {
   box-sizing: border-box;
   width: 350px;

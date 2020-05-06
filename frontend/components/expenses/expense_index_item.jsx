@@ -90,16 +90,6 @@ class ExpenseIndexItem extends React.Component {
             </div>            
             
             <div className="expense-index-you">
-              
-              {/* <div className="expense-index-else">
-                {expense.owner_id === currentUser.id ? (
-                  `you lent`
-                ) : (`${expense.owner.split(" ")[0]} lent you`)}
-                <br/>
-                <span className="expense-index-lent">
-                  $1.00 place
-                </span>
-              </div> */}
 
               {(expense.owner_id === currentUser.id) ? (
                 <div className="expense-index-else">
@@ -134,18 +124,12 @@ class ExpenseIndexItem extends React.Component {
 
         </div>
 
-{/* 
-        <CSSTransition
-          in={this.state.revealShowItem}
-          timeout={350}
-          classNames="testing"
-          unmountOnExit
-        > */}
+        <div className="expense-show-transition">
           {this.state.revealShowItem ? (
             <ExpenseShowContainer expense={expense}/>
-          ) : ""
-          }
-        {/* </CSSTransition> */}
+          ) : ""}
+        </div>
+
 
       </div>
     )
