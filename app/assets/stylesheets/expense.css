@@ -207,7 +207,6 @@
   align-items: center;
   width: 177px;
   border-bottom: 1px dashed #ccc;
-
 }
 
 .expense-form-currency {
@@ -223,7 +222,6 @@
   width: 120px;
   vertical-align: bottom;
   border: none;
-
 }
 
 .expense-form-others {
@@ -237,7 +235,6 @@
   border: none;
   border-bottom: 1px dashed #ccc;
   height: 30px;
-
 }
 
 .expense-form-comment {
@@ -280,7 +277,6 @@
 
 .expense-form-cancel:active {
   background: #d7d7d7;
-
   box-shadow: none;
   top: 1px;
 }

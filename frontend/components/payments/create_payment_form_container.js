@@ -6,7 +6,8 @@ import { closeModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state, ownProps) => ({
   payment: {payee_id: 0, amount: 0, date: ""},
-  friends: Object.values(state.entities.friendships)
+  friends: Object.values(state.entities.friendships),
+  errors: state.errors.session,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -14,7 +14,6 @@ class PaymentForm extends React.Component {
 
   handleChange(field) {
     return (e) => {
-      debugger
       this.setState({ [field]: e.target.value })
     }
   }
@@ -27,10 +26,27 @@ class PaymentForm extends React.Component {
       .then(this.props.closeModal);
   }
 
+  renderErrors() {
+    return (
+      <ul
+        className="payment-errors"
+      >
+        {this.props.errors.map((error, idx) => {
+          return (
+            <li
+              key={idx}>
+              {error}
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+  
   render() {
     const { friends } = this.props;
     return (
-      <div>
+      <div className="payment-form">
         <h2 className="payment-form-header">
           Add a payment
           <div
@@ -38,26 +54,59 @@ class PaymentForm extends React.Component {
             onClick={this.props.closeModal}
           >X</div>
         </h2>
-        <input 
-          type="number" 
-          placeholder="Enter an amount to pay your friend"
-          step="0.01"
-          value={this.state.realAmount} 
-          onChange={this.handleChange("realAmount")}
-        />
-        <input type="date" value={this.state.date} onChange={this.handleChange("date")}/>
-        <select value={this.state.payee_id} onChange={this.handleChange("payee_id")}>
-          {friends.map( friend => {
-            return (
-              <option key={friend.friendUserId} value={friend.friendUserId}>{friend.name}</option>
-            )
-          })}
-        </select>
-        <input 
-          type="submit" 
-          onClick={this.handleSubmit}
-          value="Pay"
-        />
+
+        <div className="payment-form-main">
+          <div>
+            You paid:
+            <select 
+              value={this.state.payee_id} 
+              onChange={this.handleChange("payee_id")}
+              className="payment-form-select"
+            >
+              {friends.map( friend => {
+                return (
+                  <option key={friend.friendUserId} value={friend.friendUserId}>{friend.name}</option>
+                )
+              })}
+            </select>
+          </div>
+          <div className="payment-form-cost">
+            <span className="payment-form-currency">$</span>
+            <input 
+              type="number" 
+              placeholder="0.00"
+              className="payment-form-amount"
+              step="0.01"
+              value={this.state.realAmount} 
+              onChange={this.handleChange("realAmount")}
+            />
+          </div>
+
+          <div>
+            <input 
+              type="date" 
+              value={this.state.date}
+              className="payment-form-date"
+              onChange={this.handleChange("date")}
+            />
+          </div>
+        </div>
+
+        {this.renderErrors() ? this.renderErrors() : ""}
+
+        <div className="expense-form-footer">
+          <button
+            className="expense-form-cancel"
+            onClick={this.props.closeModal}
+          >Cancel</button>
+
+          <input 
+            type="submit" 
+            onClick={this.handleSubmit}
+            className="payment-form-pay"
+            value="Pay"
+          />
+        </div>
 
       </div>
     )

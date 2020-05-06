@@ -6,5 +6,4 @@ if current_user.id == friendship.user_id
 else
   json.set! :name, friendship.user.name
   json.set! :friendUserId, friendship.user.id
-
 end

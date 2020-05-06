@@ -14,7 +14,7 @@ class Api::PaymentsController < ApplicationController
         render json: @payment.errors.full_messages, status: 422
       end
     else
-      render json: ["Amount must be greater than 0"], status: 422
+      render json: ["Amount must be greater than 0."], status: 422
     end
   end
 
