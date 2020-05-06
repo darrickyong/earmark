@@ -34,6 +34,7 @@ class Expense < ApplicationRecord
   end
   
   def create_transactions()
+    return if split.nil?
     amount = self.amount / (split.length + 1)
     split.each do |friend_id|
       friend = friend_id.to_i

@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchExpenses: () => dispatch(fetchExpenses()),
-  fetchTransactions: () => dispatch(fetchTransactions()),
+  // fetchTransactions: () => dispatch(fetchTransactions()),
 })
 
 export default connect(

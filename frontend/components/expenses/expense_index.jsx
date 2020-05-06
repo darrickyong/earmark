@@ -7,8 +7,8 @@ class ExpenseIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchExpenses()
-      .then(this.props.fetchTransactions());
+    this.props.fetchExpenses();
+      // .then(this.props.fetchTransactions());
   }
 
   render() {

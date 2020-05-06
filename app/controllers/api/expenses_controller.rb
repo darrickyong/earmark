@@ -2,6 +2,12 @@ class Api::ExpensesController < ApplicationController
 
   def index
     @expenses = current_user.expenses + current_user.owed_expenses
+    @transactions = []
+    @expenses.each do |expense|
+      expense.transactions.each do |transaction|
+        @transactions.push(transaction)
+      end
+    end
   end
   
   def friends
@@ -9,6 +15,8 @@ class Api::ExpensesController < ApplicationController
 
   def show
     @expense = Expense.find_by(id: params[:id])
+    @transactions = []
+    @expense.transactions.each {|transaction| @transactions.push(transaction)}
   end
 
   def create
@@ -16,6 +24,8 @@ class Api::ExpensesController < ApplicationController
     @expense.owner_id = current_user.id
     if @expense.amount > 0
       if @expense.save
+        @transactions = []
+        @expense.transactions.each {|transaction| @transactions.push(transaction)}
         render :show
       else
         render json: @expense.errors.full_messages, status: 422
@@ -44,9 +54,12 @@ class Api::ExpensesController < ApplicationController
 
   def destroy
     @expense = Expense.find_by(id: params[:id])
+    @transactions = []
+    @expense.transactions.each {|transaction| @transactions.push(transaction)}
+
     if current_user.id == @expense.owner_id
       @expense.delete
-      render json: { id: @expense.id } # maybe change
+      render :show
     else
       render json: ["You are not the creator of this expense"], status: 401
     end
