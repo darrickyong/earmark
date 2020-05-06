@@ -114,11 +114,18 @@
   width: 110px;
 }
 
-.expense-index-lent {
+.expense-index-positive {
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 0.5px;
-  color: rgb(72, 190, 157);
+  color: #5BC5A7;
+}
+
+.expense-index-negative {
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  color: #FF652F
 }
 
 .expense-summary:hover .expense-x {

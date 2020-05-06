@@ -1,6 +1,7 @@
 import React from "react";
 import ExpenseShowContainer from "./expense_show_container";
 
+
 class ExpenseIndexItem extends React.Component {
   constructor(props) {
     super(props);
@@ -90,7 +91,7 @@ class ExpenseIndexItem extends React.Component {
             
             <div className="expense-index-you">
               
-              <div className="expense-index-else">
+              {/* <div className="expense-index-else">
                 {expense.owner_id === currentUser.id ? (
                   `you lent`
                 ) : (`${expense.owner.split(" ")[0]} lent you`)}
@@ -98,7 +99,27 @@ class ExpenseIndexItem extends React.Component {
                 <span className="expense-index-lent">
                   $1.00 place
                 </span>
-              </div>
+              </div> */}
+
+              {(expense.owner_id === currentUser.id) ? (
+                <div className="expense-index-else">
+                  you lent
+                  <br/>
+                  <span className="expense-index-positive">
+                    ${(expense.transAmt/100).toFixed(2)}
+                </span>
+                </div>
+              ):(
+                <div className="expense-index-else">
+                  {expense.owner.split(" ")[0]} lent you
+                  <br />
+                  <span className="expense-index-negative">
+                    ${((expense.amount - expense.transAmt) / 100).toFixed(2)}
+
+
+                </span>
+                  </div>
+              )}    
 
               <div
                 className="expense-delete"
