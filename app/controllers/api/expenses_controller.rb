@@ -1,7 +1,7 @@
 class Api::ExpensesController < ApplicationController
 
   def index
-    @expenses = current_user.expenses + current_user.owed_expenses
+    @expenses = current_user.expenses.includes(:owner, :transactions => [:payer]) + current_user.owed_expenses.includes(:owner, :transactions => [:payer])
     @transactions = []
     @expenses.each do |expense|
       expense.transactions.each do |transaction|
@@ -41,7 +41,7 @@ class Api::ExpensesController < ApplicationController
       if params[:expense][:amount].to_i > 0
         if @expense.update(expense_params)
           #refreshes @expense for non-table values
-          @expense = Expense.find_by(id: @expense.id)
+          @expense = Expense.find_by(id: @expense.id).includes(:transactions)
           @transactions = @expense.transactions
           render :show
         else
