@@ -1,6 +1,4 @@
-import { REMOVE_TRANSACTION } from "../actions/transaction_actions";
 import { RECEIVE_EXPENSES, RECEIVE_EXPENSE, REMOVE_EXPENSE } from "../actions/expense_actions";
-
 
 const transactionsReducer = (oldState = {}, action) => {
   Object.freeze(oldState);

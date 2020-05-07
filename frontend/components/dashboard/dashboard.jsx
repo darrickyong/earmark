@@ -30,7 +30,6 @@ class Dashboard extends React.Component {
     owed = owed / 100;
     owe = owe / 100;
     const total = owed - owe
-    // debugger
     return (
       <div className="dashboard">
         <div className="dashboard-totals">

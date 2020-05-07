@@ -49,7 +49,7 @@ class ExpenseShow extends React.Component {
           <div className="expense-show-right">
             <textarea 
               className="expense-show-comment" 
-              placeholder="Add a comment"/>
+              placeholder="Comment features coming soon..."/>
             <button
               className="expense-show-post"
             >Post</button>  

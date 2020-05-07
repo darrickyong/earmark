@@ -24,11 +24,19 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    let value = Number(this.state.realAmount).toFixed(2) * 100;
-    let revisedExpense = Object.assign({}, this.state, { amount: value })
-    this.props.action(revisedExpense)
-      .then(() => this.props.fetchFriendships())
-      .then(() => this.props.closeModal())
+    if (this.state.split.length === 0) {
+      window.alert("You must select at least one friend to split your bill with.")
+    } else {
+      let value = Number(this.state.realAmount).toFixed(2) * 100;
+      let revisedExpense = Object.assign({}, this.state, { amount: value });
+      if (revisedExpense.split === this.props.expense.split) {
+        revisedExpense.split = Object.keys(revisedExpense.split);
+      }
+  
+      this.props.action(revisedExpense)
+        .then(() => this.props.fetchFriendships())
+        .then(() => this.props.closeModal())
+    }
   }
 
   handleSelect(e) {
@@ -141,7 +149,7 @@ class ExpenseForm extends React.Component {
 
               <textarea
                 className="expense-form-comment" 
-                placeholder="Enter comments here"
+                placeholder="Comment features coming soon..."
               />
             </div>
 
@@ -169,5 +177,3 @@ class ExpenseForm extends React.Component {
 }
 
 export default ExpenseForm;
-
-//custom in model
