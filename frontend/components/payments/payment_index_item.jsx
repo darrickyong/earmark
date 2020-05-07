@@ -9,7 +9,8 @@ class PaymentIndexItem extends React.Component {
   handleDelete(e) {
     const { currentUser, payment } = this.props;
     if (currentUser.id === payment.payer_id) {
-      this.props.deletePayment(payment.id);
+      this.props.deletePayment(payment.id)
+        .then(() => this.props.fetchFriendships());
     } else {
       window.alert("You are not the creator of this payment.");
     }

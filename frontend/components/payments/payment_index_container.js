@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import PaymentIndex from "./payment_index";
-import { fetchUsers } from "../../actions/session_actions";
+import { fetchFriendships } from "../../actions/friendship_actions";
 import { fetchPayments, deletePayment } from "../../actions/payment_actions";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,6 +10,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchPayments: () => dispatch(fetchPayments()),
+  fetchFriendships: () => dispatch(fetchFriendships()),
   deletePayment: paymentId => dispatch(deletePayment(paymentId))
 })
 

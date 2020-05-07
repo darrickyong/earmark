@@ -11,7 +11,7 @@ class PaymentIndex extends React.Component {
   }
   
   render() {
-    const { payments, currentUser, deletePayment } = this.props;
+    const { payments, currentUser, fetchFriendships, deletePayment } = this.props;
     payments.sort((a, b) => (a.date > b.date) ? 1 : -1).reverse();
 
     const months = {
@@ -54,6 +54,7 @@ class PaymentIndex extends React.Component {
                 key={payment.id}
                 payment={payment}
                 currentUser={currentUser}
+                fetchFriendships={fetchFriendships}
                 deletePayment={deletePayment} />
             </div>
           )

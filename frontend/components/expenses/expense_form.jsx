@@ -8,7 +8,6 @@ class ExpenseForm extends React.Component {
       { realAmount: this.props.expense.amount / 100 }
     );
   
-    // this.state.amount = this.state.amount / 100;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
   }
@@ -28,7 +27,8 @@ class ExpenseForm extends React.Component {
     let value = Number(this.state.realAmount).toFixed(2) * 100;
     let revisedExpense = Object.assign({}, this.state, { amount: value })
     this.props.action(revisedExpense)
-      .then(this.props.closeModal)
+      .then(() => this.props.fetchFriendships())
+      .then(() => this.props.closeModal())
   }
 
   handleSelect(e) {
@@ -102,7 +102,7 @@ class ExpenseForm extends React.Component {
                   className="expense-form-amount" 
                   placeholder="0.00"
                   step=".01" 
-                  value={realAmount.toFixed(2)}
+                  value={realAmount ? realAmount : ""}
                   onChange={this.handleChange("realAmount")}
                 />
               </div>

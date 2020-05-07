@@ -23,7 +23,8 @@ class PaymentForm extends React.Component {
     let value = Number(this.state.realAmount).toFixed(2) * 100;
     let revisedPayment = Object.assign({}, this.state, { amount: value })    
     this.props.createPayment(revisedPayment)
-      .then(this.props.closeModal);
+      .then(() => this.props.fetchFriendships())
+      .then(() => this.props.closeModal());
   }
 
   renderErrors() {
@@ -71,13 +72,13 @@ class PaymentForm extends React.Component {
             </select>
           </div>
           <div className="payment-form-cost">
-            <span className="payment-form-currency">$</span>
+            <div className="payment-form-currency">$</div>
             <input 
               type="number" 
               placeholder="0.00"
               className="payment-form-amount"
               step="0.01"
-              value={this.state.realAmount} 
+              value={this.state.realAmount ? this.state.realAmount : ""} 
               onChange={this.handleChange("realAmount")}
             />
           </div>

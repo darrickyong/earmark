@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ExpenseForm from "./expense_form";
 import { removeErrors } from "../../actions/session_actions";
 import { fetchExpense, updateExpense } from "../../actions/expense_actions";
+import { fetchFriendships } from "../../actions/friendship_actions";
 import { closeModal } from "../../actions/modal_actions";
 
 class UpdateExpenseForm extends React.Component {
@@ -11,7 +12,7 @@ class UpdateExpenseForm extends React.Component {
   }
 
   render() {
-    const { action, friends, formType, expense, errors, closeModal } = this.props;
+    const { action, friends, fetchFriendships, removeErrors, formType, expense, errors, closeModal } = this.props;
     if (!expense) return null;
     return ( 
       <ExpenseForm 
@@ -22,6 +23,7 @@ class UpdateExpenseForm extends React.Component {
         removeErrors={removeErrors}
         closeModal={closeModal}
         friends={friends}
+        fetchFriendships={fetchFriendships}
       />
     );
   }
@@ -40,6 +42,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
   action: expense => dispatch(updateExpense(expense)),
+  fetchFriendships: () => dispatch(fetchFriendships()),
   fetchExpense: expenseId => dispatch(fetchExpense(expenseId)),
   removeErrors: () => dispatch(removeErrors()),
   closeModal: () => dispatch(closeModal())
