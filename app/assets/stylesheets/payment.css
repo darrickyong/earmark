@@ -1,7 +1,6 @@
 .payment-index-item {
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
   height: 40px;
   font-size: 16px;
   border-bottom: 1px solid #eee;

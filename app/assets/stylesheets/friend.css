@@ -36,7 +36,6 @@
   display: flex;
   justify-content: space-between;
   padding: 4px;
-  cursor: pointer;
 }
 
 .friend-list-item:hover {
@@ -62,5 +61,5 @@
 
 .friend-list-delete:hover {
   color: red;
-
+  cursor: pointer;
 }
