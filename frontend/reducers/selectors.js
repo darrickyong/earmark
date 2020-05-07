@@ -5,3 +5,18 @@ export const selectTransactions = (state, expense) => {
   })
   return trans;
 }
+
+export const selectFriendExpenses = (state, friendshipId) => {
+  const friendExpenses = [];
+  let friendId;
+  if(state.entities.friendships[friendshipId]) {
+    friendId = state.entities.friendships[friendshipId].friendUserId;
+  }
+  // debugger
+  Object.values(state.entities.expenses).forEach( expense => {
+    if (expense.owner_id === friendId || expense.split[friendId]) {
+      friendExpenses.push(expense)
+    }
+  })
+  return friendExpenses;
+}
