@@ -29,8 +29,12 @@ class Friendship < ApplicationRecord
     through: :user,
     source: :transactions
 
-  # def amount
-  #   Friendship.joins()
-  # end
+  def owed_amount
+    owed = Transaction.joins(:owner).where(payer_id: self.friend_id).where(expenses: {owner_id: self.user_id}).sum(:amount)
+    owe = Transaction.joins(:owner).where(payer_id: self.user_id).where(expenses: {owner_id: self.friend_id}).sum(:amount)
+    paid = Payment.where(payee_id: self.friend_id, payer_id: self.user_id).sum(:amount)
+    received = Payment.where(payee_id: self.user_id, payer_id: self.friend_id).sum(:amount)
+    sum = owed - received - owe + paid
+  end
   
 end

@@ -20,6 +20,10 @@ class Transaction < ApplicationRecord
   belongs_to :expense,
     foreign_key: :expense_id,
     class_name: 'Expense'
+  
+  has_one :owner,
+    through: :expense,
+    source: :owner
 
     
 end

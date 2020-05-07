@@ -9,6 +9,10 @@ class Api::TransactionsController < ApplicationController
     end
   end
 
+  def destroy
+    
+  end
+
   private
   def transaction_params
     params.require(:transaction).permit(:amount, :payer_id, :expense_id)

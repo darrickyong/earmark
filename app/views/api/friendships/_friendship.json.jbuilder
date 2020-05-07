@@ -8,4 +8,6 @@ else
   json.set! :friendUserId, friendship.user.id
 end
 
+json.amount friendship.owed_amount
+
 # json.set! :amount, friendship.amount
