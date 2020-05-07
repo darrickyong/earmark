@@ -88,13 +88,24 @@
   color:#999;
 }
 
-.right-sidebar-summary {
+.right-sidebar-pos {
   margin-top: 20px;
   font-size: 16px;
-  color: #5bc5a7;
+  color: #5BC5A7;
 }
 
-.right-sidebar-summary > span {
+.right-sidebar-posval {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.right-sidebar-neg {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #FF652F;
+}
+
+.right-sidebar-negval {
   font-size: 24px;
   font-weight: 500;
 }
