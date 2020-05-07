@@ -22,7 +22,8 @@ class ExpenseIndexItem extends React.Component {
   handleDelete(e) {
     const { currentUser, expense } = this.props;
     if (currentUser.id === expense.owner_id) {
-      this.props.deleteExpense(expense.id);
+      this.props.deleteExpense(expense.id)
+        .then(() => this.props.fetchFriendships());
     } else {
       window.alert("You are not the creator of this expense.");
     }
