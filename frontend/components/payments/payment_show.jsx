@@ -18,10 +18,10 @@ class PaymentShow extends React.Component {
             <div className="payment-show-amount">
               ${(payment.amount / 100).toFixed(2)}
             </div>
-            <button
+            {/* <button
               className="payment-update-button"
-              // onClick={() => this.props.openModal({ "update": expense.id })}
-            >Update payment</button>
+              onClick={() => this.props.openModal({ "update": expense.id })}
+            >Update payment</button> */}
           </div>
         </div>
 
