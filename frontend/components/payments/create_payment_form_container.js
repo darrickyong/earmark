@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import PaymentForm from "./payment_form";
 import { createPayment } from "../../actions/payment_actions";
 import { fetchFriendships } from "../../actions/friendship_actions";
+import { removeErrors } from "../../actions/session_actions";
 import { closeModal } from "../../actions/modal_actions";
 
 
@@ -13,6 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   createPayment: payment => dispatch(createPayment(payment)),
+  removeErrors: () => dispatch(removeErrors()),
   fetchFriendships: () => dispatch(fetchFriendships()),
   closeModal: () => dispatch(closeModal()),
 })
