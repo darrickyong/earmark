@@ -4,6 +4,7 @@
   height: 40px;
   font-size: 16px;
   border-bottom: 1px solid #eee;
+  cursor: pointer;
 }
 
 .payment-month-divider {
@@ -279,6 +280,128 @@
 
 .payment-form-pay:active {
   background: rgb(72, 190, 157);
+  box-shadow: none;
+  top: 1px;
+}
+
+.payment-show {
+  height: 250px;
+  background: #f8f8f8;
+  box-shadow: inset 0 5px 7px -5px rgba(0, 0, 0, 0.25),
+    inset 0 -3px 7px -5px rgba(0, 0, 0, 0.25);
+  padding: 15px;
+}
+
+.payment-show-header {
+  display: flex;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #ddd;
+}
+
+.payment-show-img {
+  width: 85px;
+  height: 85px;
+  margin-right: 15px;
+}
+
+.payment-show-header-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.payment-show-amount {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.payment-update-button {
+  background: #ff652f;
+  color: #fff;
+  font-size: 12px;
+  text-shadow: 0 -1px 0 #c83400;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.payment-update-button:hover {
+  background: #ff652f;
+}
+
+.payment-update-button:active {
+  background: #ff652f;
+  box-shadow: none;
+  top: 1px;
+}
+
+.payment-show-main {
+  display: flex;
+}
+
+.payment-show-left {
+  width: 245px;
+  padding-right: 20px;
+  font-size: 13px;
+}
+
+.payment-show-right {
+  padding-top: 15px;
+  width: 245px;
+}
+
+.payment-show-payer-img {
+  font-size: 18px;
+  height: 20px;
+  color: #5cc5a6;
+  padding-right: 15px;
+}
+
+.payment-show-owner-img {
+  font-size: 18px;
+  height: 20px;
+  color: #ff652f;
+  padding-right: 15px;
+}
+
+.payment-show-owner {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.payment-show-payer {
+  display: flex;
+  align-items: center;
+  padding-top: 15px;
+}
+
+.payment-show-comment {
+  width: 240px;
+  height: 85px;
+}
+
+.payment-show-post {
+  background: #ff652f;
+  color: #fff;
+  font-size: 12px;
+  padding: 2x 10px;
+  text-shadow: 0 -1px 0 #c83400;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.payment-show-post:hover {
+  background: #ff652f;
+}
+
+.payment-show-post:active {
+  background: #ff652f;
   box-shadow: none;
   top: 1px;
 }

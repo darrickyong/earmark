@@ -366,7 +366,7 @@
 .expense-show-header-main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .expense-show-amount {
@@ -388,11 +388,11 @@
 }
 
 .expense-update-button:hover {
-  background: rgb(255, 82, 22);
+  background: #ff652f;
 }
 
 .expense-update-button:active {
-  background: rgb(255, 82, 22);
+  background: #ff652f;
   box-shadow: none;
   top: 1px;
 }
@@ -457,11 +457,11 @@
 }
 
 .expense-show-post:hover {
-  background: rgb(255, 82, 22);
+  background: #ff652f;
 }
 
 .expense-show-post:active {
-  background: rgb(255, 82, 22);
+  background: #ff652f;
   box-shadow: none;
   top: 1px;
 }

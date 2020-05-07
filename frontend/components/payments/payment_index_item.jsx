@@ -1,9 +1,21 @@
 import React from "react";
+import PaymentShow from "./payment_show";
 
 class PaymentIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      revealShowItem: false
+    }
+    this.handleShow = this.handleShow.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleShow(e) {
+    if (e.target.className === "payment-x") {
+      return;
+    }
+    this.setState({ revealShowItem: !this.state.revealShowItem });
   }
 
   handleDelete(e) {
@@ -34,14 +46,15 @@ class PaymentIndexItem extends React.Component {
     const { payment, currentUser } = this.props;
     const month = months[payment.date.slice(5, 7)];
     const day = payment.date.slice(8, 10);
-    const year = payment.date.slice(0, 4);
     if (!payment) return null;
-
 
     return (
       <div>
         <div className="payment-index-item">
-          <div className="payment-summary">
+          <div 
+            className="payment-summary"
+            onClick={this.handleShow}
+          >
             <div className="payment-index-main">
 
               <div className="payment-index-date">
@@ -98,6 +111,15 @@ class PaymentIndexItem extends React.Component {
 
           </div>
         </div>
+        
+        <div className="payment-show-transition">
+          {this.state.revealShowItem ? (
+            <PaymentShow 
+              payment={payment}
+            />
+          ) : ""}
+        </div>
+
       </div>
     )
   }
