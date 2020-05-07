@@ -61,7 +61,7 @@ class Api::ExpensesController < ApplicationController
     @expense.transactions.each {|transaction| @transactions.push(transaction)}
 
     if current_user.id == @expense.owner_id
-      @expense.delete
+      @expense.destroy
       render :show
     else
       render json: ["You are not the creator of this expense"], status: 401
