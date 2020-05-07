@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Dashboard from "./dashboard";
+import { fetchFriendships } from "../../actions/friendship_actions";
 
 const mapStateToProps = (state, ownProps) => ({
   friendships: Object.values(state.entities.friendships),
@@ -7,7 +8,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  fetchFriendships: () => dispatch(fetchFriendships()),
 })
 
 export default connect(

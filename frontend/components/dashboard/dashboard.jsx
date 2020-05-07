@@ -3,6 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 
 class Dashboard extends React.Component {
+  componentDidMount() {
+    this.props.fetchFriendships();
+  }
+
   render() {
     const { friendships, currentUser } = this.props;
     const pos = [];
@@ -37,7 +41,7 @@ class Dashboard extends React.Component {
             </div>
             {(total > 0) ? 
               <div className="dashboard-total-pos">
-                {`+ $${total}`}
+                {`+ $${Math.abs(total).toFixed(2)}`}
               </div>
               :
               <div className="dashboard-total-neg">
