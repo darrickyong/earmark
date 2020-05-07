@@ -91,7 +91,7 @@ class Dashboard extends React.Component {
                         you owe
                       </div>
                       <div className="dashboard-owe-amount">
-                        ${(Object.values(friendship)[0])/100}
+                        ${((Object.values(friendship)[0])/100).toFixed(2)}
                       </div>
                     </div>
                   </div>
@@ -120,7 +120,7 @@ class Dashboard extends React.Component {
                         owes you
                       </div>
                       <div className="dashboard-owed-amount">
-                        ${(Object.values(friendship)[0])/100}
+                        ${((Object.values(friendship)[0]) / 100).toFixed(2)}                  
                       </div>
                     </div>
                   </div>
