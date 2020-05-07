@@ -1,0 +1,147 @@
+.dashboard-totals {
+  color: #999;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+.dashboard-total {
+  text-align: center;
+  width: 175px;
+  padding: 0 5px;
+}
+
+.dashboard-total-pos {
+  padding-top: 3px;
+  color: #5BC5A7;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.dashboard-total-neg {
+  padding-top: 3px;
+  color: #FF652F;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.dashboard-total-owe {
+  text-align: center;
+  width: 175px;
+  padding: 0 5px;
+  border-left: 1px solid #ddd;
+}
+
+.dashboard-total-owed {
+  text-align: center;
+  width: 175px;
+  padding: 0 5px;
+  border-left: 1px solid #ddd;
+}
+
+.dashboard-summary {
+  display: flex;
+  padding: 15px;
+}
+
+.dashboard-neg {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border-right: 1px solid #eee;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.dashboard-neg-header {
+  font-size: 14px;
+  color: #999999;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.dashboard-owe-item {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.dashboard-owe-icon {
+  font-size: 32px;
+  color: #FF652F;
+  padding-right: 10px;
+}
+
+.dashboard-owe-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-owe-name {
+  font-size: 15px;
+}
+
+.dashboard-owe-balance {
+  display: flex;
+  color: #FF652F;
+  font-size: 13px;
+  padding-top: 3px;
+}
+
+.dashboard-owe-amount {
+  padding-left: 3px;
+  font-weight: 600;
+}
+
+.dashboard-pos {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+.dashboard-pos-header {
+  font-size: 14px;
+  color: #999999;
+  text-transform: uppercase;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.dashboard-owed-item {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.dashboard-owed-icon {
+  font-size: 32px;
+  color: #5BC5A7;
+  padding-right: 10px;
+}
+
+.dashboard-owed-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-owed-name {
+  font-size: 15px;
+}
+
+.dashboard-owed-balance {
+  display: flex;
+  color: #5BC5A7;
+  font-size: 13px;
+  padding-top: 3px;
+}
+
+.dashboard-owed-amount {
+  padding-left: 3px;
+  font-weight: 600;
+}
