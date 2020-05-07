@@ -3,23 +3,6 @@ import { connect } from "react-redux";
 import ExpenseIndex from "../expenses/expense_index";
 import { selectFriendExpenses } from "../../reducers/selectors";
 import { fetchExpenses } from "../../actions/expense_actions";
-import { fetchFriendships } from "../../actions/friendship_actions";
-
-class FriendExpenses extends React.Component {
-  componentDidMount() {
-    this.props.fetchFriendships();
-  }
-  
-  render() {
-    const { expenses, fetchExpenses } = this.props;
-    return(
-      <ExpenseIndex 
-        expenses={expenses}
-        fetchExpenses={fetchExpenses}
-      />
-    )
-  }
-}
 
 const mapStateToProps = (state, ownProps) => {
   return ({
