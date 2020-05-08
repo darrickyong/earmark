@@ -12,7 +12,6 @@ class FriendshipIndexItem extends React.Component {
 
   handleFriend(e) {
     if (e.target.dataset["icon"] === "user-minus") {
-      debugger
       return;
     }
     this.props.history.push(`/friends/${this.props.friendship.id}`)

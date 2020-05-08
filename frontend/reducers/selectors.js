@@ -8,11 +8,11 @@ export const selectTransactions = (state, expense) => {
 
 export const selectFriendExpenses = (state, friendshipId) => {
   const friendExpenses = [];
-  let friendId;
-  if(state.entities.friendships[friendshipId]) {
-    friendId = state.entities.friendships[friendshipId].friendUserId;
+  if (!state.entities.friendships[friendshipId]) {
+    return friendExpenses;
   }
-  // debugger
+  const friendId = state.entities.friendships[friendshipId].friendUserId;
+
   Object.values(state.entities.expenses).forEach( expense => {
     if (expense.owner_id === friendId || expense.split[friendId]) {
       friendExpenses.push(expense)

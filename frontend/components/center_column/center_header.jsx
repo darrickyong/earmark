@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 class CenterHeader extends React.Component {
   render() {
     let headerName;
-    
+    const { friendship } = this.props;
     switch (this.props.location.pathname) {
       case "/payments":
         headerName = "Payments";
@@ -14,6 +14,12 @@ class CenterHeader extends React.Component {
         break;
       case "/dashboard":
         headerName = "Dashboard";
+        break;
+      case `/friends/${this.props.match.params.id}`:
+        if (!friendship) {
+          break;
+        }
+        headerName = friendship.name;
         break;
       default:
         break;

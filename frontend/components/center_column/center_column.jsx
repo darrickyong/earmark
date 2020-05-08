@@ -12,7 +12,10 @@ class CenterColumn extends React.Component {
       <div className="center-column">
 
         <div>
-          <CenterHeaderContainer />
+          <Switch>
+            <Route exact path="/friends/:id" component={CenterHeaderContainer} />
+            <Route component={CenterHeaderContainer} />
+          </Switch>
         </div>
 
         <div>
@@ -20,7 +23,7 @@ class CenterColumn extends React.Component {
             <Route exact path="/dashboard" component={DashboardContainer} />
             <Route exact path="/expenses" component={ExpenseIndexContainer} />
             <Route exact path="/payments" component={PaymentIndexContainer} />
-            <Route exact path={"/friends/:id"} component={FriendsExpenseContainer}/>
+            <Route exact path="/friends/:id" component={FriendsExpenseContainer}/>
             <Route render={() => <Redirect to={{ pathname: "/" }} />} />
           </Switch>
         </div>
