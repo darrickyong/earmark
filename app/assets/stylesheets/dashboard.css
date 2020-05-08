@@ -54,8 +54,8 @@
   flex-direction: column;
   width: 250px;
   border-right: 1px solid #eee;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  padding-right: 15px;
+  padding-bottom: 15px;
 }
 
 .dashboard-neg-header {
@@ -69,6 +69,11 @@
 .dashboard-owe-item {
   display: flex;
   padding: 10px 0px;
+  cursor: pointer;
+}
+
+.dashboard-owe-item:hover{
+  background-color: #eee;
 }
 
 .dashboard-owe-icon {
@@ -102,8 +107,8 @@
   display: flex;
   flex-direction: column;
   width: 250px;
-  padding-left: 20px;
-  padding-bottom: 20px;
+  padding-left: 15px;
+  padding-bottom: 15px;
 }
 
 .dashboard-pos-header {
@@ -117,6 +122,11 @@
 .dashboard-owed-item {
   display: flex;
   padding: 10px 0px;
+  cursor: pointer;
+}
+
+.dashboard-owed-item:hover {
+  background-color: #eee;
 }
 
 .dashboard-owed-icon {

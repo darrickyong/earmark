@@ -14,16 +14,16 @@ class Dashboard extends React.Component {
     let owed = 0;
     let owe = 0;
     friendships.forEach( friendship => {
-      const { name, amount } = friendship;
+      const { id, name, amount } = friendship;
       if (!amount) return;
       if (
         (friendship.user_id === currentUser.id && friendship.amount > 0) || 
         (friendship.friend_id === currentUser.id && friendship.amount < 0)
       ) {
-        pos.push({ [name]: Math.abs(amount) });
+        pos.push({ id, name, amount: Math.abs(amount)});
         owed += Math.abs(amount);
       } else {
-        neg.push({ [name]: Math.abs(amount) });
+        neg.push({ id, name, amount: Math.abs(amount)});
         owe += Math.abs(amount);
       }
     })
@@ -75,8 +75,10 @@ class Dashboard extends React.Component {
               You owe
             </div>
             {neg.map( (friendship, idx) => {
+              // debugger
               return (
                 <div 
+                  onClick={()=>this.props.history.push(`/friends/${friendship.id}`)}
                   className="dashboard-owe-item"
                   key={idx}>
                   <div className="dashboard-owe-icon">
@@ -84,14 +86,14 @@ class Dashboard extends React.Component {
                   </div>
                   <div className="dashboard-owe-main">
                     <div className="dashboard-owe-name">
-                      {Object.keys(friendship)[0]}
+                      {friendship.name}
                     </div>
                     <div className="dashboard-owe-balance">
                       <div>
                         you owe
                       </div>
                       <div className="dashboard-owe-amount">
-                        ${((Object.values(friendship)[0])/100).toFixed(2)}
+                        ${(friendship.amount/100).toFixed(2)}
                       </div>
                     </div>
                   </div>
@@ -105,7 +107,8 @@ class Dashboard extends React.Component {
             </div>
             {pos.map( (friendship, idx) => {
               return (
-                <div 
+                <div
+                  onClick={() => this.props.history.push(`/friends/${friendship.id}`)}
                   className="dashboard-owed-item"
                   key={idx}>
                   <div className="dashboard-owed-icon">
@@ -113,14 +116,14 @@ class Dashboard extends React.Component {
                   </div>
                   <div className="dashboard-owed-main">
                     <div className="dashboard-owed-name">
-                      {Object.keys(friendship)[0]}
+                      {friendship.name}
                     </div>
                     <div className="dashboard-owed-balance">
                       <div>
                         owes you
                       </div>
                       <div className="dashboard-owed-amount">
-                        ${((Object.values(friendship)[0]) / 100).toFixed(2)}                  
+                        ${(friendship.amount / 100).toFixed(2)}
                       </div>
                     </div>
                   </div>
