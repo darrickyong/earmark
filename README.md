@@ -74,7 +74,7 @@ To record a cash payment, click on the green "Settle up" button that appears on 
 
 The "Payments" page wlil list all payments between you and your friends in chronological order.
 
-If the payment was made by you, the amount will show in orange. If the payment was made to you, the amoount will show in green. Clicking on an expense will reveal additional details.
+If the payment was made by you, the amount will show in orange. If the payment was made to you, the amount will show in green. Clicking on an expense will reveal additional details.
  
 --- 
 ## User Authentication
