@@ -14,7 +14,7 @@ export const selectFriendExpenses = (state, friendshipId) => {
   const friendId = state.entities.friendships[friendshipId].friendUserId;
 
   Object.values(state.entities.expenses).forEach( expense => {
-    if (expense.owner_id === friendId || expense.split[friendId]) {
+    if (expense.owner_id === friendId || (expense.split[friendId]) && expense.owner_id === state.session.id) {
       friendExpenses.push(expense)
     }
   })

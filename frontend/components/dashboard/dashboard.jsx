@@ -54,7 +54,7 @@ class Dashboard extends React.Component {
               you owe
             </div>
             <div className="dashboard-total-neg">
-              ${owe}
+              ${owe.toFixed(2)}
             </div>
           </div>
           
@@ -63,7 +63,7 @@ class Dashboard extends React.Component {
               you are owed
             </div>
             <div className="dashboard-total-pos">
-              ${owed}
+              ${owed.toFixed(2)}
             </div>
           </div>
 
