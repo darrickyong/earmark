@@ -14,18 +14,16 @@ class Api::FriendshipsController < ApplicationController
       if @friendship.save
         render :show
       else
-        render json: ["You are already friends."], status: 422
+        render json: ["You are already friends"], status: 422
       end
     else
-      render json: ["We could not find that email."], status: 422
+      render json: ["Email not found - please sign them up"], status: 422
     end
-    
-
   end
 
   def destroy
     @friendship = Friendship.find_by(id: params[:id])
-    @friendship.delete
+    @friendship.destroy
     render json: { id: @friendship.id }
   end
 
