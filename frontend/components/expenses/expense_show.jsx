@@ -5,9 +5,14 @@ import { faGem, faStreetView } from '@fortawesome/free-solid-svg-icons';
 class ExpenseShow extends React.Component {
   
   render() {
-    const { expense, transactions } = this.props;
+    const { expense, transactions, revealShowItem } = this.props;
+    // let showClasses = ['expense-show']
+    // if (revealShowItem) {
+    //   showClasses = ['expense-show', 'animate']
+    // }
+
     return (
-      <div className="expense-show">
+      <div className={`expense-show ${revealShowItem ? "animate": ""}`}>
         <div className="expense-show-header">
           <img className="expense-show-img" src={window.earmarkCategory}/>
           

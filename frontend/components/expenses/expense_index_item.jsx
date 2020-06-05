@@ -48,6 +48,7 @@ class ExpenseIndexItem extends React.Component {
     const month = months[expense.date.slice(5, 7)];
     const day = expense.date.slice(8, 10);
     const year = expense.date.slice(0, 4);
+    const { revealShowItem } = this.state;
 
     return (
       <div>
@@ -124,12 +125,15 @@ class ExpenseIndexItem extends React.Component {
 
 
         </div>
+          <ExpenseShowContainer 
+            revealShowItem={revealShowItem} 
+            expense={expense} />
 
-        <div className="expense-show-transition">
-          {this.state.revealShowItem ? (
-            <ExpenseShowContainer expense={expense}/>
-          ) : ""}
-        </div>
+          {/* {this.state.revealShowItem ? (
+              <ExpenseShowContainer 
+                revealShowItem={revealShowItem}
+                expense={expense}/>
+          ) : null} */}
 
 
       </div>
