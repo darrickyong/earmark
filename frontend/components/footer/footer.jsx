@@ -18,15 +18,15 @@ class Footer extends React.Component {
 
           <div className="footer-links">
             <a href="https://www.linkedin.com/in/darrick-yong/">
-              <FaLinkedin className="footer-linkedin" />
+              <FaLinkedin className="linkedin" />
             </a>
 
             <a href="https://github.com/darrickyong">
-              <FaGithub className="footer-github" />
+              <FaGithub className="github" />
             </a>
             
             <a href="https://angel.co/u/darrick-yong">
-              <FaAngellist className="footer-angel" />
+              <FaAngellist className="angel" />
             </a>
 
           </div>

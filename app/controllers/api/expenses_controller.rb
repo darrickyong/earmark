@@ -40,7 +40,7 @@ class Api::ExpensesController < ApplicationController
     if @expense.owner_id == current_user.id 
       if params[:expense][:amount].to_i > 0
         if @expense.update(expense_params)
-          @expense = Expense.find_by(id: @expense.id)
+          @expense = Expense.includes(:transactions).find_by(id: @expense.id)
           @transactions = @expense.transactions
           render :show
         else

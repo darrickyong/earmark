@@ -40,7 +40,7 @@
   width: 150px;
 }
 
-.footer-linkedin {
+.linkedin {
   color: #fff;
   background: #1177B5;
   font-size: 36px;
@@ -48,12 +48,12 @@
   position: relative;
 }
 
-.footer-linkedin:hover {
+.linkedin:hover {
   color: #1177B5;
   background: #fff;
 }
 
-.footer-linkedin:active {
+.linkedin:active {
   color: #1177B5;
   background: #fff;
   box-shadow: none;
@@ -61,7 +61,7 @@
 }
 
 
-.footer-github {
+.github {
   color: #FFFFFF;
   background: #24292E;
   font-size: 36px;
@@ -69,19 +69,19 @@
   position: relative;
 }
 
-.footer-github:hover {
+.github:hover {
   background: #24292E;
   color: #cccccc;
 }
 
-.footer-github:active {
+.github:active {
   background: #434242;
   color: #cccccc;
   box-shadow: none;
   top: 1px;
 }
 
-.footer-angel {
+.angel {
   color: #0e0e0e;
   background: white;
   font-size: 36px;
@@ -89,12 +89,12 @@
   position: relative;
 }
 
-.footer-angel:hover {
+.angel:hover {
   background:#0e0e0e;
   color: white;
 }
 
-.footer-angel:active {
+.angel:active {
   background:#0e0e0e;
   color: white;
   box-shadow: none;

@@ -1,4 +1,5 @@
 import React from "react";
+import { FaLinkedin, FaGithub, FaAngellist } from "react-icons/fa";
 
 class RightSidebar extends React.Component {
   render() {
@@ -28,6 +29,21 @@ class RightSidebar extends React.Component {
     return (
       <div className="right-sidebar">
         <div className="right-sidebar-container">
+          <div className="footer-links">
+            <a href="https://www.linkedin.com/in/darrick-yong/">
+              <FaLinkedin className="linkedin" />
+            </a>
+
+            <a href="https://github.com/darrickyong">
+              <FaGithub className="github" />
+            </a>
+
+            <a href="https://angel.co/u/darrick-yong">
+              <FaAngellist className="angel" />
+            </a>
+
+          </div>
+
           <h2 className="right-sidebar-total">
             Your total balance
           </h2>
