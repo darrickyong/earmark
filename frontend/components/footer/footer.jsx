@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { FaLinkedin, FaGithub, FaAngellist } from "react-icons/fa";
 
 class Footer extends React.Component {
   render() {
@@ -15,21 +17,23 @@ class Footer extends React.Component {
           </div>
 
           <div className="footer-links">
-              <a 
-                href="https://www.linkedin.com/in/darrick-yong/"
-                className="footer-linkedin"
-              >LinkedIn</a>
+            <a href="https://www.linkedin.com/in/darrick-yong/">
+              <FaLinkedin className="footer-linkedin" />
+            </a>
 
-              <a
-                href="https://github.com/darrickyong"
-                className="footer-github"
-              >GitHub</a>
+            <a href="https://github.com/darrickyong">
+              <FaGithub className="footer-github" />
+            </a>
+            
+            <a href="https://angel.co/u/darrick-yong">
+              <FaAngellist className="footer-angel" />
+            </a>
 
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default Footer;
+export default withRouter(Footer);

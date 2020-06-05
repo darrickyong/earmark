@@ -9,8 +9,7 @@
   align-items: center;
   justify-content: space-between;
   width: 1000px;
-  margin-left: 40px;
-  margin-right: 40px;
+  margin: 0px 40px;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }

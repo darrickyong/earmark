@@ -7,7 +7,6 @@ class Splash extends React.Component {
   }
   
   render() {
-    const { push } = this.props.history;
 
     return (
       <div>
