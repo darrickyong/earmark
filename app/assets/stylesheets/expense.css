@@ -307,8 +307,8 @@
   margin-left: 2px;
   margin-right: 2px;
   font-size: 12px;
-  /* box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4)
-    0 1px 1px rgba(0, 0, 0, 0.5); */
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
+  0 1px 1px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   position: relative;
   cursor: pointer;
@@ -333,7 +333,7 @@
   font-size: 12px;
   margin-right: 10px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4),
-    0 1px 2px rgba(0, 0, 0, 0.5);
+    0 1px 1px rgba(0, 0, 0, 0.5);
   border-radius: 5px;
   position: relative;
   cursor: pointer;
@@ -382,6 +382,8 @@
 
 
 .expense-update-button {
+  width: 110px;
+  height: 20px;
   background: #ff652f;
   color: #fff;
   font-size: 12px;
@@ -394,11 +396,11 @@
 }
 
 .expense-update-button:hover {
-  background: #ff652f;
+  background: #c83500c8;
 }
 
 .expense-update-button:active {
-  background: #ff652f;
+  background: #c83500c8;
   box-shadow: none;
   top: 1px;
 }
@@ -450,6 +452,8 @@
 }
 
 .expense-show-post {
+  width: 40px;
+  height: 20px;
   background: #ff652f;
   color: #fff;
   font-size: 12px;
@@ -463,11 +467,11 @@
 }
 
 .expense-show-post:hover {
-  background: #ff652f;
+  background: #c83500c8;
 }
 
 .expense-show-post:active {
-  background: #ff652f;
+  background: #c83500c8;
   box-shadow: none;
   top: 1px;
 }

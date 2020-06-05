@@ -37,8 +37,7 @@
 .login-form-label {
   display: block;
   color: #333333;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding: 8px 0px;
   font-size: 18px;
   letter-spacing: 0.5px;
 }
@@ -55,6 +54,17 @@ strong {
   height: 40px;
   border-radius: 3px;
   border: 1px solid #cccccc;
+  padding: 3px 0px 3px 10px;
+  margin: 5px 0px;
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+}
+
+.login-form-input:focus {
+  box-shadow: 0 0 5px rgba(72, 190, 157, 1);
+  border: 1px solid rgb(72, 190, 157);
 }
 
 .login-button {
@@ -73,12 +83,6 @@ strong {
   background: rgb(255, 82, 22);
 }
 
-.login-button:active {
-  background: rgb(255, 82, 22);
-  box-shadow: none;
-  top: 1px;
-}
-
 .demo-button {
   margin-top: 20px;
   margin-left: 20px;
@@ -94,13 +98,6 @@ strong {
 
 .demo-button:hover {
   background: rgb(72, 190, 157);
-
-}
-
-.demo-button:active {
-  background: rgb(72, 190, 157);
-  box-shadow: none;
-  top: 1px;
 }
 
 .login-form-forgot {
