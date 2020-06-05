@@ -23,7 +23,7 @@ User.create(name: "Bruce Wayne", password: "123456", email: "brucewayne@earmark.
 Expense.create(name: "groceries", amount: 5442, owner_id: 1, date: "2020-02-25", split:[2, 10, 4])
 Expense.create(name: "Promotion dinner", amount: 2022, owner_id: 1, date: "2020-01-18", split: [9, 8])
 Expense.create(name: "movies", amount: 3099, owner_id: 6, date: "2020-03-08", split: [1, 12])
-Expense.create(name: "eating out", amount: 4016, owner_id: 1, date: "2020-04-01", split: [6, 11])
+Expense.create(name: "eating out", amount: 4016, owner_id: 1, date: "2020-04-01", split: [6, 3])
 Expense.create(name: "take out", amount: 5090, owner_id: 1, date: "2020-02-20", split: [4, 2])
 Expense.create(name: "Target run", amount: 3698, owner_id: 4, date: "2020-05-04", split: [5, 1])
 Expense.create(name: "lunch", amount: 1234, owner_id: 2, date: "2020-03-29", split: [1])
@@ -36,6 +36,9 @@ Expense.create(name: "airfare", amount: 100000, owner_id: 7, date: "2019-06-07",
 Expense.create(name: "Celine Dion concert", amount: 77700, owner_id: 1, date: "2019-02-01", split: [4, 11, 10, 2, 9, 8])
 Expense.create(name: "McDonalds", amount: 4800, owner_id: 5, date: "2019-05-19", split: [6, 1, 9])
 Expense.create(name: "dinner", amount: 29890, owner_id: 6, date: "2019-09-08", split: [7, 1, 12, 9])
+Expense.create(name: "COVID-19", amount: 20080, owner_id: 1, date: "2019-09-08", split: [7, 5, 12, 3])
+Expense.create(name: "baby shower", amount: 29890, owner_id: 1, date: "2019-09-08", split: [8, 6, 12, 5])
+Expense.create(name: "gum", amount: 900, owner_id: 12, date: "2019-09-08", split: [7, 1, 3, 9])
 
 Friendship.create(user_id: 1, friend_id: 5)
 Friendship.create(user_id: 1, friend_id: 6)
