@@ -120,7 +120,7 @@ class ExpenseForm extends React.Component {
           <div className="expense-form-others">
             <div className="expense-form-left">
               <div>
-                Select which friends to split your expense with:
+                Friends to split this expense with (select multiple using 'shift' or 'ctrl'):
               </div>
               <select
                 multiple 
