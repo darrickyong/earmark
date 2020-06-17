@@ -122,19 +122,11 @@ class ExpenseIndexItem extends React.Component {
 
             </div>
           </div>
-
-
         </div>
-          <ExpenseShowContainer 
-            revealShowItem={revealShowItem} 
-            expense={expense} />
 
-          {/* {this.state.revealShowItem ? (
-              <ExpenseShowContainer 
-                revealShowItem={revealShowItem}
-                expense={expense}/>
-          ) : null} */}
-
+        <ExpenseShowContainer 
+          revealShowItem={revealShowItem} 
+          expense={expense} />
 
       </div>
     )

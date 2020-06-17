@@ -347,11 +347,11 @@
   inset 0 -3px 7px -5px rgba(0, 0, 0, 0.25);
   max-height: 0px;
   overflow: hidden;
-  transition: max-height .3s ease-out;
+  transition: max-height .5s ease-out;
 }
 
-.animate {
-  max-height: 500px;
+.animate-expense {
+  max-height: 400px;
 }
 
 .expense-show-header {
@@ -409,7 +409,7 @@
 
 .expense-show-left {
   width: 245px;
-  height: 250px;
+  height: 200px;
   overflow: scroll;
   font-size: 13px;
 }

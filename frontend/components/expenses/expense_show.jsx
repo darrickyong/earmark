@@ -12,7 +12,7 @@ class ExpenseShow extends React.Component {
     // }
 
     return (
-      <div className={`expense-show ${revealShowItem ? "animate": ""}`}>
+      <div className={`expense-show ${revealShowItem ? "animate-expense": ""}`}>
         <div className="expense-show-header">
           <img className="expense-show-img" src={window.earmarkCategory}/>
           

@@ -46,6 +46,7 @@ class PaymentIndexItem extends React.Component {
     const { payment, currentUser } = this.props;
     const month = months[payment.date.slice(5, 7)];
     const day = payment.date.slice(8, 10);
+    const { revealShowItem } = this.state;
     if (!payment) return null;
 
     return (
@@ -112,13 +113,10 @@ class PaymentIndexItem extends React.Component {
           </div>
         </div>
         
-        <div className="payment-show-transition">
-          {this.state.revealShowItem ? (
-            <PaymentShow 
-              payment={payment}
-            />
-          ) : ""}
-        </div>
+        <PaymentShow 
+          payment={payment}
+          revealShowItem={revealShowItem}
+        />
 
       </div>
     )

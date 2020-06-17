@@ -4,10 +4,9 @@ import { faGem } from '@fortawesome/free-solid-svg-icons';
 
 class PaymentShow extends React.Component {
   render() {
-    const { payment } = this.props;
+    const { payment, revealShowItem } = this.props;
     return(
-      <div className="payment-show">
-
+      <div className={`payment-show ${revealShowItem ? "animate-payment" : ""}`}>
         <div className="payment-show-header">
           <img className="payment-show-img" src={window.paymentCategory} />
 
