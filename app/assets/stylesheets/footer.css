@@ -70,7 +70,7 @@
 }
 
 .github:hover {
-  background: #24292E;
+  background: #434242;
   color: #cccccc;
 }
 
@@ -83,20 +83,17 @@
 
 .angel {
   color: #0e0e0e;
-  background: white;
   font-size: 36px;
   border-radius: 3px;
   position: relative;
 }
 
 .angel:hover {
-  background:#0e0e0e;
-  color: white;
+  color: #434242;
 }
 
 .angel:active {
-  background:#0e0e0e;
-  color: white;
+  color: #434242;
   box-shadow: none;
   top: 1px;
 }
