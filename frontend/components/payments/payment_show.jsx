@@ -44,12 +44,12 @@ class PaymentShow extends React.Component {
 
           </div>
           <div className="payment-show-right">
-            <textarea
+            {/* <textarea
               className="payment-show-comment"
               placeholder="Comment features coming soon..." />
             <button
               className="payment-show-post"
-            >Post</button>
+            >Post</button> */}
           </div>
         </div>
 

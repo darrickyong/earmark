@@ -147,10 +147,10 @@ class ExpenseForm extends React.Component {
                 onChange={this.handleChange("date")}
               />
 
-              <textarea
+              {/* <textarea
                 className="expense-form-comment" 
                 placeholder="Comment features coming soon..."
-              />
+              /> */}
             </div>
 
           </div>
