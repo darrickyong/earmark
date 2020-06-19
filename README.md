@@ -9,15 +9,15 @@ Earmark is an expense-sharing app inspired by [Splitwise](http://splitwise.com/)
 + **Frontend**: React with Redux
 
 # Features
-### Current Features
+<!-- ### Current Features -->
 + Expense creation
 + Viewing expenses
 + Recording cash payments
 + User authenticaiton
 
-### Planned Features
+<!-- ### Planned Features
 + Splitting expense into custom amounts
-+ Creating comments on expenses/payments
++ Creating comments on expenses/payments -->
 
 ---
 ## Dashboard
