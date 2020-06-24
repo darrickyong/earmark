@@ -53,7 +53,7 @@ class PaymentForm extends React.Component {
     return (
       <div className="payment-form">
         <h2 className="payment-form-header">
-          Add a payment
+          Settle Up
           <div
             className="payment-form-close"
             onClick={this.props.closeModal}

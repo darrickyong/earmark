@@ -156,6 +156,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  font-family: 'Montserrat';
 }
 
 .payment-form-category {
@@ -167,22 +168,22 @@
 .payment-form-friends {
   display: flex;
   align-items: center;
-  padding-top: 10px;
+  padding: 10px 0px;
 }
 
 .payment-form-select {
   margin-left: 10px;
   font-size: 14px;
+  font-family: 'Montserrat';
 }
 
 .payment-form-data {
   display: flex;
-  justify-content: space-between;
-  padding-top: 10px;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .payment-form-cost {
-  margin-left: 20px;
   display: flex;
   align-items: center;
   width: 100px;
@@ -190,13 +191,12 @@
 }
 
 .payment-form-currency {
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .payment-form-amount {
   padding: 0;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 16px;
   width: 100%;
   height: 30px;
   text-align: center;
@@ -207,14 +207,12 @@
 .payment-form-date {
   display: flex;
   align-items: center;
-  width: 140px;
 }
 
 .payment-form-date-input {
-  font-size: 14px;
-  border: none;
+  font-size: 16px;
+  padding: 5px;
   border-bottom: 1px dashed #ccc;
-  height: 30px;
 }
 
 .payment-errors {
