@@ -75,7 +75,6 @@ class Dashboard extends React.Component {
               You owe
             </div>
             {neg.map( (friendship, idx) => {
-              // debugger
               return (
                 <div 
                   onClick={()=>this.props.history.push(`/friends/${friendship.id}`)}

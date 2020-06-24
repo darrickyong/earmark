@@ -5,7 +5,7 @@ import { openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return( {
-    transactions: selectTransactions(state, ownProps.expense),
+  //   transactions: selectTransactions(state, ownProps.expense),
   })
 }
 

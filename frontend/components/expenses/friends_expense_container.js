@@ -5,9 +5,10 @@ import { selectFriendExpenses } from "../../reducers/selectors";
 import { fetchExpenses } from "../../actions/expense_actions";
 
 const mapStateToProps = (state, ownProps) => {
-  return ({
+  return {
     expenses: selectFriendExpenses(state, ownProps.match.params.id),
-  })
+    friend: state.entities.friendships[ownProps.match.params.id],
+  };
 }
 
 const mapDispatchToProps = dispatch => ({

@@ -11,7 +11,7 @@ class ExpenseIndex extends React.Component {
   }
 
   render() {
-    const { expenses } = this.props;
+    const { expenses, friend } = this.props;
     expenses.sort((a, b) => (a.date > b.date) ? 1 : -1).reverse();
 
     const months = {
@@ -57,6 +57,7 @@ class ExpenseIndex extends React.Component {
   
                 <ExpenseIndexItemContainer 
                   expense={expense}
+                  friend={friend}
                 />
 
               </div>

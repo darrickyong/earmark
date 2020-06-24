@@ -1,6 +1,6 @@
 import React from "react";
 import ExpenseShowContainer from "./expense_show_container";
-import { CSSTransition } from "react-transition-group";
+import { withRouter } from "react-router-dom";
 
 class ExpenseIndexItem extends React.Component {
   constructor(props) {
@@ -44,11 +44,13 @@ class ExpenseIndexItem extends React.Component {
       "11": "Nov",
       "12": "Dec"
     }
-    const { expense, currentUser } = this.props;
+    const { expense, transactions, friend, currentUser } = this.props;
     const month = months[expense.date.slice(5, 7)];
     const day = expense.date.slice(8, 10);
     const year = expense.date.slice(0, 4);
     const { revealShowItem } = this.state;
+
+    // debugger
 
     return (
       <div>
@@ -94,13 +96,23 @@ class ExpenseIndexItem extends React.Component {
             <div className="expense-index-you">
 
               {(expense.owner_id === currentUser.id) ? (
-                <div className="expense-index-else">
-                  you lent
-                  <br/>
-                  <span className="expense-index-positive">
-                    ${(expense.transAmt/100).toFixed(2)}
-                </span>
-                </div>
+                this.props.location.pathname.split("/")[1] === "friends" ? (
+                  <div className="expense-index-else">
+                    you lent {friend.name.split(" ")[0]}
+                    <br />
+                    <span className="expense-index-positive">
+                      ${((expense.transAmt / expense.transactions.length )/ 100).toFixed(2)}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="expense-index-else">
+                    you lent
+                    <br/>
+                    <span className="expense-index-positive">
+                      ${(expense.transAmt/100).toFixed(2)}
+                  </span>
+                  </div>
+                )
               ):(
                 <div className="expense-index-else">
                   {expense.owner.split(" ")[0]} lent you
@@ -126,11 +138,12 @@ class ExpenseIndexItem extends React.Component {
 
         <ExpenseShowContainer 
           revealShowItem={revealShowItem} 
-          expense={expense} />
+          expense={expense}
+          transactions={transactions} />
 
       </div>
     )
   }
 }
 
-export default ExpenseIndexItem;
+export default withRouter(ExpenseIndexItem);
