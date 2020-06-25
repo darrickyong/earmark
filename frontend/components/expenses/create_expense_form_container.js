@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import ExpenseForm from "./expense_form";
-import { removeErrors } from "../../actions/session_actions";
+import { receiveSessionErrors, removeErrors } from "../../actions/session_actions";
 import { createExpense } from "../../actions/expense_actions";
 import { fetchFriendships } from "../../actions/friendship_actions";
 

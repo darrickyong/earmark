@@ -22,7 +22,7 @@ class Api::ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.owner_id = current_user.id
-    if @expense.amount > 0
+    # if @expense.amount > 0
       if @expense.save
         @transactions = []
         @expense.transactions.each {|transaction| @transactions.push(transaction)}
@@ -30,9 +30,9 @@ class Api::ExpensesController < ApplicationController
       else
         render json: @expense.errors.full_messages, status: 422
       end
-    else
-      render json: ["Amount must be greater than 0"], status: 422
-    end
+    # else
+      # render json: ["Amount must be greater than 0"], status: 422
+    # end
   end
   
   def update

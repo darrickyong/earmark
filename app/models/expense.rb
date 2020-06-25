@@ -12,7 +12,9 @@
 #
 
 class Expense < ApplicationRecord
-  validates :name, :amount, :owner_id, :date, presence: true
+  validates :name, :date, :owner_id, presence: { message: "must be filled in."}
+  validates :amount, :numericality => { greater_than: 0 }
+  validates :split, presence: {message: ""}
 
   attr_reader :split
   

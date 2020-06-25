@@ -30,4 +30,17 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  # hello: "Hello world"
+  activerecord:
+    attributes:
+      expense:
+        name: "Expense name"
+        amount: "Expense amount"
+        split: "Select at least one friend to split the bill with."
+
+    errors:
+      models:
+        expense:
+          attributes:
+            amount:
+              greater_than: "must be greater than 0."
