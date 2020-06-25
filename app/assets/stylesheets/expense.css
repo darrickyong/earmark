@@ -185,12 +185,11 @@
 }
 
 .expense-form-main {
-  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 20px 0px;
+  padding: 10px 0px;
 }
 
 .expense-form-category {
@@ -203,9 +202,9 @@
 }
 
 .expense-form-name {
-  font-size: 16px;
+  font-size: 20px;
   height: 24px;
-  width: 177px;
+  padding: 5px;
   border: none;
   border-bottom: 1px dashed #ccc;
 }
@@ -213,30 +212,29 @@
 .expense-form-cost-container {
   display: flex;
   align-items: center;
-  width: 177px;
   border-bottom: 1px dashed #ccc;
+  margin-top: 5px;
 }
 
 .expense-form-currency {
   border: none;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 
 .expense-form-amount {
   padding: 0;
-  font-size: 25px;
-  font-weight: bold;
-  height: 40px;
+  font-size: 20px;
   width: 120px;
+  padding: 5px;
   vertical-align: bottom;
   border: none;
 }
 
 .expense-form-others {
   display: flex;
-  height: 190px;
+  height: 220px;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 
@@ -252,23 +250,26 @@
 }
 
 .expense-form-select{
-  width: 60%;
-  height: 120px;
-  border-radius: 3px;
+  width: 80%;
+  height: 150px;
+  border-radius: 5px;
   padding: 3px;
 }
+
 .expense-form-right {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100%;
   padding-right: 20px;
   padding-left: 10px;
 }
+
 .expense-form-date {
-  border: none;
+  font-size: 16px;
   border-bottom: 1px dashed #ccc;
-  height: 30px;
-  margin-bottom: 30px;
+  padding: 5px;
 }
 
 .expense-form-comment {
