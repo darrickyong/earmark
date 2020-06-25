@@ -116,7 +116,7 @@ class ExpenseForm extends React.Component {
           <div className="expense-form-others">
             <div className="expense-form-left">
               <div>
-                Friends to split this expense <strong>equally</strong> with (can choose more than one):
+                Select <u>at least one friend</u> to split this bill <strong>equally</strong> with:
               </div>
               <select
                 multiple 

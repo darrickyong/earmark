@@ -189,7 +189,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  padding: 10px 0px;
+  padding: 15px 0px;
 }
 
 .expense-form-category {
@@ -232,7 +232,7 @@
 
 .expense-form-others {
   display: flex;
-  height: 220px;
+  height: 200px;
   align-items: flex-start;
   justify-content: space-between;
   box-sizing: border-box;
@@ -241,17 +241,21 @@
 .expense-form-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   height: 100%;
-  font-size: 14px;
-  padding-right: 10px;
-  padding-left: 20px;
+  font-size: 16px;
+  padding: 0px 20px;
+}
+
+.expense-form-left > div {
+  line-height: 1.2;
 }
 
 .expense-form-select{
   width: 80%;
   height: 150px;
+  font-size: 16px;
   border-radius: 5px;
   padding: 3px;
 }
