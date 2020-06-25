@@ -22,35 +22,27 @@ class Api::ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
     @expense.owner_id = current_user.id
-    # if @expense.amount > 0
-      if @expense.save
-        @transactions = []
-        @expense.transactions.each {|transaction| @transactions.push(transaction)}
-        render :show
-      else
-        render json: @expense.errors.full_messages, status: 422
-      end
-    # else
-      # render json: ["Amount must be greater than 0"], status: 422
-    # end
+    if @expense.save
+      @transactions = []
+      @expense.transactions.each {|transaction| @transactions.push(transaction)}
+      render :show
+    else
+      render json: @expense.errors.full_messages, status: 422
+    end
   end
   
   def update
     @expense = Expense.find_by(id: params[:id])
     if @expense.owner_id == current_user.id 
-      if params[:expense][:amount].to_i > 0
-        if @expense.update(expense_params)
-          @expense = Expense.includes(:transactions).find_by(id: @expense.id)
-          @transactions = @expense.transactions
-          render :show
-        else
-          render json: @expense.errors.full_messages, status: 422
-        end
+      if @expense.update(expense_params)
+        @expense = Expense.includes(:transactions).find_by(id: @expense.id)
+        @transactions = @expense.transactions
+        render :show
       else
-        render json: ["Amount must be greater than 0"], status: 422
+        render json: @expense.errors.full_messages, status: 422
       end
     else
-      render json: ["You are not the creator of this expense"], status: 401
+      render json: ["You are not the creator of this expense."], status: 401
     end
   end
 
@@ -63,7 +55,7 @@ class Api::ExpensesController < ApplicationController
       @expense.destroy
       render :show
     else
-      render json: ["You are not the creator of this expense"], status: 401
+      render json: ["You are not the creator of this expense."], status: 401
     end
   end
 

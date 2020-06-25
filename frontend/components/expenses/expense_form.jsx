@@ -24,11 +24,6 @@ class ExpenseForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // if (this.state.split.length === 0) {
-      // debugger
-      // this.props.receiveSessionErrors(["testing error"]);
-      // window.alert("You must select at least one friend to split your bill with.")
-    // } else {
       let value = Number(this.state.realAmount).toFixed(2) * 100;
       let revisedExpense = Object.assign({}, this.state, { amount: value });
       if (revisedExpense.split === this.props.expense.split) {
@@ -38,7 +33,6 @@ class ExpenseForm extends React.Component {
       this.props.action(revisedExpense)
         .then(() => this.props.fetchFriendships())
         .then(() => this.props.closeModal())
-    // }
   }
 
   handleSelect(e) {
@@ -122,7 +116,7 @@ class ExpenseForm extends React.Component {
           <div className="expense-form-others">
             <div className="expense-form-left">
               <div>
-                Friends to split this expense with (select multiple using 'shift' or 'ctrl'):
+                Friends to split this expense <strong>equally</strong> with (can choose more than one):
               </div>
               <select
                 multiple 

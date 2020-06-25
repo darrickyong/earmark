@@ -42,10 +42,6 @@
   letter-spacing: 0.5px;
 }
 
-strong {
-  font-weight: bold;
-}
-
 .login-form-input {
   display: block;
   width: 280px;
