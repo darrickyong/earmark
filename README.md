@@ -104,10 +104,7 @@ Additionally, you can further filter expenses by friend by clicking on their nam
     </span>
     </div>
 )}
-
 ```
-
-
 ---
 ## Payments
 
