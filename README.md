@@ -54,11 +54,59 @@ The "All Expenses" page will list all expenses you have created and any expenses
 
 If an expense was created by you, it will list how much you spent, along with how much you can expect to get back from your friends. If the expense was split with you, it will list how much the creator spent and how much you owe them for the expense. Clicking on an expense will reveal additional details that list the individuals the expense was split with.
 
+Expenses are categorized chronologically using a month/year divider. This divider is created by iterating through expenses and determining whether an expense has a different month or year from the previous expense.
+
+```
+let divider;
+
+if (idx === 0 || 
+  orig[idx-1].date.slice(5,7) !== expense.date.slice(5,7) || 
+  orig[idx - 1].date.slice(0, 4) !== expense.date.slice(0, 4)) {
+  divider = (
+    <div>
+      {months[expense.date.slice(5,7)]} {expense.date.slice(0,4)}
+    </div>
+  )
+}
+```
+
 ---
 ### Friends View
 ![](https://github.com/darrickyong/earmark/blob/master/docs/readme/friend.png)
 
-Additionally, you can further filter expenses by friend by clicking on their name on the left. This view can also be reached by clicking on a friend from the Dashboard.
+Additionally, you can further filter expenses by friend by clicking on their name on the left. This view can also be reached by clicking on a friend from the Dashboard. On the friends view, the expense that was lent is specific to the friend and is not an aggregate.
+
+```
+{(expense.owner_id === currentUser.id) ? (
+  this.props.location.pathname.split("/")[1] === "friends" ? (
+    <div className="expense-index-else">
+      you lent {friend.name.split(" ")[0]}
+      <br />
+      <span className="expense-index-positive">
+        ${((expense.transAmt / expense.transactions.length )/ 100).toFixed(2)}
+      </span>
+    </div>
+  ) : (
+    <div className="expense-index-else">
+      you lent
+      <br/>
+      <span className="expense-index-positive">
+        ${(expense.transAmt/100).toFixed(2)}
+      </span>
+    </div>
+  )
+):(
+  <div className="expense-index-else">
+    {expense.owner.split(" ")[0]} lent you
+    <br />
+    <span className="expense-index-negative">
+      ${((expense.amount - expense.transAmt) / 100).toFixed(2)}
+    </span>
+    </div>
+)}
+
+```
+
 
 ---
 ## Payments
