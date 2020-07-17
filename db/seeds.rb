@@ -31,7 +31,7 @@ Expense.create(name: "Vegas", amount: 98760, owner_id: 9, date: "2019-04-29", sp
 Expense.create(name: "Cleaning", amount: 9420, owner_id: 5, date: "2018-04-29", split: [4, 1, 6])
 Expense.create(name: "dyson", amount: 39896, owner_id: 10, date: "2019-08-29", split: [12, 1, 11])
 Expense.create(name: "sandwiches", amount: 4560, owner_id: 9, date: "2019-06-15", split: [10, 1, 8])
-Expense.create(name: "sushi dinner", amount: 59991, owner_id: 8, date: "2019-09-01", split: [12, 1])
+Expense.create(name: "sushi dinner", amount: 89991, owner_id: 8, date: "2019-09-01", split: [12, 1])
 Expense.create(name: "airfare", amount: 100000, owner_id: 7, date: "2019-06-07", split: [4, 1, 6])
 Expense.create(name: "Celine Dion concert", amount: 77700, owner_id: 1, date: "2019-02-01", split: [4, 11, 10, 2, 9, 8])
 Expense.create(name: "McDonalds", amount: 4800, owner_id: 5, date: "2019-05-19", split: [6, 1, 9])
